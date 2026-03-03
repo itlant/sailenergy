@@ -1,8 +1,8 @@
 {
-  "name": "website-layout",
+  "name": "sailenergy",
   "version": "1.0.0",
-  "description": "Website layout with Gulp",
-  "main": "gulpfile.js",
+  "description": "Сайт школы парусного спорта",
+  "main": "Gulpfile.js",
   "scripts": {
     "dev": "gulp dev",
     "build": "gulp build",
@@ -22,7 +22,6 @@
     "gulp-plumber": "^1.2.1",
     "gulp-notify": "^4.0.0",
     "gulp-autoprefixer": "^8.0.0",
-    "gulp-group-css-media-queries": "^1.2.2",
     "del": "^6.1.1",
     "browser-sync": "^2.27.10"
   }

@@ -11,9 +11,7 @@ const htmlmin = require('gulp-htmlmin');
 const plumber = require('gulp-plumber');
 const notify = require('gulp-notify');
 const autoprefixer = require('gulp-autoprefixer');
-const groupMedia = require('gulp-group-css-media-queries');
 const del = require('del');
-const browserSync = require('browser-sync').create();
 
 // Пути к файлам
 const paths = {
@@ -71,8 +69,7 @@ const html = () => {
       collapseWhitespace: true,
       removeComments: true
     }))
-    .pipe(gulp.dest(paths.dist.root))
-    .pipe(browserSync.stream());
+    .pipe(gulp.dest(paths.dist.root));
 };
 
 // Обработка CSS
@@ -85,15 +82,13 @@ const css = () => {
       cascade: false,
       grid: true
     }))
-    .pipe(groupMedia())
     .pipe(gulp.dest(paths.dist.css))
     .pipe(rename({ suffix: '.min' }))
     .pipe(cleanCSS({
       level: 2
     }))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(paths.dist.css))
-    .pipe(browserSync.stream());
+    .pipe(gulp.dest(paths.dist.css));
 };
 
 // Обработка JavaScript
@@ -106,8 +101,7 @@ const js = () => {
     .pipe(rename({ suffix: '.min' }))
     .pipe(uglify())
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(paths.dist.js))
-    .pipe(browserSync.stream());
+    .pipe(gulp.dest(paths.dist.js));
 };
 
 // Обработка изображений
@@ -126,8 +120,7 @@ const images = () => {
     ]))
     .pipe(gulp.dest(paths.dist.images))
     .pipe(webp({ quality: 80 }))
-    .pipe(gulp.dest(paths.dist.images))
-    .pipe(browserSync.stream());
+    .pipe(gulp.dest(paths.dist.images));
 };
 
 // Копирование фавиконок
@@ -140,19 +133,6 @@ const favicon = () => {
 const fonts = () => {
   return gulp.src(paths.src.fonts)
     .pipe(gulp.dest(paths.dist.fonts));
-};
-
-// Сервер для разработки
-const server = () => {
-  browserSync.init({
-    server: {
-      baseDir: paths.dist.root
-    },
-    notify: false,
-    open: true,
-    cors: true,
-    ui: false
-  });
 };
 
 // Наблюдение за файлами
@@ -172,7 +152,7 @@ const build = gulp.series(
 // Режим разработки
 const dev = gulp.series(
   build,
-  gulp.parallel(server, watch)
+  watch
 );
 
 // Экспорт задач
