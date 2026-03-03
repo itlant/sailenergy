@@ -1,838 +1,243 @@
-<!doctype html>
-<html lang="ru-RU">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SAIL ENERGY — Каталог курсов и регат</title>
-    <meta
-      name="description"
-      content="Выберите курс обучения или регату. Обучение яхтингу с нуля, международные регаты, чартерные путешествия."
-    />
+<!-- HEADER -->
+@@include('html/header.html')
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://sailenergy.ru/catalog/" />
-    <meta property="og:title" content="SAIL ENERGY — Каталог курсов и регат" />
-    <meta
-      property="og:description"
-      content="Выберите курс обучения или регату. Обучение яхтингу с нуля, международные регаты."
-    />
-    <meta property="og:image" content="assets/img/og-image.jpg" />
+<main class="main">
+  <!-- Page Header -->
+  <section class="catalog-header">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Главная</a></li>
+          <li class="breadcrumb-item active">Каталог курсов</li>
+        </ol>
+      </nav>
+      <h1>Каталог курсов и регат</h1>
+      <p class="lead">Выберите программу обучения или спортивное событие</p>
+    </div>
+  </section>
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png" />
+  <!-- Hierarchy Navigation -->
+  <section class="hierarchy-nav">
+    <div class="container">
+      <ul class="hierarchy-list">
+        <li class="hierarchy-item has-children">
+          <a href="#" class="hierarchy-link active">Все курсы</a>
+          <ul class="hierarchy-children">
+            <li><a href="#">Лицензионные</a></li>
+            <li><a href="#">Онлайн курсы</a></li>
+            <li><a href="#">Практика</a></li>
+          </ul>
+        </li>
+        <li class="hierarchy-item"><a href="#" class="hierarchy-link">Регаты</a></li>
+        <li class="hierarchy-item"><a href="#" class="hierarchy-link">Мероприятия</a></li>
+        <li class="hierarchy-item"><a href="#" class="hierarchy-link">Чартер</a></li>
+      </ul>
+    </div>
+  </section>
 
-    <!-- Fonts & Icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <div class="container">
+    <!-- Category Tabs -->
+    <div class="category-tabs">
+      <span class="category-tab active">Все</span>
+      <span class="category-tab">Лицензионные</span>
+      <span class="category-tab">Онлайн</span>
+      <span class="category-tab">Практика</span>
+      <span class="category-tab">Регаты</span>
+    </div>
 
-    <!-- CSS Libraries -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
-    />
-
-    <!-- Theme CSS -->
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/custom.css" />
-
-    <!-- Page specific CSS -->
-    <style>
-      /* Catalog specific styles */
-      .catalog-header {
-        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-        color: white;
-        padding: 4rem 0;
-        text-align: center;
-      }
-
-      .catalog-header h1 {
-        color: white;
-        font-size: 3rem;
-        margin-bottom: 1rem;
-      }
-
-      .catalog-header .breadcrumb {
-        justify-content: center;
-        background: transparent;
-      }
-
-      .catalog-header .breadcrumb-item,
-      .catalog-header .breadcrumb-item a {
-        color: rgba(255, 255, 255, 0.8);
-      }
-
-      .catalog-header .breadcrumb-item.active {
-        color: white;
-      }
-
-      .catalog-header .breadcrumb-item + .breadcrumb-item::before {
-        color: rgba(255, 255, 255, 0.5);
-      }
-
-      /* Filters */
-      .filters-panel {
-        background: white;
-        border-radius: var(--border-radius-lg);
-        box-shadow: var(--shadow-md);
-        padding: 1.5rem;
-        margin-bottom: 2rem;
-        position: sticky;
-        top: 90px;
-        z-index: 100;
-      }
-
-      .filters-title {
-        font-size: 1.1rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        cursor: pointer;
-      }
-
-      .filters-title i {
-        transition: transform var(--transition-fast);
-      }
-
-      .filters-title.active i {
-        transform: rotate(180deg);
-      }
-
-      .filters-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1rem;
-      }
-
-      @media (min-width: 768px) {
-        .filters-grid {
-          grid-template-columns: repeat(4, 1fr);
-        }
-      }
-
-      .filter-group {
-        margin-bottom: 1rem;
-      }
-
-      .filter-group label {
-        display: block;
-        font-size: 0.9rem;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-        color: var(--color-dark);
-      }
-
-      .filter-select {
-        width: 100%;
-        padding: 0.6rem 1rem;
-        border: 2px solid var(--color-gray-light);
-        border-radius: var(--border-radius);
-        font-size: 0.95rem;
-        color: var(--color-dark);
-        background-color: white;
-        cursor: pointer;
-      }
-
-      .filter-select:focus {
-        border-color: var(--color-primary);
-        outline: none;
-      }
-
-      .filter-actions {
-        display: flex;
-        gap: 1rem;
-        margin-top: 1.5rem;
-        justify-content: flex-end;
-      }
-
-      /* Active filters */
-      .active-filters {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin: 1rem 0;
-      }
-
-      .filter-tag {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.4rem 1rem;
-        background: var(--color-primary-light);
-        color: var(--color-primary);
-        border-radius: var(--border-radius-pill);
-        font-size: 0.9rem;
-      }
-
-      .filter-tag i {
-        cursor: pointer;
-        font-size: 0.8rem;
-      }
-
-      .filter-tag i:hover {
-        color: var(--color-primary-dark);
-      }
-
-      /* Results header */
-      .results-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 2rem;
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
-
-      .results-count {
-        font-size: 1rem;
-        color: var(--color-gray);
-      }
-
-      .results-count span {
-        font-weight: 700;
-        color: var(--color-dark);
-      }
-
-      .results-sort {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      .results-sort label {
-        font-size: 0.9rem;
-        color: var(--color-gray);
-      }
-
-      .sort-select {
-        padding: 0.4rem 2rem 0.4rem 1rem;
-        border: 2px solid var(--color-gray-light);
-        border-radius: var(--border-radius);
-        font-size: 0.9rem;
-        background-color: white;
-        cursor: pointer;
-        appearance: none;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236c757d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: right 0.5rem center;
-      }
-
-      /* Category tabs */
-      .category-tabs {
-        display: flex;
-        gap: 0.5rem;
-        overflow-x: auto;
-        padding-bottom: 1rem;
-        margin-bottom: 2rem;
-        scrollbar-width: thin;
-      }
-
-      .category-tab {
-        padding: 0.6rem 1.5rem;
-        background: white;
-        border: 2px solid var(--color-gray-light);
-        border-radius: var(--border-radius-pill);
-        font-weight: 600;
-        color: var(--color-gray);
-        white-space: nowrap;
-        cursor: pointer;
-        transition: all var(--transition-fast);
-      }
-
-      .category-tab:hover,
-      .category-tab.active {
-        background: var(--color-primary);
-        border-color: var(--color-primary);
-        color: white;
-      }
-
-      /* Other services section */
-      .other-services {
-        margin-top: 5rem;
-        padding-top: 3rem;
-        border-top: 1px solid var(--color-gray-light);
-      }
-
-      .other-services-title {
-        text-align: center;
-        margin-bottom: 2rem;
-      }
-
-      .other-services-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-
-      @media (min-width: 576px) {
-        .other-services-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-
-      @media (min-width: 992px) {
-        .other-services-grid {
-          grid-template-columns: repeat(4, 1fr);
-        }
-      }
-
-      .service-card {
-        background: white;
-        border-radius: var(--border-radius-lg);
-        padding: 2rem 1.5rem;
-        text-align: center;
-        border: 1px solid var(--color-gray-light);
-        transition: all var(--transition-normal);
-        height: 100%;
-        position: relative;
-      }
-
-      .service-card:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-lg);
-        border-color: var(--color-primary);
-      }
-
-      .service-icon {
-        width: 70px;
-        height: 70px;
-        margin: 0 auto 1.5rem;
-        background: var(--color-primary-light);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2rem;
-        color: var(--color-primary);
-      }
-
-      .service-card h3 {
-        font-size: 1.2rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .service-card p {
-        color: var(--color-gray);
-        font-size: 0.9rem;
-        margin-bottom: 0;
-      }
-
-      /* Hierarchy */
-      .hierarchy-nav {
-        background: var(--color-gray-lighter);
-        padding: 1rem 0;
-        margin-bottom: 2rem;
-      }
-
-      .hierarchy-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem 2rem;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      .hierarchy-item {
-        position: relative;
-      }
-
-      .hierarchy-link {
-        color: var(--color-gray);
-        font-weight: 500;
-        text-decoration: none;
-        transition: color var(--transition-fast);
-      }
-
-      .hierarchy-link:hover,
-      .hierarchy-link.active {
-        color: var(--color-primary);
-      }
-
-      .hierarchy-item.has-children > .hierarchy-link::after {
-        content: "▾";
-        margin-left: 0.25rem;
-        opacity: 0.5;
-      }
-
-      .hierarchy-children {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        min-width: 200px;
-        background: white;
-        border: 1px solid var(--color-gray-light);
-        border-radius: var(--border-radius);
-        box-shadow: var(--shadow-md);
-        padding: 0.5rem;
-        z-index: 10;
-        list-style: none;
-      }
-
-      .hierarchy-item:hover .hierarchy-children {
-        display: block;
-      }
-
-      .hierarchy-children li {
-        margin-bottom: 0.25rem;
-      }
-
-      .hierarchy-children a {
-        display: block;
-        padding: 0.5rem;
-        color: var(--color-gray-dark);
-        border-radius: var(--border-radius);
-        text-decoration: none;
-      }
-
-      .hierarchy-children a:hover {
-        background: var(--color-primary-light);
-        color: var(--color-primary);
-      }
-
-      /* Pagination */
-      .pagination {
-        display: flex;
-        justify-content: center;
-        gap: 0.5rem;
-        margin-top: 3rem;
-      }
-
-      .page-item {
-        list-style: none;
-      }
-
-      .page-link {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        border: 2px solid var(--color-gray-light);
-        border-radius: var(--border-radius);
-        color: var(--color-dark);
-        font-weight: 600;
-        text-decoration: none;
-        transition: all var(--transition-fast);
-      }
-
-      .page-link:hover,
-      .page-item.active .page-link {
-        background: var(--color-primary);
-        border-color: var(--color-primary);
-        color: white;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="site-wrapper">
-      <!-- HEADER (same as index.html) -->
-      <div class="header">
-        <nav class="navbar navbar-expand-lg">
-          <div class="container">
-            <a class="navbar-brand" href="/">
-              <img src="assets/img/logo/logo-dark.svg" alt="SAIL ENERGY" class="logo-img" loading="eager" />
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMainContent">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarMainContent">
-              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link" href="/">Главная</a></li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle active" href="/courses/" data-bs-toggle="dropdown">Обучение</a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/courses/bareboat-skipper/">Bareboat Skipper</a></li>
-                    <li><a class="dropdown-item" href="/courses/yachtmaster-coastal/">Yachtmaster Coastal</a></li>
-                    <li><a class="dropdown-item" href="/courses/online-basics/">Основы яхтинга</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="/regattas/" data-bs-toggle="dropdown">Регаты</a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/regattas/marmaris-race-week/">Marmaris Race Week</a></li>
-                    <li><a class="dropdown-item" href="/regattas/open-sailing-week/">Open Sailing Week</a></li>
-                    <li><a class="dropdown-item" href="/regattas/spb-cup/">Летний Кубок СПб</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="/events/">Мероприятия</a></li>
-                <li class="nav-item"><a class="nav-link" href="/news/">Новости</a></li>
-                <li class="nav-item"><a class="nav-link" href="/contacts/">Контакты</a></li>
-              </ul>
-              <div class="header-contacts">
-                <div class="header-contact-item">
-                  <a href="tel:+79215882378"><i class="fas fa-phone-alt me-1"></i>+7 (921) 588-23-78</a>
-                </div>
-                <div class="header-social">
-                  <a href="https://t.me/sailenergy/" class="social-icon"><i class="fab fa-telegram"></i></a>
-                  <a href="https://vk.com/sailenergy" class="social-icon"><i class="fab fa-vk"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </nav>
+    <!-- Filters Panel -->
+    <div class="filters-panel">
+      <div class="filters-title" data-toggle="filters">
+        <span>Фильтры</span>
+        <i class="fas fa-chevron-up"></i>
       </div>
-
-      <main class="main">
-        <!-- Page Header -->
-        <section class="catalog-header">
-          <div class="container">
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Главная</a></li>
-                <li class="breadcrumb-item active">Каталог курсов</li>
-              </ol>
-            </nav>
-            <h1>Каталог курсов и регат</h1>
-            <p class="lead">Выберите программу обучения или спортивное событие</p>
+      <div class="filters-content">
+        <div class="filters-grid">
+          <div class="filter-group">
+            <label>Уровень</label>
+            <select class="filter-select">
+              <option value="">Все уровни</option>
+              <option value="beginner">Начальный</option>
+              <option value="intermediate">Средний</option>
+              <option value="advanced">Продвинутый</option>
+            </select>
           </div>
-        </section>
-
-        <!-- Hierarchy Navigation -->
-        <section class="hierarchy-nav">
-          <div class="container">
-            <ul class="hierarchy-list">
-              <li class="hierarchy-item has-children">
-                <a href="#" class="hierarchy-link active">Все курсы</a>
-                <ul class="hierarchy-children">
-                  <li><a href="#">Лицензионные</a></li>
-                  <li><a href="#">Онлайн курсы</a></li>
-                  <li><a href="#">Практика</a></li>
-                </ul>
-              </li>
-              <li class="hierarchy-item"><a href="#" class="hierarchy-link">Регаты</a></li>
-              <li class="hierarchy-item"><a href="#" class="hierarchy-link">Мероприятия</a></li>
-              <li class="hierarchy-item"><a href="#" class="hierarchy-link">Чартер</a></li>
-            </ul>
+          <div class="filter-group">
+            <label>Локация</label>
+            <select class="filter-select">
+              <option value="">Все локации</option>
+              <option value="turkey">Турция</option>
+              <option value="croatia">Хорватия</option>
+              <option value="montenegro">Черногория</option>
+              <option value="spb">Санкт-Петербург</option>
+            </select>
           </div>
-        </section>
-
-        <div class="container">
-          <!-- Category Tabs -->
-          <div class="category-tabs">
-            <span class="category-tab active">Все</span>
-            <span class="category-tab">Лицензионные</span>
-            <span class="category-tab">Онлайн</span>
-            <span class="category-tab">Практика</span>
-            <span class="category-tab">Регаты</span>
+          <div class="filter-group">
+            <label>Длительность</label>
+            <select class="filter-select">
+              <option value="">Любая</option>
+              <option value="1-3">1-3 дня</option>
+              <option value="4-7">4-7 дней</option>
+              <option value="8-14">8-14 дней</option>
+            </select>
           </div>
-
-          <!-- Filters Panel -->
-          <div class="filters-panel">
-            <div class="filters-title" data-toggle="filters">
-              <span>Фильтры</span>
-              <i class="fas fa-chevron-up"></i>
-            </div>
-            <div class="filters-content">
-              <div class="filters-grid">
-                <div class="filter-group">
-                  <label>Уровень</label>
-                  <select class="filter-select">
-                    <option value="">Все уровни</option>
-                    <option value="beginner">Начальный</option>
-                    <option value="intermediate">Средний</option>
-                    <option value="advanced">Продвинутый</option>
-                  </select>
-                </div>
-                <div class="filter-group">
-                  <label>Локация</label>
-                  <select class="filter-select">
-                    <option value="">Все локации</option>
-                    <option value="turkey">Турция</option>
-                    <option value="croatia">Хорватия</option>
-                    <option value="montenegro">Черногория</option>
-                    <option value="spb">Санкт-Петербург</option>
-                  </select>
-                </div>
-                <div class="filter-group">
-                  <label>Длительность</label>
-                  <select class="filter-select">
-                    <option value="">Любая</option>
-                    <option value="1-3">1-3 дня</option>
-                    <option value="4-7">4-7 дней</option>
-                    <option value="8-14">8-14 дней</option>
-                  </select>
-                </div>
-                <div class="filter-group">
-                  <label>Цена</label>
-                  <select class="filter-select">
-                    <option value="">Любая</option>
-                    <option value="0-1000">до 1000 €</option>
-                    <option value="1000-2000">1000-2000 €</option>
-                    <option value="2000+">от 2000 €</option>
-                  </select>
-                </div>
-              </div>
-              <div class="filter-actions">
-                <button class="btn btn-outline-secondary">Сбросить</button>
-                <button class="btn btn-primary">Применить</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Active Filters -->
-          <div class="active-filters">
-            <span class="filter-tag">IYT <i class="fas fa-times"></i></span>
-            <span class="filter-tag">Турция <i class="fas fa-times"></i></span>
-          </div>
-
-          <!-- Results Header -->
-          <div class="results-header">
-            <div class="results-count">Найдено: <span>12</span> программ</div>
-            <div class="results-sort">
-              <label>Сортировка:</label>
-              <select class="sort-select">
-                <option>По популярности</option>
-                <option>По цене (возрастание)</option>
-                <option>По цене (убывание)</option>
-                <option>По длительности</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- Results Grid -->
-          <div class="row g-4">
-            <!-- Course Card 1 -->
-            <div class="col-md-6 col-lg-4">
-              <div class="course-card position-relative">
-                <div class="course-card-image">
-                  <img src="assets/img/courses/skipper-sail.jpg" alt="Bareboat Skipper Sail" loading="lazy" />
-                  <span class="course-badge position-absolute top-0 end-0 m-3">Хит</span>
-                </div>
-                <div class="course-card-content">
-                  <div class="course-card-meta">
-                    <span class="course-badge">IYT</span>
-                    <span class="course-duration"><i class="far fa-clock"></i> 14 дней</span>
-                  </div>
-                  <h3 class="course-title">Bareboat Skipper Sail</h3>
-                  <p class="course-excerpt">
-                    С нуля до самостоятельного управления яхтой. Интенсив в Турции с проживанием на борту.
-                  </p>
-                  <div class="d-flex justify-content-between align-items-center mt-3">
-                    <span class="course-price">2 400 €</span>
-                    <a href="/product.html" class="btn btn-sm btn-outline-primary">Подробнее</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Course Card 2 -->
-            <div class="col-md-6 col-lg-4">
-              <div class="course-card position-relative">
-                <div class="course-card-image">
-                  <img src="assets/img/courses/yachtmaster-coastal.jpg" alt="Yachtmaster Coastal" loading="lazy" />
-                  <span class="course-badge position-absolute top-0 end-0 m-3 bg-warning text-dark">-15%</span>
-                </div>
-                <div class="course-card-content">
-                  <div class="course-card-meta">
-                    <span class="course-badge">IYT</span>
-                    <span class="course-duration"><i class="far fa-clock"></i> 7 дней</span>
-                  </div>
-                  <h3 class="course-title">Yachtmaster Coastal</h3>
-                  <p class="course-excerpt">Для опытных шкиперов: ночная навигация, сложные метеоусловия.</p>
-                  <div class="d-flex justify-content-between align-items-center mt-3">
-                    <div>
-                      <span class="text-decoration-line-through text-muted me-2">3 200 €</span>
-                      <span class="course-price text-danger">2 720 €</span>
-                    </div>
-                    <a href="/product.html" class="btn btn-sm btn-outline-primary">Подробнее</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Course Card 3 -->
-            <div class="col-md-6 col-lg-4">
-              <div class="course-card position-relative">
-                <div class="course-card-image">
-                  <img src="assets/img/courses/crew-sail.jpg" alt="Основы яхтинга" loading="lazy" />
-                </div>
-                <div class="course-card-content">
-                  <div class="course-card-meta">
-                    <span class="course-badge">Онлайн</span>
-                    <span class="course-duration"><i class="far fa-clock"></i> 5 дней</span>
-                  </div>
-                  <h3 class="course-title">Основы яхтинга</h3>
-                  <p class="course-excerpt">
-                    Теория для новичков: термины, навигация, безопасность. Подготовка перед практикой.
-                  </p>
-                  <div class="d-flex justify-content-between align-items-center mt-3">
-                    <span class="course-price">590 €</span>
-                    <a href="/product.html" class="btn btn-sm btn-outline-primary">Подробнее</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- More cards... -->
-          </div>
-
-          <!-- Pagination -->
-          <nav>
-            <ul class="pagination">
-              <li class="page-item">
-                <a class="page-link" href="#"><i class="fas fa-chevron-left"></i></a>
-              </li>
-              <li class="page-item active"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
-              </li>
-            </ul>
-          </nav>
-
-          <!-- Other Services Section -->
-          <section class="other-services">
-            <h2 class="other-services-title">Другие услуги</h2>
-            <div class="other-services-grid">
-              <a href="#" class="service-card">
-                <div class="service-icon"><i class="fas fa-ship"></i></div>
-                <h3>Чартер яхт</h3>
-                <p>Аренда яхт в Турции, Хорватии и Черногории</p>
-              </a>
-              <a href="#" class="service-card">
-                <div class="service-icon"><i class="fas fa-trophy"></i></div>
-                <h3>Корпоративные регаты</h3>
-                <p>Организация мероприятий для компаний</p>
-              </a>
-              <a href="#" class="service-card">
-                <div class="service-icon"><i class="fas fa-users"></i></div>
-                <h3>Индивидуальные тренировки</h3>
-                <p>Персональные занятия с инструктором</p>
-              </a>
-              <a href="#" class="service-card">
-                <div class="service-icon"><i class="fas fa-map-marked-alt"></i></div>
-                <h3>Путешествия под парусом</h3>
-                <p>Экспедиции и флотилии</p>
-              </a>
-            </div>
-          </section>
-        </div>
-      </main>
-
-      <!-- FOOTER (same as index.html) -->
-      <footer class="footer">
-        <div class="container">
-          <div class="footer-grid">
-            <div class="footer-col footer-col-about">
-              <img src="assets/img/logo/logo-light.svg" alt="SAIL ENERGY" class="footer-logo" />
-              <p class="footer-about">
-                Парусный клуб SAIL ENERGY — обучение яхтингу, спортивная команда, корпоративные регаты и путешествия под
-                парусом.
-              </p>
-              <div class="footer-social">
-                <a href="https://youtube.com/@sailenergy"><i class="fab fa-youtube"></i></a>
-                <a href="https://t.me/sailenergy/"><i class="fab fa-telegram"></i></a>
-                <a href="https://vk.com/sailenergy"><i class="fab fa-vk"></i></a>
-              </div>
-            </div>
-            <div class="footer-col footer-col-menu">
-              <h4 class="footer-title">О клубе</h4>
-              <ul class="footer-links">
-                <li><a href="/team/">Команда</a></li>
-                <li><a href="/articles/">Статьи</a></li>
-                <li><a href="/reviews/">Отзывы</a></li>
-                <li><a href="/contacts/">Контакты</a></li>
-              </ul>
-            </div>
-            <div class="footer-col footer-col-menu">
-              <h4 class="footer-title">Регаты</h4>
-              <ul class="footer-links">
-                <li><a href="/regattas/marmaris-race-week/">Marmaris Race Week</a></li>
-                <li><a href="/regattas/open-sailing-week/">Open Sailing Week</a></li>
-                <li><a href="/regattas/spb-cup/">Летний Кубок СПб</a></li>
-              </ul>
-            </div>
-            <div class="footer-col footer-col-menu">
-              <h4 class="footer-title">Курсы</h4>
-              <ul class="footer-links">
-                <li><a href="/courses/bareboat-skipper/">Bareboat Skipper</a></li>
-                <li><a href="/courses/yachtmaster-coastal/">Yachtmaster Coastal</a></li>
-                <li><a href="/courses/online-basics/">Основы яхтинга</a></li>
-              </ul>
-            </div>
-            <div class="footer-col footer-col-contact">
-              <h4 class="footer-title">Контакты</h4>
-              <ul class="footer-contact">
-                <li><i class="fas fa-phone"></i> <a href="tel:+79215882378">+7 (921) 588-23-78</a></li>
-                <li><i class="fas fa-envelope"></i> <a href="mailto:info@sailenergy.ru">info@sailenergy.ru</a></li>
-                <li><i class="fas fa-map-marker-alt"></i> Санкт-Петербург</li>
-              </ul>
-            </div>
-          </div>
-          <div class="footer-bottom">
-            <p>
-              © 2022-2026 SAIL ENERGY. <a href="/privacy/">Политика конфиденциальности</a> |
-              <a href="/sitemap/">Карта сайта</a>
-            </p>
+          <div class="filter-group">
+            <label>Цена</label>
+            <select class="filter-select">
+              <option value="">Любая</option>
+              <option value="0-1000">до 1000 €</option>
+              <option value="1000-2000">1000-2000 €</option>
+              <option value="2000+">от 2000 €</option>
+            </select>
           </div>
         </div>
-        <button id="backToTop" class="back-to-top"><i class="fas fa-chevron-up"></i></button>
-      </footer>
-
-      <!-- MODALS (same as index.html) -->
-      <div class="modal fade" id="courseRegModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <div class="modal-title">Регистрация на курс</div>
-              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-              <form id="courseRegForm" data-validate="true">
-                <input type="hidden" id="courseRegCourseName" name="course_name" />
-                <div class="mb-3">
-                  <label class="form-label">Имя</label>
-                  <input type="text" class="form-control" name="name" placeholder="Иван" required />
-                </div>
-                <div class="mb-3">
-                  <label class="form-label">Телефон</label>
-                  <input type="tel" class="form-control" name="phone" placeholder="+7 (999) 123-45-67" required />
-                </div>
-                <button type="submit" class="btn btn-primary w-100">Забронировать место</button>
-              </form>
-            </div>
-          </div>
+        <div class="filter-actions">
+          <button class="btn btn-outline-secondary">Сбросить</button>
+          <button class="btn btn-primary">Применить</button>
         </div>
       </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/custom.js"></script>
+    <!-- Active Filters -->
+    <div class="active-filters">
+      <span class="filter-tag">IYT <i class="fas fa-times"></i></span>
+      <span class="filter-tag">Турция <i class="fas fa-times"></i></span>
+    </div>
 
-    <!-- Page specific JS -->
-    <script>
-      $(document).ready(function () {
-        // Toggle filters on mobile
-        $(".filters-title").on("click", function () {
-          $(this).toggleClass("active");
-          $(".filters-content").slideToggle();
-        });
+    <!-- Results Header -->
+    <div class="results-header">
+      <div class="results-count">Найдено: <span>12</span> программ</div>
+      <div class="results-sort">
+        <label>Сортировка:</label>
+        <select class="sort-select">
+          <option>По популярности</option>
+          <option>По цене (возрастание)</option>
+          <option>По цене (убывание)</option>
+          <option>По длительности</option>
+        </select>
+      </div>
+    </div>
 
-        // Active filters remove
-        $(".filter-tag i").on("click", function () {
-          $(this).parent().remove();
-        });
-      });
-    </script>
-  </body>
-</html>
+    <!-- Results Grid -->
+    <div class="row g-4">
+      <!-- Course Card 1 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="course-card position-relative">
+          <div class="course-card-image">
+            <img src="assets/img/courses/skipper-sail.jpg" alt="Bareboat Skipper Sail" loading="lazy" />
+            <span class="course-badge position-absolute top-0 end-0 m-3">Хит</span>
+          </div>
+          <div class="course-card-content">
+            <div class="course-card-meta">
+              <span class="course-badge">IYT</span>
+              <span class="course-duration"><i class="far fa-clock"></i> 14 дней</span>
+            </div>
+            <h3 class="course-title">Bareboat Skipper Sail</h3>
+            <p class="course-excerpt">
+              С нуля до самостоятельного управления яхтой. Интенсив в Турции с проживанием на борту.
+            </p>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="course-price">2 400 €</span>
+              <a href="/product.html" class="btn btn-sm btn-outline-primary">Подробнее</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course Card 2 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="course-card position-relative">
+          <div class="course-card-image">
+            <img src="assets/img/courses/yachtmaster-coastal.jpg" alt="Yachtmaster Coastal" loading="lazy" />
+            <span class="course-badge position-absolute top-0 end-0 m-3 bg-warning text-dark">-15%</span>
+          </div>
+          <div class="course-card-content">
+            <div class="course-card-meta">
+              <span class="course-badge">IYT</span>
+              <span class="course-duration"><i class="far fa-clock"></i> 7 дней</span>
+            </div>
+            <h3 class="course-title">Yachtmaster Coastal</h3>
+            <p class="course-excerpt">Для опытных шкиперов: ночная навигация, сложные метеоусловия.</p>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <div>
+                <span class="text-decoration-line-through text-muted me-2">3 200 €</span>
+                <span class="course-price text-danger">2 720 €</span>
+              </div>
+              <a href="/product.html" class="btn btn-sm btn-outline-primary">Подробнее</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Course Card 3 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="course-card position-relative">
+          <div class="course-card-image">
+            <img src="assets/img/courses/crew-sail.jpg" alt="Основы яхтинга" loading="lazy" />
+          </div>
+          <div class="course-card-content">
+            <div class="course-card-meta">
+              <span class="course-badge">Онлайн</span>
+              <span class="course-duration"><i class="far fa-clock"></i> 5 дней</span>
+            </div>
+            <h3 class="course-title">Основы яхтинга</h3>
+            <p class="course-excerpt">
+              Теория для новичков: термины, навигация, безопасность. Подготовка перед практикой.
+            </p>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="course-price">590 €</span>
+              <a href="/product.html" class="btn btn-sm btn-outline-primary">Подробнее</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- More cards... -->
+    </div>
+
+    <!-- Pagination -->
+    <nav>
+      <ul class="pagination">
+        <li class="page-item">
+          <a class="page-link" href="#"><i class="fas fa-chevron-left"></i></a>
+        </li>
+        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Other Services Section -->
+    <section class="other-services">
+      <h2 class="other-services-title">Другие услуги</h2>
+      <div class="other-services-grid">
+        <a href="#" class="service-card">
+          <div class="service-icon"><i class="fas fa-ship"></i></div>
+          <h3>Чартер яхт</h3>
+          <p>Аренда яхт в Турции, Хорватии и Черногории</p>
+        </a>
+        <a href="#" class="service-card">
+          <div class="service-icon"><i class="fas fa-trophy"></i></div>
+          <h3>Корпоративные регаты</h3>
+          <p>Организация мероприятий для компаний</p>
+        </a>
+        <a href="#" class="service-card">
+          <div class="service-icon"><i class="fas fa-users"></i></div>
+          <h3>Индивидуальные тренировки</h3>
+          <p>Персональные занятия с инструктором</p>
+        </a>
+        <a href="#" class="service-card">
+          <div class="service-icon"><i class="fas fa-map-marked-alt"></i></div>
+          <h3>Путешествия под парусом</h3>
+          <p>Экспедиции и флотилии</p>
+        </a>
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- FOOTER -->
+@@include('html/footer.html')

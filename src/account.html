@@ -1,629 +1,208 @@
-<!doctype html>
-<html lang="ru-RU">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SAIL ENERGY — Личный кабинет</title>
-    <meta name="description" content="Управляйте своими бронированиями, курсами и достижениями." />
+<!-- HEADER -->
+@@include('html/header.html')
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png" />
-
-    <!-- Fonts & Icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
-    <!-- CSS Libraries -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/custom.css" />
-
-    <style>
-      /* Account page specific styles */
-      .account-header {
-        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-        color: white;
-        padding: 3rem 0;
-      }
-
-      .account-header h1 {
-        color: white;
-        margin-bottom: 0.5rem;
-      }
-
-      .account-info {
-        display: flex;
-        align-items: center;
-        gap: 2rem;
-        flex-wrap: wrap;
-      }
-
-      .account-avatar {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.2);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2.5rem;
-        border: 3px solid white;
-      }
-
-      .account-welcome h2 {
-        color: white;
-        font-size: 1.5rem;
-        margin-bottom: 0.25rem;
-      }
-
-      .account-welcome p {
-        color: rgba(255, 255, 255, 0.8);
-        margin: 0;
-      }
-
-      /* Dashboard */
-      .dashboard-stats {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1.5rem;
-        margin: -2rem 0 3rem;
-      }
-
-      @media (max-width: 768px) {
-        .dashboard-stats {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-
-      @media (max-width: 576px) {
-        .dashboard-stats {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      .stat-card {
-        background: white;
-        border-radius: var(--border-radius-lg);
-        padding: 1.5rem;
-        box-shadow: var(--shadow-md);
-        text-align: center;
-      }
-
-      .stat-icon {
-        width: 50px;
-        height: 50px;
-        margin: 0 auto 1rem;
-        background: var(--color-primary-light);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        color: var(--color-primary);
-      }
-
-      .stat-number {
-        font-size: 1.8rem;
-        font-weight: 800;
-        color: var(--color-dark);
-        line-height: 1;
-        margin-bottom: 0.25rem;
-      }
-
-      .stat-label {
-        color: var(--color-gray);
-        font-size: 0.9rem;
-      }
-
-      /* Tabs */
-      .account-tabs {
-        display: flex;
-        gap: 0.5rem;
-        border-bottom: 2px solid var(--color-gray-light);
-        margin-bottom: 2rem;
-        overflow-x: auto;
-        padding-bottom: 0.5rem;
-      }
-
-      .account-tab {
-        padding: 0.8rem 1.5rem;
-        background: transparent;
-        border: none;
-        font-weight: 600;
-        color: var(--color-gray);
-        cursor: pointer;
-        white-space: nowrap;
-        position: relative;
-      }
-
-      .account-tab.active {
-        color: var(--color-primary);
-      }
-
-      .account-tab.active::after {
-        content: "";
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        right: 0;
-        height: 2px;
-        background: var(--color-primary);
-      }
-
-      .tab-pane {
-        display: none;
-      }
-
-      .tab-pane.active {
-        display: block;
-      }
-
-      /* Bookings */
-      .booking-card {
-        background: white;
-        border: 1px solid var(--color-gray-light);
-        border-radius: var(--border-radius-lg);
-        padding: 1.5rem;
-        margin-bottom: 1rem;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 1.5rem;
-      }
-
-      .booking-image {
-        width: 100px;
-        height: 100px;
-        border-radius: var(--border-radius);
-        overflow: hidden;
-      }
-
-      .booking-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .booking-details {
-        flex: 1;
-      }
-
-      .booking-title {
-        font-size: 1.2rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-      }
-
-      .booking-meta {
-        display: flex;
-        gap: 1.5rem;
-        color: var(--color-gray);
-        font-size: 0.9rem;
-      }
-
-      .booking-status {
-        padding: 0.3rem 1rem;
-        border-radius: var(--border-radius-pill);
-        font-size: 0.85rem;
-        font-weight: 600;
-      }
-
-      .status-confirmed {
-        background: #d4edda;
-        color: #155724;
-      }
-
-      .status-pending {
-        background: #fff3cd;
-        color: #856404;
-      }
-
-      .status-cancelled {
-        background: #f8d7da;
-        color: #721c24;
-      }
-
-      /* Achievements */
-      .achievements-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 1rem;
-      }
-
-      .achievement-card {
-        text-align: center;
-        padding: 1.5rem;
-        background: white;
-        border: 1px solid var(--color-gray-light);
-        border-radius: var(--border-radius-lg);
-      }
-
-      .achievement-icon {
-        width: 60px;
-        height: 60px;
-        margin: 0 auto 1rem;
-        background: var(--color-accent);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        color: white;
-      }
-
-      .achievement-title {
-        font-weight: 700;
-        margin-bottom: 0.25rem;
-      }
-
-      .achievement-date {
-        font-size: 0.85rem;
-        color: var(--color-gray);
-      }
-
-      /* Certificates */
-      .certificate-card {
-        background: white;
-        border: 1px solid var(--color-gray-light);
-        border-radius: var(--border-radius-lg);
-        padding: 1rem;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-      }
-
-      .certificate-icon {
-        width: 50px;
-        height: 50px;
-        background: var(--color-primary-light);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        color: var(--color-primary);
-      }
-
-      .certificate-info {
-        flex: 1;
-      }
-
-      .certificate-title {
-        font-weight: 700;
-        margin-bottom: 0.25rem;
-      }
-
-      .certificate-desc {
-        font-size: 0.9rem;
-        color: var(--color-gray);
-      }
-    </style>
-  </head>
-  <body>
-    <div class="site-wrapper">
-      <!-- HEADER (same as index.html) -->
-      <div class="header">
-        <nav class="navbar navbar-expand-lg">
-          <div class="container">
-            <a class="navbar-brand" href="/">
-              <img src="assets/img/logo/logo-dark.svg" alt="SAIL ENERGY" class="logo-img" loading="eager" />
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMainContent">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarMainContent">
-              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link" href="/">Главная</a></li>
-                <li class="nav-item"><a class="nav-link" href="/courses/">Обучение</a></li>
-                <li class="nav-item"><a class="nav-link" href="/regattas/">Регаты</a></li>
-                <li class="nav-item"><a class="nav-link" href="/events/">Мероприятия</a></li>
-                <li class="nav-item"><a class="nav-link" href="/news/">Новости</a></li>
-                <li class="nav-item"><a class="nav-link" href="/contacts/">Контакты</a></li>
-              </ul>
-              <div class="header-contacts">
-                <div class="header-contact-item">
-                  <a href="tel:+79215882378"><i class="fas fa-phone-alt me-1"></i>+7 (921) 588-23-78</a>
-                </div>
-                <div class="header-social">
-                  <a href="https://t.me/sailenergy/" class="social-icon"><i class="fab fa-telegram"></i></a>
-                  <a href="https://vk.com/sailenergy" class="social-icon"><i class="fab fa-vk"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </nav>
+<main class="main">
+  <!-- Account Header -->
+  <section class="account-header">
+    <div class="container">
+      <div class="account-info">
+        <div class="account-avatar">
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="account-welcome">
+          <h2>Иван Иванов</h2>
+          <p>Участник с 2023 года • 3 курса пройдено</p>
+        </div>
+        <button class="btn btn-outline-light ms-auto"><i class="fas fa-sign-out-alt me-2"></i>Выйти</button>
       </div>
+    </div>
+  </section>
 
-      <main class="main">
-        <!-- Account Header -->
-        <section class="account-header">
-          <div class="container">
-            <div class="account-info">
-              <div class="account-avatar">
-                <i class="fas fa-user"></i>
-              </div>
-              <div class="account-welcome">
-                <h2>Иван Иванов</h2>
-                <p>Участник с 2023 года • 3 курса пройдено</p>
-              </div>
-              <button class="btn btn-outline-light ms-auto"><i class="fas fa-sign-out-alt me-2"></i>Выйти</button>
-            </div>
-          </div>
-        </section>
-
-        <div class="container py-5">
-          <!-- Dashboard Stats -->
-          <div class="dashboard-stats">
-            <div class="stat-card">
-              <div class="stat-icon"><i class="fas fa-ship"></i></div>
-              <div class="stat-number">3</div>
-              <div class="stat-label">Курса пройдено</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-icon"><i class="fas fa-trophy"></i></div>
-              <div class="stat-number">2</div>
-              <div class="stat-label">Регаты</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-icon"><i class="fas fa-certificate"></i></div>
-              <div class="stat-number">4</div>
-              <div class="stat-label">Сертификата</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-icon"><i class="fas fa-clock"></i></div>
-              <div class="stat-number">45</div>
-              <div class="stat-label">Дней в море</div>
-            </div>
-          </div>
-
-          <!-- Tabs Navigation -->
-          <div class="account-tabs">
-            <button class="account-tab active" data-tab="bookings">Мои бронирования</button>
-            <button class="account-tab" data-tab="courses">Мои курсы</button>
-            <button class="account-tab" data-tab="achievements">Достижения</button>
-            <button class="account-tab" data-tab="certificates">Сертификаты</button>
-            <button class="account-tab" data-tab="profile">Профиль</button>
-          </div>
-
-          <!-- Bookings Tab -->
-          <div class="tab-pane active" id="bookings">
-            <h3 class="h5 fw-bold mb-4">Активные бронирования</h3>
-
-            <div class="booking-card">
-              <div class="booking-image">
-                <img src="assets/img/courses/skipper-sail.jpg" alt="Bareboat Skipper" />
-              </div>
-              <div class="booking-details">
-                <h4 class="booking-title">Bareboat Skipper Sail</h4>
-                <div class="booking-meta">
-                  <span><i class="far fa-calendar me-1"></i> 11-24 апреля 2026</span>
-                  <span><i class="fas fa-map-marker-alt me-1"></i> Турция, Фетхие</span>
-                  <span><i class="fas fa-users me-1"></i> 2 участника</span>
-                </div>
-              </div>
-              <div class="booking-status status-confirmed">Подтверждено</div>
-              <button class="btn btn-outline-primary btn-sm ms-3">Детали</button>
-            </div>
-
-            <h3 class="h5 fw-bold mb-4 mt-5">История</h3>
-
-            <div class="booking-card">
-              <div class="booking-image">
-                <img src="assets/img/courses/yachtmaster-coastal.jpg" alt="Yachtmaster" />
-              </div>
-              <div class="booking-details">
-                <h4 class="booking-title">Yachtmaster Coastal</h4>
-                <div class="booking-meta">
-                  <span><i class="far fa-calendar me-1"></i> 5-12 марта 2026</span>
-                  <span><i class="fas fa-map-marker-alt me-1"></i> Хорватия, Сплит</span>
-                  <span><i class="fas fa-users me-1"></i> 1 участник</span>
-                </div>
-              </div>
-              <div class="booking-status status-cancelled">Завершено</div>
-              <button class="btn btn-outline-secondary btn-sm ms-3">Сертификат</button>
-            </div>
-          </div>
-
-          <!-- Courses Tab -->
-          <div class="tab-pane" id="courses">
-            <h3 class="h5 fw-bold mb-4">Пройденные курсы</h3>
-
-            <div class="row g-4">
-              <div class="col-md-6">
-                <div class="course-card">
-                  <div class="course-card-image">
-                    <img src="assets/img/courses/crew-sail.jpg" alt="Основы яхтинга" />
-                  </div>
-                  <div class="course-card-content">
-                    <h4 class="course-title">Основы яхтинга</h4>
-                    <p class="course-excerpt small">Онлайн курс, 2025</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <span class="badge bg-success">Пройдено</span>
-                      <a href="#" class="btn btn-sm btn-outline-primary">Смотреть сертификат</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="course-card">
-                  <div class="course-card-image">
-                    <img src="assets/img/courses/skipper-sail.jpg" alt="Bareboat Skipper" />
-                  </div>
-                  <div class="course-card-content">
-                    <h4 class="course-title">Bareboat Skipper</h4>
-                    <p class="course-excerpt small">Интенсив в Турции, 2025</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <span class="badge bg-success">Пройдено</span>
-                      <a href="#" class="btn btn-sm btn-outline-primary">Смотреть сертификат</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Achievements Tab -->
-          <div class="tab-pane" id="achievements">
-            <div class="achievements-grid">
-              <div class="achievement-card">
-                <div class="achievement-icon"><i class="fas fa-anchor"></i></div>
-                <div class="achievement-title">Первый выход</div>
-                <div class="achievement-date">Получено 15.03.2025</div>
-              </div>
-              <div class="achievement-card">
-                <div class="achievement-icon"><i class="fas fa-compass"></i></div>
-                <div class="achievement-title">Штурман</div>
-                <div class="achievement-date">Получено 20.06.2025</div>
-              </div>
-              <div class="achievement-card">
-                <div class="achievement-icon"><i class="fas fa-trophy"></i></div>
-                <div class="achievement-title">Победитель регаты</div>
-                <div class="achievement-date">Получено 10.08.2025</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Certificates Tab -->
-          <div class="tab-pane" id="certificates">
-            <div class="certificate-card">
-              <div class="certificate-icon"><i class="fas fa-certificate"></i></div>
-              <div class="certificate-info">
-                <div class="certificate-title">IYT Bareboat Skipper</div>
-                <div class="certificate-desc">Выдан 24.04.2025 • Действителен бессрочно</div>
-              </div>
-              <button class="btn btn-outline-primary btn-sm">Скачать</button>
-            </div>
-
-            <div class="certificate-card mt-3">
-              <div class="certificate-icon"><i class="fas fa-certificate"></i></div>
-              <div class="certificate-info">
-                <div class="certificate-title">VHF Radio Operator</div>
-                <div class="certificate-desc">Выдан 15.03.2025 • Действителен бессрочно</div>
-              </div>
-              <button class="btn btn-outline-primary btn-sm">Скачать</button>
-            </div>
-          </div>
-
-          <!-- Profile Tab -->
-          <div class="tab-pane" id="profile">
-            <form class="row g-4">
-              <div class="col-md-6">
-                <label class="form-label">Имя</label>
-                <input type="text" class="form-control" value="Иван" />
-              </div>
-              <div class="col-md-6">
-                <label class="form-label">Фамилия</label>
-                <input type="text" class="form-control" value="Иванов" />
-              </div>
-              <div class="col-md-6">
-                <label class="form-label">Email</label>
-                <input type="email" class="form-control" value="ivan@example.com" />
-              </div>
-              <div class="col-md-6">
-                <label class="form-label">Телефон</label>
-                <input type="tel" class="form-control" value="+7 (921) 588-23-78" />
-              </div>
-              <div class="col-12">
-                <label class="form-label">О себе</label>
-                <textarea class="form-control" rows="4">
-Увлекаюсь яхтингом с 2023 года. Прошел курсы Bareboat Skipper и Yachtmaster Coastal.</textarea
-                >
-              </div>
-              <div class="col-12">
-                <button class="btn btn-primary">Сохранить изменения</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </main>
-
-      <!-- FOOTER (same as index.html) -->
-      <footer class="footer">
-        <div class="container">
-          <div class="footer-grid">
-            <div class="footer-col footer-col-about">
-              <img src="assets/img/logo/logo-light.svg" alt="SAIL ENERGY" class="footer-logo" />
-              <p class="footer-about">
-                Парусный клуб SAIL ENERGY — обучение яхтингу, спортивная команда, корпоративные регаты и путешествия под
-                парусом.
-              </p>
-              <div class="footer-social">
-                <a href="https://youtube.com/@sailenergy"><i class="fab fa-youtube"></i></a>
-                <a href="https://t.me/sailenergy/"><i class="fab fa-telegram"></i></a>
-                <a href="https://vk.com/sailenergy"><i class="fab fa-vk"></i></a>
-              </div>
-            </div>
-            <div class="footer-col footer-col-menu">
-              <h4 class="footer-title">О клубе</h4>
-              <ul class="footer-links">
-                <li><a href="/team/">Команда</a></li>
-                <li><a href="/articles/">Статьи</a></li>
-                <li><a href="/reviews/">Отзывы</a></li>
-                <li><a href="/contacts/">Контакты</a></li>
-              </ul>
-            </div>
-            <div class="footer-col footer-col-menu">
-              <h4 class="footer-title">Регаты</h4>
-              <ul class="footer-links">
-                <li><a href="/regattas/marmaris-race-week/">Marmaris Race Week</a></li>
-                <li><a href="/regattas/open-sailing-week/">Open Sailing Week</a></li>
-                <li><a href="/regattas/spb-cup/">Летний Кубок СПб</a></li>
-              </ul>
-            </div>
-            <div class="footer-col footer-col-menu">
-              <h4 class="footer-title">Курсы</h4>
-              <ul class="footer-links">
-                <li><a href="/courses/bareboat-skipper/">Bareboat Skipper</a></li>
-                <li><a href="/courses/yachtmaster-coastal/">Yachtmaster Coastal</a></li>
-                <li><a href="/courses/online-basics/">Основы яхтинга</a></li>
-              </ul>
-            </div>
-            <div class="footer-col footer-col-contact">
-              <h4 class="footer-title">Контакты</h4>
-              <ul class="footer-contact">
-                <li><i class="fas fa-phone"></i> <a href="tel:+79215882378">+7 (921) 588-23-78</a></li>
-                <li><i class="fas fa-envelope"></i> <a href="mailto:info@sailenergy.ru">info@sailenergy.ru</a></li>
-                <li><i class="fas fa-map-marker-alt"></i> Санкт-Петербург</li>
-              </ul>
-            </div>
-          </div>
-          <div class="footer-bottom">
-            <p>
-              © 2022-2026 SAIL ENERGY. <a href="/privacy/">Политика конфиденциальности</a> |
-              <a href="/sitemap/">Карта сайта</a>
-            </p>
-          </div>
-        </div>
-        <button id="backToTop" class="back-to-top"><i class="fas fa-chevron-up"></i></button>
-      </footer>
+  <div class="container py-5">
+    <!-- Dashboard Stats -->
+    <div class="dashboard-stats">
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-ship"></i></div>
+        <div class="stat-number">3</div>
+        <div class="stat-label">Курса пройдено</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+        <div class="stat-number">2</div>
+        <div class="stat-label">Регаты</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-certificate"></i></div>
+        <div class="stat-number">4</div>
+        <div class="stat-label">Сертификата</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-clock"></i></div>
+        <div class="stat-number">45</div>
+        <div class="stat-label">Дней в море</div>
+      </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <!-- Tabs Navigation -->
+    <div class="account-tabs">
+      <button class="account-tab active" data-tab="bookings">Мои бронирования</button>
+      <button class="account-tab" data-tab="courses">Мои курсы</button>
+      <button class="account-tab" data-tab="achievements">Достижения</button>
+      <button class="account-tab" data-tab="certificates">Сертификаты</button>
+      <button class="account-tab" data-tab="profile">Профиль</button>
+    </div>
 
-    <!-- Page specific JS -->
-    <script>
-      $(document).ready(function () {
-        // Tab switching
-        $(".account-tab").on("click", function () {
-          const tabId = $(this).data("tab");
+    <!-- Bookings Tab -->
+    <div class="tab-pane active" id="bookings">
+      <h3 class="h5 fw-bold mb-4">Активные бронирования</h3>
 
-          $(".account-tab").removeClass("active");
-          $(this).addClass("active");
+      <div class="booking-card">
+        <div class="booking-image">
+          <img src="assets/img/courses/skipper-sail.jpg" alt="Bareboat Skipper" />
+        </div>
+        <div class="booking-details">
+          <h4 class="booking-title">Bareboat Skipper Sail</h4>
+          <div class="booking-meta">
+            <span><i class="far fa-calendar me-1"></i> 11-24 апреля 2026</span>
+            <span><i class="fas fa-map-marker-alt me-1"></i> Турция, Фетхие</span>
+            <span><i class="fas fa-users me-1"></i> 2 участника</span>
+          </div>
+        </div>
+        <div class="booking-status status-confirmed">Подтверждено</div>
+        <button class="btn btn-outline-primary btn-sm ms-3">Детали</button>
+      </div>
 
-          $(".tab-pane").removeClass("active");
-          $("#" + tabId).addClass("active");
-        });
-      });
-    </script>
-  </body>
-</html>
+      <h3 class="h5 fw-bold mb-4 mt-5">История</h3>
+
+      <div class="booking-card">
+        <div class="booking-image">
+          <img src="assets/img/courses/yachtmaster-coastal.jpg" alt="Yachtmaster" />
+        </div>
+        <div class="booking-details">
+          <h4 class="booking-title">Yachtmaster Coastal</h4>
+          <div class="booking-meta">
+            <span><i class="far fa-calendar me-1"></i> 5-12 марта 2026</span>
+            <span><i class="fas fa-map-marker-alt me-1"></i> Хорватия, Сплит</span>
+            <span><i class="fas fa-users me-1"></i> 1 участник</span>
+          </div>
+        </div>
+        <div class="booking-status status-cancelled">Завершено</div>
+        <button class="btn btn-outline-secondary btn-sm ms-3">Сертификат</button>
+      </div>
+    </div>
+
+    <!-- Courses Tab -->
+    <div class="tab-pane" id="courses">
+      <h3 class="h5 fw-bold mb-4">Пройденные курсы</h3>
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="course-card">
+            <div class="course-card-image">
+              <img src="assets/img/courses/crew-sail.jpg" alt="Основы яхтинга" />
+            </div>
+            <div class="course-card-content">
+              <h4 class="course-title">Основы яхтинга</h4>
+              <p class="course-excerpt small">Онлайн курс, 2025</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="badge bg-success">Пройдено</span>
+                <a href="#" class="btn btn-sm btn-outline-primary">Смотреть сертификат</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="course-card">
+            <div class="course-card-image">
+              <img src="assets/img/courses/skipper-sail.jpg" alt="Bareboat Skipper" />
+            </div>
+            <div class="course-card-content">
+              <h4 class="course-title">Bareboat Skipper</h4>
+              <p class="course-excerpt small">Интенсив в Турции, 2025</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="badge bg-success">Пройдено</span>
+                <a href="#" class="btn btn-sm btn-outline-primary">Смотреть сертификат</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Achievements Tab -->
+    <div class="tab-pane" id="achievements">
+      <div class="achievements-grid">
+        <div class="achievement-card">
+          <div class="achievement-icon"><i class="fas fa-anchor"></i></div>
+          <div class="achievement-title">Первый выход</div>
+          <div class="achievement-date">Получено 15.03.2025</div>
+        </div>
+        <div class="achievement-card">
+          <div class="achievement-icon"><i class="fas fa-compass"></i></div>
+          <div class="achievement-title">Штурман</div>
+          <div class="achievement-date">Получено 20.06.2025</div>
+        </div>
+        <div class="achievement-card">
+          <div class="achievement-icon"><i class="fas fa-trophy"></i></div>
+          <div class="achievement-title">Победитель регаты</div>
+          <div class="achievement-date">Получено 10.08.2025</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certificates Tab -->
+    <div class="tab-pane" id="certificates">
+      <div class="certificate-card">
+        <div class="certificate-icon"><i class="fas fa-certificate"></i></div>
+        <div class="certificate-info">
+          <div class="certificate-title">IYT Bareboat Skipper</div>
+          <div class="certificate-desc">Выдан 24.04.2025 • Действителен бессрочно</div>
+        </div>
+        <button class="btn btn-outline-primary btn-sm">Скачать</button>
+      </div>
+
+      <div class="certificate-card mt-3">
+        <div class="certificate-icon"><i class="fas fa-certificate"></i></div>
+        <div class="certificate-info">
+          <div class="certificate-title">VHF Radio Operator</div>
+          <div class="certificate-desc">Выдан 15.03.2025 • Действителен бессрочно</div>
+        </div>
+        <button class="btn btn-outline-primary btn-sm">Скачать</button>
+      </div>
+    </div>
+
+    <!-- Profile Tab -->
+    <div class="tab-pane" id="profile">
+      <form class="row g-4">
+        <div class="col-md-6">
+          <label class="form-label">Имя</label>
+          <input type="text" class="form-control" value="Иван" />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Фамилия</label>
+          <input type="text" class="form-control" value="Иванов" />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" value="ivan@example.com" />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Телефон</label>
+          <input type="tel" class="form-control" value="+7 (921) 588-23-78" />
+        </div>
+        <div class="col-12">
+          <label class="form-label">О себе</label>
+          <textarea class="form-control" rows="4">
+Увлекаюсь яхтингом с 2023 года. Прошел курсы Bareboat Skipper и Yachtmaster Coastal.</textarea>
+        </div>
+        <div class="col-12">
+          <button class="btn btn-primary">Сохранить изменения</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+@@include('html/footer.html')

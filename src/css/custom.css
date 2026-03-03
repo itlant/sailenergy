@@ -3217,6 +3217,65 @@
   color: var(--color-gray);
 }
 
+.review-header-card {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.review-avatar-large {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.review-rating-static i {
+  color: #ffc107;
+  margin-right: 2px;
+}
+
+.review-meta-item {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  border-radius: 50px;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.review-content {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #2c3e50;
+}
+
+.review-content p {
+  margin-bottom: 1.5rem;
+}
+
+.review-photo {
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  transition: transform 0.3s ease;
+}
+
+.review-photo:hover {
+  transform: scale(1.03);
+}
+
+.review-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .review-card {
   background: white;
   border: 1px solid var(--color-gray-light);
@@ -3945,4 +4004,335 @@
   color: var(--color-gray);
   font-size: 0.9rem;
   margin-top: 2rem;
+}
+
+/* ============================================================================
+   29. Contacts Page
+   ============================================================================ */
+.contact-info-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(21, 28, 37, 0.12);
+}
+
+.contact-info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(21, 28, 37, 0.16);
+}
+
+.contact-icon {
+  width: 70px;
+  height: 70px;
+  background: rgba(86, 144, 231, 0.1);
+  color: #5690e7;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.contacts-map {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(21, 28, 37, 0.12);
+}
+
+.social-link-contact {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: rgba(86, 144, 231, 0.1);
+  color: #5690e7;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  margin-right: 0.75rem;
+}
+
+.social-link-contact:hover {
+  background: #5690e7;
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* ============================================================================
+   30. Usefull Single
+   ============================================================================ */
+
+.article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.article-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #6c757d;
+}
+
+.article-meta-item i {
+  color: #5690e7;
+}
+
+.article-content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #2c3e50;
+}
+
+.article-content h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 2.5rem 0 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid rgba(86, 144, 231, 0.1);
+  position: relative;
+}
+
+.article-content h2::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background: #5690e7;
+}
+
+.article-content h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+}
+
+.article-content blockquote {
+  background: rgba(86, 144, 231, 0.05);
+  border-left: 4px solid #5690e7;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  border-radius: 0 12px 12px 0;
+}
+
+.article-content blockquote p {
+  margin-bottom: 0;
+}
+
+.article-content blockquote footer {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.article-content ul, .article-content ol {
+  margin-bottom: 1.5rem;
+  padding-left: 2rem;
+}
+
+.article-content li {
+  margin-bottom: 0.5rem;
+}
+
+.article-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+}
+
+.article-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e9ecef;
+}
+
+.article-tag {
+  background: #f8f9fa;
+  color: #5690e7;
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.article-tag:hover {
+  background: #5690e7;
+  color: #fff;
+}
+
+.author-card {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-top: 3rem;
+}
+
+/* ============================================================================
+   31. Team Member Single
+   ============================================================================ */
+
+.team-member-avatar-large {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.team-member-role {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  background: rgba(86, 144, 231, 0.1);
+  color: #5690e7;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.team-member-stat {
+  background: #f8f9fa;
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member-stat:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.team-member-stat-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #5690e7;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.team-member-stat-label {
+  font-size: 0.95rem;
+  color: #6c757d;
+}
+
+.achievement-item {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.achievement-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.achievement-year {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #5690e7;
+  min-width: 80px;
+}
+
+.achievement-content h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.achievement-content p {
+  color: #6c757d;
+  margin-bottom: 0;
+  font-size: 0.95rem;
+}
+
+.regatta-card-small {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.regatta-card-small:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.regatta-card-small-icon {
+  width: 50px;
+  height: 50px;
+  background: rgba(86, 144, 231, 0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #5690e7;
+  font-size: 1.5rem;
+}
+
+.regatta-card-small-content h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.regatta-card-small-content p {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-bottom: 0;
+}
+
+.social-link-team {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: rgba(86, 144, 231, 0.1);
+  color: #5690e7;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  margin-right: 0.75rem;
+  font-size: 1.2rem;
+}
+
+.social-link-team:hover {
+  background: #5690e7;
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+.team-member-bio {
+  line-height: 1.8;
+  color: #2c3e50;
+}
+
+.team-member-bio p {
+  margin-bottom: 1.2rem;
 }

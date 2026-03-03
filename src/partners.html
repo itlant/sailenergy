@@ -1,276 +1,139 @@
-<!doctype html>
-<html lang="ru-RU">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SAIL ENERGY — Партнерам</title>
-    <meta
-      name="description"
-      content="Станьте партнером SAIL ENERGY. Корпоративные регаты, совместные мероприятия, спонсорство и реклама."
-    />
+<!-- HEADER -->
+@@include('html/header.html')
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://sailenergy.ru/partners/" />
-    <meta property="og:title" content="SAIL ENERGY — Партнерам" />
-    <meta property="og:description" content="Станьте партнером SAIL ENERGY." />
-    <meta property="og:image" content="assets/img/og-image.jpg" />
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png" />
-
-    <!-- Fonts & Icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
-    <!-- CSS Libraries -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/custom.css" />
-  </head>
-  <body>
-    <div class="site-wrapper">
-      <!-- HEADER (same as index.html) -->
-      <div class="header">
-        <nav class="navbar navbar-expand-lg">
-          <div class="container">
-            <a class="navbar-brand" href="/">
-              <img src="assets/img/logo/logo-dark.svg" alt="SAIL ENERGY" class="logo-img" loading="eager" />
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMainContent">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarMainContent">
-              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link" href="/">Главная</a></li>
-                <li class="nav-item"><a class="nav-link" href="/courses/">Обучение</a></li>
-                <li class="nav-item"><a class="nav-link" href="/regattas/">Регаты</a></li>
-                <li class="nav-item"><a class="nav-link" href="/events/">Мероприятия</a></li>
-                <li class="nav-item"><a class="nav-link" href="/news/">Новости</a></li>
-                <li class="nav-item"><a class="nav-link" href="/contacts/">Контакты</a></li>
-              </ul>
-              <div class="header-contacts">
-                <div class="header-contact-item">
-                  <a href="tel:+79215882378"><i class="fas fa-phone-alt me-1"></i>+7 (921) 588-23-78</a>
-                </div>
-                <div class="header-social">
-                  <a href="https://t.me/sailenergy/" class="social-icon"><i class="fab fa-telegram"></i></a>
-                  <a href="https://vk.com/sailenergy" class="social-icon"><i class="fab fa-vk"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </nav>
-      </div>
-
-      <main class="main">
-        <!-- Page Header -->
-        <section class="page-header">
-          <div class="container">
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Главная</a></li>
-                <li class="breadcrumb-item active">Партнерам</li>
-              </ol>
-            </nav>
-            <h1 class="page-title">Станьте нашим партнером</h1>
-            <p class="page-description">Развивайте свой бизнес вместе с SAIL ENERGY</p>
-          </div>
-        </section>
-
-        <!-- Advantages -->
-        <section class="partners-advantages">
-          <div class="container">
-            <h2 class="section-title">Почему выбирают нас</h2>
-            <div class="advantages-grid">
-              <div class="advantage-card">
-                <div class="advantage-icon"><i class="fas fa-users"></i></div>
-                <h3>500+ выпускников</h3>
-                <p>Большая аудитория активных и целевых клиентов</p>
-              </div>
-              <div class="advantage-card">
-                <div class="advantage-icon"><i class="fas fa-globe"></i></div>
-                <h3>Международный уровень</h3>
-                <p>Регаты и мероприятия в разных странах</p>
-              </div>
-              <div class="advantage-card">
-                <div class="advantage-icon"><i class="fas fa-trophy"></i></div>
-                <h3>Престижные мероприятия</h3>
-                <p>Участие в статусных регатах и событиях</p>
-              </div>
-              <div class="advantage-card">
-                <div class="advantage-icon"><i class="fas fa-chart-line"></i></div>
-                <h3>Рост аудитории</h3>
-                <p>Ежемесячный прирост подписчиков 20%</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Partnership Types -->
-        <section class="partnership-types">
-          <div class="container">
-            <h2 class="section-title">Формы сотрудничества</h2>
-            <div class="types-grid">
-              <div class="type-card">
-                <div class="type-icon"><i class="fas fa-building"></i></div>
-                <h3>Корпоративные регаты</h3>
-                <p>Организация мероприятий для ваших сотрудников и клиентов</p>
-                <ul class="type-features">
-                  <li><i class="fas fa-check"></i> Командообразование</li>
-                  <li><i class="fas fa-check"></i> Брендирование яхт</li>
-                  <li><i class="fas fa-check"></i> Фото и видео съемка</li>
-                </ul>
-                <a href="#contact" class="btn btn-outline-primary">Узнать больше</a>
-              </div>
-              <div class="type-card">
-                <div class="type-icon"><i class="fas fa-handshake"></i></div>
-                <h3>Спонсорство</h3>
-                <p>Поддержка наших команд и мероприятий</p>
-                <ul class="type-features">
-                  <li><i class="fas fa-check"></i> Размещение логотипа</li>
-                  <li><i class="fas fa-check"></i> Упоминания в соцсетях</li>
-                  <li><i class="fas fa-check"></i> Приветствия на мероприятиях</li>
-                </ul>
-                <a href="#contact" class="btn btn-outline-primary">Узнать больше</a>
-              </div>
-              <div class="type-card">
-                <div class="type-icon"><i class="fas fa-ad"></i></div>
-                <h3>Реклама</h3>
-                <p>Размещение рекламы на наших ресурсах</p>
-                <ul class="type-features">
-                  <li><i class="fas fa-check"></i> Сайт (5000+ посетителей)</li>
-                  <li><i class="fas fa-check"></i> Социальные сети (10 000+)</li>
-                  <li><i class="fas fa-check"></i> Email рассылка</li>
-                </ul>
-                <a href="#contact" class="btn btn-outline-primary">Узнать больше</a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Our Partners -->
-        <section class="our-partners">
-          <div class="container">
-            <h2 class="section-title">Наши партнеры</h2>
-            <div class="partners-logos">
-              <div class="partner-logo"><img src="assets/img/partners/partner1.svg" alt="Partner 1" /></div>
-              <div class="partner-logo"><img src="assets/img/partners/partner2.svg" alt="Partner 2" /></div>
-              <div class="partner-logo"><img src="assets/img/partners/partner3.svg" alt="Partner 3" /></div>
-              <div class="partner-logo"><img src="assets/img/partners/partner4.svg" alt="Partner 4" /></div>
-              <div class="partner-logo"><img src="assets/img/partners/partner5.svg" alt="Partner 5" /></div>
-              <div class="partner-logo"><img src="assets/img/partners/partner6.svg" alt="Partner 6" /></div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Contact Form -->
-        <section id="contact" class="partner-contact">
-          <div class="container">
-            <div class="contact-box">
-              <h2>Стать партнером</h2>
-              <p>Оставьте заявку, и мы свяжемся с вами для обсуждения деталей</p>
-              <form class="partner-form">
-                <div class="row g-3">
-                  <div class="col-md-6">
-                    <input type="text" class="form-control" placeholder="Ваше имя" required />
-                  </div>
-                  <div class="col-md-6">
-                    <input type="text" class="form-control" placeholder="Компания" required />
-                  </div>
-                  <div class="col-md-6">
-                    <input type="tel" class="form-control" placeholder="Телефон" required />
-                  </div>
-                  <div class="col-md-6">
-                    <input type="email" class="form-control" placeholder="Email" required />
-                  </div>
-                  <div class="col-12">
-                    <textarea class="form-control" rows="4" placeholder="Ваше сообщение"></textarea>
-                  </div>
-                  <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Отправить заявку</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <!-- FOOTER (same as index.html) -->
-      <footer class="footer">
-        <div class="container">
-          <div class="footer-grid">
-            <div class="footer-col footer-col-about">
-              <img src="assets/img/logo/logo-light.svg" alt="SAIL ENERGY" class="footer-logo" />
-              <p class="footer-about">
-                Парусный клуб SAIL ENERGY — обучение яхтингу, спортивная команда, корпоративные регаты и путешествия под
-                парусом.
-              </p>
-              <div class="footer-social">
-                <a href="https://youtube.com/@sailenergy"><i class="fab fa-youtube"></i></a>
-                <a href="https://t.me/sailenergy/"><i class="fab fa-telegram"></i></a>
-                <a href="https://vk.com/sailenergy"><i class="fab fa-vk"></i></a>
-              </div>
-            </div>
-            <div class="footer-col footer-col-menu">
-              <h4 class="footer-title">О клубе</h4>
-              <ul class="footer-links">
-                <li><a href="/team/">Команда</a></li>
-                <li><a href="/blog/">Блог</a></li>
-                <li><a href="/reviews/">Отзывы</a></li>
-                <li><a href="/contacts/">Контакты</a></li>
-                <li><a href="/partners/">Партнерам</a></li>
-              </ul>
-            </div>
-            <div class="footer-col footer-col-menu">
-              <h4 class="footer-title">Регаты</h4>
-              <ul class="footer-links">
-                <li><a href="/regattas/marmaris-race-week/">Marmaris Race Week</a></li>
-                <li><a href="/regattas/open-sailing-week/">Open Sailing Week</a></li>
-                <li><a href="/regattas/spb-cup/">Летний Кубок СПб</a></li>
-                <li><a href="/regattas/">Все регаты</a></li>
-              </ul>
-            </div>
-            <div class="footer-col footer-col-menu">
-              <h4 class="footer-title">Курсы</h4>
-              <ul class="footer-links">
-                <li><a href="/courses/bareboat-skipper/">Bareboat Skipper</a></li>
-                <li><a href="/courses/yachtmaster-coastal/">Yachtmaster Coastal</a></li>
-                <li><a href="/courses/online-basics/">Основы яхтинга</a></li>
-                <li><a href="/courses/">Все курсы</a></li>
-              </ul>
-            </div>
-            <div class="footer-col footer-col-contact">
-              <h4 class="footer-title">Контакты</h4>
-              <ul class="footer-contact">
-                <li><i class="fas fa-phone"></i> <a href="tel:+79215882378">+7 (921) 588-23-78</a></li>
-                <li><i class="fas fa-envelope"></i> <a href="mailto:info@sailenergy.ru">info@sailenergy.ru</a></li>
-                <li><i class="fas fa-map-marker-alt"></i> Санкт-Петербург</li>
-              </ul>
-            </div>
-          </div>
-          <div class="footer-bottom">
-            <p>
-              © 2022-2026 SAIL ENERGY. <a href="/privacy/">Политика конфиденциальности</a> |
-              <a href="/terms/">Пользовательское соглашение</a> | <a href="/sitemap/">Карта сайта</a>
-            </p>
-          </div>
-        </div>
-        <button id="backToTop" class="back-to-top"><i class="fas fa-chevron-up"></i></button>
-      </footer>
+<main class="main">
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Главная</a></li>
+          <li class="breadcrumb-item active">Партнерам</li>
+        </ol>
+      </nav>
+      <h1 class="page-title">Станьте нашим партнером</h1>
+      <p class="page-description">Развивайте свой бизнес вместе с SAIL ENERGY</p>
     </div>
+  </section>
 
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/custom.js"></script>
-  </body>
-</html>
+  <!-- Advantages -->
+  <section class="partners-advantages">
+    <div class="container">
+      <h2 class="section-title">Почему выбирают нас</h2>
+      <div class="advantages-grid">
+        <div class="advantage-card">
+          <div class="advantage-icon"><i class="fas fa-users"></i></div>
+          <h3>500+ выпускников</h3>
+          <p>Большая аудитория активных и целевых клиентов</p>
+        </div>
+        <div class="advantage-card">
+          <div class="advantage-icon"><i class="fas fa-globe"></i></div>
+          <h3>Международный уровень</h3>
+          <p>Регаты и мероприятия в разных странах</p>
+        </div>
+        <div class="advantage-card">
+          <div class="advantage-icon"><i class="fas fa-trophy"></i></div>
+          <h3>Престижные мероприятия</h3>
+          <p>Участие в статусных регатах и событиях</p>
+        </div>
+        <div class="advantage-card">
+          <div class="advantage-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>Рост аудитории</h3>
+          <p>Ежемесячный прирост подписчиков 20%</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partnership Types -->
+  <section class="partnership-types">
+    <div class="container">
+      <h2 class="section-title">Формы сотрудничества</h2>
+      <div class="types-grid">
+        <div class="type-card">
+          <div class="type-icon"><i class="fas fa-building"></i></div>
+          <h3>Корпоративные регаты</h3>
+          <p>Организация мероприятий для ваших сотрудников и клиентов</p>
+          <ul class="type-features">
+            <li><i class="fas fa-check"></i> Командообразование</li>
+            <li><i class="fas fa-check"></i> Брендирование яхт</li>
+            <li><i class="fas fa-check"></i> Фото и видео съемка</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline-primary">Узнать больше</a>
+        </div>
+        <div class="type-card">
+          <div class="type-icon"><i class="fas fa-handshake"></i></div>
+          <h3>Спонсорство</h3>
+          <p>Поддержка наших команд и мероприятий</p>
+          <ul class="type-features">
+            <li><i class="fas fa-check"></i> Размещение логотипа</li>
+            <li><i class="fas fa-check"></i> Упоминания в соцсетях</li>
+            <li><i class="fas fa-check"></i> Приветствия на мероприятиях</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline-primary">Узнать больше</a>
+        </div>
+        <div class="type-card">
+          <div class="type-icon"><i class="fas fa-ad"></i></div>
+          <h3>Реклама</h3>
+          <p>Размещение рекламы на наших ресурсах</p>
+          <ul class="type-features">
+            <li><i class="fas fa-check"></i> Сайт (5000+ посетителей)</li>
+            <li><i class="fas fa-check"></i> Социальные сети (10 000+)</li>
+            <li><i class="fas fa-check"></i> Email рассылка</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline-primary">Узнать больше</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Partners -->
+  <section class="our-partners">
+    <div class="container">
+      <h2 class="section-title">Наши партнеры</h2>
+      <div class="partners-logos">
+        <div class="partner-logo"><img src="assets/img/partners/partner1.svg" alt="Partner 1" /></div>
+        <div class="partner-logo"><img src="assets/img/partners/partner2.svg" alt="Partner 2" /></div>
+        <div class="partner-logo"><img src="assets/img/partners/partner3.svg" alt="Partner 3" /></div>
+        <div class="partner-logo"><img src="assets/img/partners/partner4.svg" alt="Partner 4" /></div>
+        <div class="partner-logo"><img src="assets/img/partners/partner5.svg" alt="Partner 5" /></div>
+        <div class="partner-logo"><img src="assets/img/partners/partner6.svg" alt="Partner 6" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section id="contact" class="partner-contact">
+    <div class="container">
+      <div class="contact-box">
+        <h2>Стать партнером</h2>
+        <p>Оставьте заявку, и мы свяжемся с вами для обсуждения деталей</p>
+        <form class="partner-form">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <input type="text" class="form-control" placeholder="Ваше имя" required />
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control" placeholder="Компания" required />
+            </div>
+            <div class="col-md-6">
+              <input type="tel" class="form-control" placeholder="Телефон" required />
+            </div>
+            <div class="col-md-6">
+              <input type="email" class="form-control" placeholder="Email" required />
+            </div>
+            <div class="col-12">
+              <textarea class="form-control" rows="4" placeholder="Ваше сообщение"></textarea>
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary">Отправить заявку</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+@@include('html/footer.html')

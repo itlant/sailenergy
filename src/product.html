@@ -1,835 +1,290 @@
-<!doctype html>
-<html lang="ru-RU">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SAIL ENERGY — Bareboat Skipper Sail</title>
-    <meta
-      name="description"
-      content="Курс Bareboat Skipper Sail. Обучение с нуля до самостоятельного управления яхтой. Интенсив в Турции с проживанием на борту."
-    />
+<!-- HEADER -->
+@@include('html/header.html')
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://sailenergy.ru/product/bareboat-skipper/" />
-    <meta property="og:title" content="SAIL ENERGY — Bareboat Skipper Sail" />
-    <meta
-      property="og:description"
-      content="Курс Bareboat Skipper Sail. Обучение с нуля до самостоятельного управления яхтой."
-    />
-    <meta property="og:image" content="assets/img/og-image.jpg" />
+<main class="main">
+  <!-- Page Header -->
+  <section class="product-header">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Главная</a></li>
+          <li class="breadcrumb-item"><a href="/catalog.html">Каталог</a></li>
+          <li class="breadcrumb-item"><a href="/catalog.html">Курсы</a></li>
+          <li class="breadcrumb-item active">Bareboat Skipper Sail</li>
+        </ol>
+      </nav>
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <h1>Bareboat Skipper Sail</h1>
+          <p class="lead">Интенсивный курс обучения яхтингу в Турции с нуля до международной лицензии IYT</p>
+          <div class="product-meta">
+            <span class="product-meta-item"><i class="fas fa-map-marker-alt"></i> Фетхие, Турция</span>
+            <span class="product-meta-item"><i class="far fa-calendar"></i> 14 дней</span>
+            <span class="product-meta-item"><i class="fas fa-users"></i> 4-6 человек</span>
+            <span class="product-meta-item"><i class="fas fa-certificate"></i> IYT</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png" />
+  <div class="container py-5">
+    <div class="row g-5">
+      <!-- Main Content Column -->
+      <div class="col-lg-8">
+        <!-- Gallery -->
+        <div class="product-gallery">
+          <div class="gallery-main" id="galleryMain">
+            <img src="assets/img/courses/skipper-sail.jpg" alt="Bareboat Skipper Sail" />
+          </div>
+          <div class="gallery-thumbs">
+            <div class="gallery-thumb active" onclick="changeGalleryImage(this)">
+              <img src="assets/img/courses/skipper-sail.jpg" alt="Thumb 1" />
+            </div>
+            <div class="gallery-thumb" onclick="changeGalleryImage(this)">
+              <img src="assets/img/courses/yachtmaster-coastal.jpg" alt="Thumb 2" />
+            </div>
+            <div class="gallery-thumb" onclick="changeGalleryImage(this)">
+              <img src="assets/img/courses/crew-sail.jpg" alt="Thumb 3" />
+            </div>
+            <div class="gallery-thumb" onclick="changeGalleryImage(this)">
+              <img src="assets/img/templates/image-placeholder-1200x800.png" alt="Thumb 4" />
+            </div>
+          </div>
+        </div>
 
-    <!-- Fonts & Icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+        <!-- Description -->
+        <div class="product-description">
+          <h2>О курсе</h2>
+          <p>
+            Bareboat Skipper Sail — это интенсивный 14-дневный курс, который позволит вам с нуля освоить
+            управление парусной яхтой и получить международную лицензию IYT, признанную в 100+ странах мира.
+          </p>
+          <p>
+            Обучение проходит в идеальных условиях: тёплое море, устойчивые ветры и развитая яхтенная
+            инфраструктура Турции. Вы будете жить на борту яхты, что позволит полностью погрузиться в атмосферу
+            яхтинга.
+          </p>
+        </div>
 
-    <!-- CSS Libraries -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
-    />
+        <!-- Specs Grid -->
+        <div class="specs-grid">
+          <div class="spec-item">
+            <div class="spec-icon"><i class="fas fa-ship"></i></div>
+            <div class="spec-label">Тип яхты</div>
+            <div class="spec-value">Bavaria 46</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-icon"><i class="fas fa-bed"></i></div>
+            <div class="spec-label">Каюты</div>
+            <div class="spec-value">4 + шкипер</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-icon"><i class="fas fa-shower"></i></div>
+            <div class="spec-label">Санузлы</div>
+            <div class="spec-value">2</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-icon"><i class="fas fa-utensils"></i></div>
+            <div class="spec-label">Питание</div>
+            <div class="spec-value">Полный пансион</div>
+          </div>
+        </div>
 
-    <!-- Theme CSS -->
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/custom.css" />
+        <!-- Features -->
+        <h3>Что вы получите</h3>
+        <ul class="features-list">
+          <li><i class="fas fa-check-circle"></i> Международную лицензию IYT Bareboat Skipper</li>
+          <li><i class="fas fa-check-circle"></i> 14 дней проживания на яхте</li>
+          <li><i class="fas fa-check-circle"></i> 3-разовое питание на борту</li>
+          <li><i class="fas fa-check-circle"></i> Все учебные материалы</li>
+          <li><i class="fas fa-check-circle"></i> Страховку на время обучения</li>
+          <li><i class="fas fa-check-circle"></i> Сертификат VHF радиооператора</li>
+        </ul>
 
-    <!-- Page specific CSS -->
-    <style>
-      /* Product page specific styles */
-      .product-header {
-        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-        color: white;
-        padding: 3rem 0;
-      }
-
-      .product-header h1 {
-        color: white;
-        margin-bottom: 0.5rem;
-      }
-
-      .product-meta {
-        display: flex;
-        gap: 2rem;
-        margin-top: 1rem;
-        flex-wrap: wrap;
-      }
-
-      .product-meta-item {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      .product-meta-item i {
-        color: var(--color-accent);
-      }
-
-      /* Gallery */
-      .product-gallery {
-        margin-bottom: 2rem;
-      }
-
-      .gallery-main {
-        border-radius: var(--border-radius-lg);
-        overflow: hidden;
-        margin-bottom: 1rem;
-        height: 400px;
-      }
-
-      .gallery-main img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .gallery-thumbs {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 0.5rem;
-      }
-
-      .gallery-thumb {
-        border-radius: var(--border-radius);
-        overflow: hidden;
-        height: 80px;
-        cursor: pointer;
-        opacity: 0.7;
-        transition: all var(--transition-fast);
-      }
-
-      .gallery-thumb:hover,
-      .gallery-thumb.active {
-        opacity: 1;
-        box-shadow: 0 0 0 2px var(--color-primary);
-      }
-
-      .gallery-thumb img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      /* Sticky sidebar */
-      .product-sidebar {
-        position: sticky;
-        top: 100px;
-      }
-
-      @media (max-width: 991px) {
-        .product-sidebar {
-          position: static;
-          margin-top: 2rem;
-        }
-      }
-
-      .booking-card {
-        background: white;
-        border-radius: var(--border-radius-lg);
-        border: 1px solid var(--color-gray-light);
-        padding: 1.5rem;
-        box-shadow: var(--shadow-md);
-      }
-
-      .booking-price {
-        font-size: 2rem;
-        font-weight: 800;
-        color: var(--color-primary);
-        margin-bottom: 1.5rem;
-      }
-
-      .booking-price small {
-        font-size: 1rem;
-        font-weight: 400;
-        color: var(--color-gray);
-      }
-
-      /* Calculator */
-      .calculator {
-        background: var(--color-gray-lighter);
-        border-radius: var(--border-radius-lg);
-        padding: 1.5rem;
-        margin: 1.5rem 0;
-      }
-
-      .calculator-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1rem;
-      }
-
-      .calculator-label {
-        font-weight: 600;
-        color: var(--color-dark);
-      }
-
-      .calculator-value {
-        font-weight: 700;
-        color: var(--color-primary);
-      }
-
-      .calculator-total {
-        border-top: 2px dashed var(--color-gray-light);
-        margin-top: 1rem;
-        padding-top: 1rem;
-        font-size: 1.2rem;
-      }
-
-      /* Date picker */
-      .date-picker {
-        margin-bottom: 1.5rem;
-      }
-
-      .date-input {
-        position: relative;
-      }
-
-      .date-input input {
-        width: 100%;
-        padding: 0.75rem 1rem;
-        border: 2px solid var(--color-gray-light);
-        border-radius: var(--border-radius);
-        font-size: 1rem;
-      }
-
-      .date-input i {
-        position: absolute;
-        right: 1rem;
-        top: 50%;
-        transform: translateY(-50%);
-        color: var(--color-gray);
-      }
-
-      /* Specs grid */
-      .specs-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-        margin: 1.5rem 0;
-      }
-
-      .spec-item {
-        text-align: center;
-        padding: 1rem;
-        background: var(--color-gray-lighter);
-        border-radius: var(--border-radius);
-      }
-
-      .spec-icon {
-        font-size: 1.5rem;
-        color: var(--color-primary);
-        margin-bottom: 0.5rem;
-      }
-
-      .spec-label {
-        font-size: 0.85rem;
-        color: var(--color-gray);
-      }
-
-      .spec-value {
-        font-weight: 700;
-        color: var(--color-dark);
-      }
-
-      /* Features list */
-      .features-list {
-        list-style: none;
-        padding: 0;
-      }
-
-      .features-list li {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        margin-bottom: 0.75rem;
-      }
-
-      .features-list li i {
-        color: var(--color-accent);
-      }
-
-      /* Related products carousel */
-      .related-products {
-        margin-top: 4rem;
-        padding-top: 3rem;
-        border-top: 1px solid var(--color-gray-light);
-      }
-
-      .related-products .owl-nav {
-        position: absolute;
-        top: -60px;
-        right: 0;
-        display: flex;
-        gap: 0.5rem;
-      }
-
-      .related-products .owl-nav button {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background: white;
-        border: 1px solid var(--color-gray-light);
-        color: var(--color-dark);
-      }
-
-      .related-products .owl-nav button:hover {
-        background: var(--color-primary);
-        color: white;
-      }
-
-      /* Accordion */
-      .product-accordion {
-        margin-top: 2rem;
-      }
-
-      .product-accordion .accordion-item {
-        border: 1px solid var(--color-gray-light);
-        margin-bottom: 1rem;
-        border-radius: var(--border-radius) !important;
-      }
-
-      .product-accordion .accordion-button {
-        border-radius: var(--border-radius) !important;
-        font-weight: 600;
-      }
-
-      .product-accordion .accordion-button:not(.collapsed) {
-        background: var(--color-primary-light);
-        color: var(--color-primary);
-      }
-
-      /* Share buttons */
-      .share-buttons {
-        display: flex;
-        gap: 0.5rem;
-        margin-top: 2rem;
-      }
-
-      .share-btn {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        transition: all var(--transition-fast);
-      }
-
-      .share-btn:hover {
-        transform: translateY(-2px);
-      }
-
-      .share-btn.vk {
-        background: #4a76a8;
-      }
-
-      .share-btn.tg {
-        background: #2b86c9;
-      }
-
-      .share-btn.wp {
-        background: #25d366;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="site-wrapper">
-      <!-- HEADER (same as index.html) -->
-      <div class="header">
-        <nav class="navbar navbar-expand-lg">
-          <div class="container">
-            <a class="navbar-brand" href="/">
-              <img src="assets/img/logo/logo-dark.svg" alt="SAIL ENERGY" class="logo-img" loading="eager" />
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMainContent">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarMainContent">
-              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link" href="/">Главная</a></li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="/courses/" data-bs-toggle="dropdown">Обучение</a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/courses/bareboat-skipper/">Bareboat Skipper</a></li>
-                    <li><a class="dropdown-item" href="/courses/yachtmaster-coastal/">Yachtmaster Coastal</a></li>
-                    <li><a class="dropdown-item" href="/courses/online-basics/">Основы яхтинга</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="/regattas/" data-bs-toggle="dropdown">Регаты</a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/regattas/marmaris-race-week/">Marmaris Race Week</a></li>
-                    <li><a class="dropdown-item" href="/regattas/open-sailing-week/">Open Sailing Week</a></li>
-                    <li><a class="dropdown-item" href="/regattas/spb-cup/">Летний Кубок СПб</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="/events/">Мероприятия</a></li>
-                <li class="nav-item"><a class="nav-link" href="/news/">Новости</a></li>
-                <li class="nav-item"><a class="nav-link" href="/contacts/">Контакты</a></li>
-              </ul>
-              <div class="header-contacts">
-                <div class="header-contact-item">
-                  <a href="tel:+79215882378"><i class="fas fa-phone-alt me-1"></i>+7 (921) 588-23-78</a>
+        <!-- Accordion -->
+        <div class="product-accordion">
+          <div class="accordion" id="productAccordion">
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#program">
+                  Программа курса
+                </button>
+              </h3>
+              <div id="program" class="accordion-collapse collapse show" data-bs-parent="#productAccordion">
+                <div class="accordion-body">
+                  <h4>День 1-2</h4>
+                  <p>
+                    Прибытие, знакомство с яхтой, распределение по каютам. Вводный инструктаж по технике
+                    безопасности.
+                  </p>
+                  <h4>День 3-5</h4>
+                  <p>Основы управления парусами, постановка и уборка парусов, работа с лебедками.</p>
+                  <h4>День 6-8</h4>
+                  <p>Навигация, работа с картами, планирование маршрута.</p>
+                  <h4>День 9-12</h4>
+                  <p>Практические выходы в море, ночная навигация, маневрирование в порту.</p>
+                  <h4>День 13-14</h4>
+                  <p>Экзамен, получение лицензии, торжественный ужин.</p>
                 </div>
-                <div class="header-social">
-                  <a href="https://t.me/sailenergy/" class="social-icon"><i class="fab fa-telegram"></i></a>
-                  <a href="https://vk.com/sailenergy" class="social-icon"><i class="fab fa-vk"></i></a>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#requirements">
+                  Требования
+                </button>
+              </h3>
+              <div id="requirements" class="accordion-collapse collapse" data-bs-parent="#productAccordion">
+                <div class="accordion-body">
+                  <ul>
+                    <li>Возраст от 18 лет</li>
+                    <li>Базовое знание английского языка</li>
+                    <li>Медицинская страховка</li>
+                    <li>Умение плавать</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq">
+                  Часто задаваемые вопросы
+                </button>
+              </h3>
+              <div id="faq" class="accordion-collapse collapse" data-bs-parent="#productAccordion">
+                <div class="accordion-body">
+                  <p><strong>Нужен ли опыт?</strong> Нет, курс разработан для новичков.</p>
+                  <p><strong>Что взять с собой?</strong> Удобную одежду, купальник, солнцезащитный крем.</p>
+                  <p><strong>Как добраться?</strong> Мы организуем трансфер из аэропорта Даламан.</p>
                 </div>
               </div>
             </div>
           </div>
-        </nav>
+        </div>
+
+        <!-- Share Buttons -->
+        <div class="share-buttons">
+          <a href="#" class="share-btn vk"><i class="fab fa-vk"></i></a>
+          <a href="#" class="share-btn tg"><i class="fab fa-telegram"></i></a>
+          <a href="#" class="share-btn wp"><i class="fab fa-whatsapp"></i></a>
+        </div>
       </div>
 
-      <main class="main">
-        <!-- Page Header -->
-        <section class="product-header">
-          <div class="container">
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Главная</a></li>
-                <li class="breadcrumb-item"><a href="/catalog.html">Каталог</a></li>
-                <li class="breadcrumb-item"><a href="/catalog.html">Курсы</a></li>
-                <li class="breadcrumb-item active">Bareboat Skipper Sail</li>
-              </ol>
-            </nav>
-            <div class="row align-items-center">
-              <div class="col-lg-8">
-                <h1>Bareboat Skipper Sail</h1>
-                <p class="lead">Интенсивный курс обучения яхтингу в Турции с нуля до международной лицензии IYT</p>
-                <div class="product-meta">
-                  <span class="product-meta-item"><i class="fas fa-map-marker-alt"></i> Фетхие, Турция</span>
-                  <span class="product-meta-item"><i class="far fa-calendar"></i> 14 дней</span>
-                  <span class="product-meta-item"><i class="fas fa-users"></i> 4-6 человек</span>
-                  <span class="product-meta-item"><i class="fas fa-certificate"></i> IYT</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+      <!-- Sidebar Column -->
+      <div class="col-lg-4">
+        <div class="product-sidebar">
+          <div class="booking-card">
+            <div class="booking-price">2 400 € <small>/ чел.</small></div>
 
-        <div class="container py-5">
-          <div class="row g-5">
-            <!-- Main Content Column -->
-            <div class="col-lg-8">
-              <!-- Gallery -->
-              <div class="product-gallery">
-                <div class="gallery-main" id="galleryMain">
-                  <img src="assets/img/courses/skipper-sail.jpg" alt="Bareboat Skipper Sail" />
-                </div>
-                <div class="gallery-thumbs">
-                  <div class="gallery-thumb active" onclick="changeGalleryImage(this)">
-                    <img src="assets/img/courses/skipper-sail.jpg" alt="Thumb 1" />
-                  </div>
-                  <div class="gallery-thumb" onclick="changeGalleryImage(this)">
-                    <img src="assets/img/courses/yachtmaster-coastal.jpg" alt="Thumb 2" />
-                  </div>
-                  <div class="gallery-thumb" onclick="changeGalleryImage(this)">
-                    <img src="assets/img/courses/crew-sail.jpg" alt="Thumb 3" />
-                  </div>
-                  <div class="gallery-thumb" onclick="changeGalleryImage(this)">
-                    <img src="assets/img/templates/image-placeholder-1200x800.png" alt="Thumb 4" />
-                  </div>
+            <!-- Calculator -->
+            <div class="calculator">
+              <h4 class="h6 fw-bold mb-3">Калькулятор стоимости</h4>
+
+              <div class="date-picker">
+                <label class="form-label">Дата начала</label>
+                <div class="date-input">
+                  <input type="text" id="datePicker" placeholder="Выберите дату" value="11 апреля 2026" />
+                  <i class="far fa-calendar"></i>
                 </div>
               </div>
 
-              <!-- Description -->
-              <div class="product-description">
-                <h2>О курсе</h2>
-                <p>
-                  Bareboat Skipper Sail — это интенсивный 14-дневный курс, который позволит вам с нуля освоить
-                  управление парусной яхтой и получить международную лицензию IYT, признанную в 100+ странах мира.
-                </p>
-                <p>
-                  Обучение проходит в идеальных условиях: тёплое море, устойчивые ветры и развитая яхтенная
-                  инфраструктура Турции. Вы будете жить на борту яхты, что позволит полностью погрузиться в атмосферу
-                  яхтинга.
-                </p>
+              <div class="calculator-row">
+                <span class="calculator-label">Участников:</span>
+                <select class="form-select w-auto" id="participants">
+                  <option value="1">1</option>
+                  <option value="2" selected>2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                </select>
               </div>
 
-              <!-- Specs Grid -->
-              <div class="specs-grid">
-                <div class="spec-item">
-                  <div class="spec-icon"><i class="fas fa-ship"></i></div>
-                  <div class="spec-label">Тип яхты</div>
-                  <div class="spec-value">Bavaria 46</div>
-                </div>
-                <div class="spec-item">
-                  <div class="spec-icon"><i class="fas fa-bed"></i></div>
-                  <div class="spec-label">Каюты</div>
-                  <div class="spec-value">4 + шкипер</div>
-                </div>
-                <div class="spec-item">
-                  <div class="spec-icon"><i class="fas fa-shower"></i></div>
-                  <div class="spec-label">Санузлы</div>
-                  <div class="spec-value">2</div>
-                </div>
-                <div class="spec-item">
-                  <div class="spec-icon"><i class="fas fa-utensils"></i></div>
-                  <div class="spec-label">Питание</div>
-                  <div class="spec-value">Полный пансион</div>
-                </div>
+              <div class="calculator-row">
+                <span class="calculator-label">Тип размещения:</span>
+                <select class="form-select w-auto" id="accommodation">
+                  <option value="double">Двухместная каюта</option>
+                  <option value="single">Одноместная каюта (+30%)</option>
+                </select>
               </div>
 
-              <!-- Features -->
-              <h3>Что вы получите</h3>
-              <ul class="features-list">
-                <li><i class="fas fa-check-circle"></i> Международную лицензию IYT Bareboat Skipper</li>
-                <li><i class="fas fa-check-circle"></i> 14 дней проживания на яхте</li>
-                <li><i class="fas fa-check-circle"></i> 3-разовое питание на борту</li>
-                <li><i class="fas fa-check-circle"></i> Все учебные материалы</li>
-                <li><i class="fas fa-check-circle"></i> Страховку на время обучения</li>
-                <li><i class="fas fa-check-circle"></i> Сертификат VHF радиооператора</li>
-              </ul>
-
-              <!-- Accordion -->
-              <div class="product-accordion">
-                <div class="accordion" id="productAccordion">
-                  <div class="accordion-item">
-                    <h3 class="accordion-header">
-                      <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#program">
-                        Программа курса
-                      </button>
-                    </h3>
-                    <div id="program" class="accordion-collapse collapse show" data-bs-parent="#productAccordion">
-                      <div class="accordion-body">
-                        <h4>День 1-2</h4>
-                        <p>
-                          Прибытие, знакомство с яхтой, распределение по каютам. Вводный инструктаж по технике
-                          безопасности.
-                        </p>
-                        <h4>День 3-5</h4>
-                        <p>Основы управления парусами, постановка и уборка парусов, работа с лебедками.</p>
-                        <h4>День 6-8</h4>
-                        <p>Навигация, работа с картами, планирование маршрута.</p>
-                        <h4>День 9-12</h4>
-                        <p>Практические выходы в море, ночная навигация, маневрирование в порту.</p>
-                        <h4>День 13-14</h4>
-                        <p>Экзамен, получение лицензии, торжественный ужин.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h3 class="accordion-header">
-                      <button
-                        class="accordion-button collapsed"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#requirements"
-                      >
-                        Требования
-                      </button>
-                    </h3>
-                    <div id="requirements" class="accordion-collapse collapse" data-bs-parent="#productAccordion">
-                      <div class="accordion-body">
-                        <ul>
-                          <li>Возраст от 18 лет</li>
-                          <li>Базовое знание английского языка</li>
-                          <li>Медицинская страховка</li>
-                          <li>Умение плавать</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h3 class="accordion-header">
-                      <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq">
-                        Часто задаваемые вопросы
-                      </button>
-                    </h3>
-                    <div id="faq" class="accordion-collapse collapse" data-bs-parent="#productAccordion">
-                      <div class="accordion-body">
-                        <p><strong>Нужен ли опыт?</strong> Нет, курс разработан для новичков.</p>
-                        <p><strong>Что взять с собой?</strong> Удобную одежду, купальник, солнцезащитный крем.</p>
-                        <p><strong>Как добраться?</strong> Мы организуем трансфер из аэропорта Даламан.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Share Buttons -->
-              <div class="share-buttons">
-                <a href="#" class="share-btn vk"><i class="fab fa-vk"></i></a>
-                <a href="#" class="share-btn tg"><i class="fab fa-telegram"></i></a>
-                <a href="#" class="share-btn wp"><i class="fab fa-whatsapp"></i></a>
+              <div class="calculator-row calculator-total">
+                <span class="calculator-label">Итого:</span>
+                <span class="calculator-value" id="totalPrice">4 800 €</span>
               </div>
             </div>
 
-            <!-- Sidebar Column -->
-            <div class="col-lg-4">
-              <div class="product-sidebar">
-                <div class="booking-card">
-                  <div class="booking-price">2 400 € <small>/ чел.</small></div>
+            <!-- Booking Buttons -->
+            <button class="btn btn-primary w-100 mb-2" data-bs-toggle="modal" data-bs-target="#courseRegModal"
+              data-course-title="Bareboat Skipper Sail">
+              Забронировать
+            </button>
+            <button class="btn btn-outline-secondary w-100" data-bs-toggle="modal" data-bs-target="#consultationModal">
+              Получить консультацию
+            </button>
 
-                  <!-- Calculator -->
-                  <div class="calculator">
-                    <h4 class="h6 fw-bold mb-3">Калькулятор стоимости</h4>
-
-                    <div class="date-picker">
-                      <label class="form-label">Дата начала</label>
-                      <div class="date-input">
-                        <input type="text" id="datePicker" placeholder="Выберите дату" value="11 апреля 2026" />
-                        <i class="far fa-calendar"></i>
-                      </div>
-                    </div>
-
-                    <div class="calculator-row">
-                      <span class="calculator-label">Участников:</span>
-                      <select class="form-select w-auto" id="participants">
-                        <option value="1">1</option>
-                        <option value="2" selected>2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                      </select>
-                    </div>
-
-                    <div class="calculator-row">
-                      <span class="calculator-label">Тип размещения:</span>
-                      <select class="form-select w-auto" id="accommodation">
-                        <option value="double">Двухместная каюта</option>
-                        <option value="single">Одноместная каюта (+30%)</option>
-                      </select>
-                    </div>
-
-                    <div class="calculator-row calculator-total">
-                      <span class="calculator-label">Итого:</span>
-                      <span class="calculator-value" id="totalPrice">4 800 €</span>
-                    </div>
-                  </div>
-
-                  <!-- Booking Buttons -->
-                  <button
-                    class="btn btn-primary w-100 mb-2"
-                    data-bs-toggle="modal"
-                    data-bs-target="#courseRegModal"
-                    data-course-title="Bareboat Skipper Sail"
-                  >
-                    Забронировать
-                  </button>
-                  <button
-                    class="btn btn-outline-secondary w-100"
-                    data-bs-toggle="modal"
-                    data-bs-target="#consultationModal"
-                  >
-                    Получить консультацию
-                  </button>
-
-                  <!-- Additional Info -->
-                  <div class="mt-4 small text-muted">
-                    <p><i class="fas fa-shield-alt me-2"></i> 100% гарантия возврата при отмене за 30 дней</p>
-                    <p><i class="fas fa-credit-card me-2"></i> Оплата картой или переводом</p>
-                    <p><i class="fas fa-clock me-2"></i> Осталось 4 места</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Related Products Carousel -->
-          <section class="related-products">
-            <h3>Похожие курсы</h3>
-            <div class="owl-carousel owl-theme related-carousel">
-              <!-- Related Product 1 -->
-              <div class="course-card">
-                <div class="course-card-image">
-                  <img src="assets/img/courses/yachtmaster-coastal.jpg" alt="Yachtmaster Coastal" />
-                </div>
-                <div class="course-card-content">
-                  <h4 class="course-title h6">Yachtmaster Coastal</h4>
-                  <p class="course-excerpt small">7 дней, Хорватия</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <span class="fw-bold text-primary">3 200 €</span>
-                    <a href="#" class="btn btn-sm btn-outline-primary">Подробнее</a>
-                  </div>
-                </div>
-              </div>
-              <!-- Related Product 2 -->
-              <div class="course-card">
-                <div class="course-card-image">
-                  <img src="assets/img/courses/crew-sail.jpg" alt="Основы яхтинга" />
-                </div>
-                <div class="course-card-content">
-                  <h4 class="course-title h6">Основы яхтинга</h4>
-                  <p class="course-excerpt small">5 дней, онлайн</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <span class="fw-bold text-primary">590 €</span>
-                    <a href="#" class="btn btn-sm btn-outline-primary">Подробнее</a>
-                  </div>
-                </div>
-              </div>
-              <!-- Related Product 3 -->
-              <div class="course-card">
-                <div class="course-card-image">
-                  <img src="assets/img/courses/skipper-sail.jpg" alt="Bareboat Skipper" />
-                </div>
-                <div class="course-card-content">
-                  <h4 class="course-title h6">Bareboat Skipper</h4>
-                  <p class="course-excerpt small">14 дней, Греция</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <span class="fw-bold text-primary">2 600 €</span>
-                    <a href="#" class="btn btn-sm btn-outline-primary">Подробнее</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-      </main>
-
-      <!-- FOOTER (same as index.html) -->
-      <footer class="footer">
-        <div class="container">
-          <div class="footer-grid">
-            <div class="footer-col footer-col-about">
-              <img src="assets/img/logo/logo-light.svg" alt="SAIL ENERGY" class="footer-logo" />
-              <p class="footer-about">
-                Парусный клуб SAIL ENERGY — обучение яхтингу, спортивная команда, корпоративные регаты и путешествия под
-                парусом.
-              </p>
-              <div class="footer-social">
-                <a href="https://youtube.com/@sailenergy"><i class="fab fa-youtube"></i></a>
-                <a href="https://t.me/sailenergy/"><i class="fab fa-telegram"></i></a>
-                <a href="https://vk.com/sailenergy"><i class="fab fa-vk"></i></a>
-              </div>
-            </div>
-            <div class="footer-col footer-col-menu">
-              <h4 class="footer-title">О клубе</h4>
-              <ul class="footer-links">
-                <li><a href="/team/">Команда</a></li>
-                <li><a href="/articles/">Статьи</a></li>
-                <li><a href="/reviews/">Отзывы</a></li>
-                <li><a href="/contacts/">Контакты</a></li>
-              </ul>
-            </div>
-            <div class="footer-col footer-col-menu">
-              <h4 class="footer-title">Регаты</h4>
-              <ul class="footer-links">
-                <li><a href="/regattas/marmaris-race-week/">Marmaris Race Week</a></li>
-                <li><a href="/regattas/open-sailing-week/">Open Sailing Week</a></li>
-                <li><a href="/regattas/spb-cup/">Летний Кубок СПб</a></li>
-              </ul>
-            </div>
-            <div class="footer-col footer-col-menu">
-              <h4 class="footer-title">Курсы</h4>
-              <ul class="footer-links">
-                <li><a href="/courses/bareboat-skipper/">Bareboat Skipper</a></li>
-                <li><a href="/courses/yachtmaster-coastal/">Yachtmaster Coastal</a></li>
-                <li><a href="/courses/online-basics/">Основы яхтинга</a></li>
-              </ul>
-            </div>
-            <div class="footer-col footer-col-contact">
-              <h4 class="footer-title">Контакты</h4>
-              <ul class="footer-contact">
-                <li><i class="fas fa-phone"></i> <a href="tel:+79215882378">+7 (921) 588-23-78</a></li>
-                <li><i class="fas fa-envelope"></i> <a href="mailto:info@sailenergy.ru">info@sailenergy.ru</a></li>
-                <li><i class="fas fa-map-marker-alt"></i> Санкт-Петербург</li>
-              </ul>
-            </div>
-          </div>
-          <div class="footer-bottom">
-            <p>
-              © 2022-2026 SAIL ENERGY. <a href="/privacy/">Политика конфиденциальности</a> |
-              <a href="/sitemap/">Карта сайта</a>
-            </p>
-          </div>
-        </div>
-        <button id="backToTop" class="back-to-top"><i class="fas fa-chevron-up"></i></button>
-      </footer>
-
-      <!-- MODALS (same as index.html) -->
-      <div class="modal fade" id="courseRegModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <div class="modal-title">Регистрация на курс</div>
-              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-              <form id="courseRegForm" data-validate="true">
-                <input type="hidden" id="courseRegCourseName" name="course_name" />
-                <div class="mb-3">
-                  <label class="form-label">Имя</label>
-                  <input type="text" class="form-control" name="name" placeholder="Иван" required />
-                </div>
-                <div class="mb-3">
-                  <label class="form-label">Телефон</label>
-                  <input type="tel" class="form-control" name="phone" placeholder="+7 (999) 123-45-67" required />
-                </div>
-                <button type="submit" class="btn btn-primary w-100">Забронировать место</button>
-              </form>
+            <!-- Additional Info -->
+            <div class="mt-4 small text-muted">
+              <p><i class="fas fa-shield-alt me-2"></i> 100% гарантия возврата при отмене за 30 дней</p>
+              <p><i class="fas fa-credit-card me-2"></i> Оплата картой или переводом</p>
+              <p><i class="fas fa-clock me-2"></i> Осталось 4 места</p>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/custom.js"></script>
+    <!-- Related Products Carousel -->
+    <section class="related-products">
+      <h3>Похожие курсы</h3>
+      <div class="owl-carousel owl-theme related-carousel">
+        <!-- Related Product 1 -->
+        <div class="course-card">
+          <div class="course-card-image">
+            <img src="assets/img/courses/yachtmaster-coastal.jpg" alt="Yachtmaster Coastal" />
+          </div>
+          <div class="course-card-content">
+            <h4 class="course-title h6">Yachtmaster Coastal</h4>
+            <p class="course-excerpt small">7 дней, Хорватия</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="fw-bold text-primary">3 200 €</span>
+              <a href="#" class="btn btn-sm btn-outline-primary">Подробнее</a>
+            </div>
+          </div>
+        </div>
+        <!-- Related Product 2 -->
+        <div class="course-card">
+          <div class="course-card-image">
+            <img src="assets/img/courses/crew-sail.jpg" alt="Основы яхтинга" />
+          </div>
+          <div class="course-card-content">
+            <h4 class="course-title h6">Основы яхтинга</h4>
+            <p class="course-excerpt small">5 дней, онлайн</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="fw-bold text-primary">590 €</span>
+              <a href="#" class="btn btn-sm btn-outline-primary">Подробнее</a>
+            </div>
+          </div>
+        </div>
+        <!-- Related Product 3 -->
+        <div class="course-card">
+          <div class="course-card-image">
+            <img src="assets/img/courses/skipper-sail.jpg" alt="Bareboat Skipper" />
+          </div>
+          <div class="course-card-content">
+            <h4 class="course-title h6">Bareboat Skipper</h4>
+            <p class="course-excerpt small">14 дней, Греция</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="fw-bold text-primary">2 600 €</span>
+              <a href="#" class="btn btn-sm btn-outline-primary">Подробнее</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
 
-    <!-- Page specific JS -->
-    <script>
-      // Gallery thumbnails
-      function changeGalleryImage(thumb) {
-        const mainImg = document.getElementById("galleryMain").querySelector("img");
-        const thumbImg = thumb.querySelector("img");
-        mainImg.src = thumbImg.src;
-
-        document.querySelectorAll(".gallery-thumb").forEach((el) => {
-          el.classList.remove("active");
-        });
-        thumb.classList.add("active");
-      }
-
-      // Calculator
-      $(document).ready(function () {
-        $("#participants, #accommodation").on("change", function () {
-          const participants = parseInt($("#participants").val());
-          const accommodation = $("#accommodation").val();
-          const basePrice = 2400;
-
-          let total = basePrice * participants;
-
-          if (accommodation === "single") {
-            total = total * 1.3;
-          }
-
-          $("#totalPrice").text(total.toLocaleString() + " €");
-        });
-
-        // Related products carousel
-        $(".related-carousel").owlCarousel({
-          loop: true,
-          margin: 20,
-          nav: true,
-          dots: false,
-          responsive: {
-            0: { items: 1 },
-            576: { items: 2 },
-            992: { items: 3 },
-          },
-        });
-      });
-    </script>
-  </body>
-</html>
+<!-- FOOTER -->
+@@include('html/footer.html')

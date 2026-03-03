@@ -1,523 +1,197 @@
-<!doctype html>
-<html lang="ru-RU">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SAIL ENERGY — Сравнение курсов</title>
-    <meta name="description" content="Сравните курсы яхтинга SAIL ENERGY и выберите подходящую программу." />
+<!-- HEADER -->
+@@include('html/header.html')
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://sailenergy.ru/comparison/" />
-    <meta property="og:title" content="SAIL ENERGY — Сравнение курсов" />
-    <meta property="og:description" content="Сравните курсы яхтинга SAIL ENERGY." />
-    <meta property="og:image" content="assets/img/og-image.jpg" />
+<main class="main">
+  <!-- Page Header -->
+  <section class="comparison-header">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Главная</a></li>
+          <li class="breadcrumb-item"><a href="/courses/">Обучение</a></li>
+          <li class="breadcrumb-item active">Сравнение курсов</li>
+        </ol>
+      </nav>
+      <h1>Сравнение курсов</h1>
+      <p class="lead">Выберите до 3 курсов для сравнения</p>
+    </div>
+  </section>
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png" />
-
-    <!-- Fonts & Icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
-    <!-- CSS Libraries -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="stylesheet" href="assets/css/custom.css" />
-
-    <style>
-      /* Comparison page specific styles */
-      .comparison-header {
-        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-        color: white;
-        padding: 3rem 0;
-        text-align: center;
-      }
-
-      .comparison-header h1 {
-        color: white;
-        margin-bottom: 0.5rem;
-      }
-
-      /* Course selector */
-      .course-selector {
-        display: flex;
-        gap: 1rem;
-        margin-bottom: 2rem;
-        flex-wrap: wrap;
-      }
-
-      .course-select {
-        flex: 1;
-        min-width: 250px;
-      }
-
-      .course-select select {
-        width: 100%;
-        padding: 1rem;
-        border: 2px solid var(--color-gray-light);
-        border-radius: var(--border-radius);
-        font-size: 1rem;
-        background-color: white;
-        cursor: pointer;
-      }
-
-      .vs-divider {
-        display: flex;
-        align-items: center;
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: var(--color-primary);
-      }
-
-      @media (max-width: 768px) {
-        .vs-divider {
-          justify-content: center;
-        }
-      }
-
-      /* Comparison table */
-      .comparison-table {
-        background: white;
-        border-radius: var(--border-radius-lg);
-        overflow: hidden;
-        box-shadow: var(--shadow-lg);
-        margin: 2rem 0;
-      }
-
-      .comparison-row {
-        display: flex;
-        border-bottom: 1px solid var(--color-gray-light);
-      }
-
-      .comparison-row:last-child {
-        border-bottom: none;
-      }
-
-      .comparison-cell {
-        flex: 1;
-        padding: 1.5rem;
-        text-align: center;
-      }
-
-      .comparison-cell:first-child {
-        background: var(--color-gray-lighter);
-        font-weight: 600;
-        text-align: left;
-        flex: 0 0 200px;
-      }
-
-      @media (max-width: 768px) {
-        .comparison-row {
-          flex-wrap: wrap;
-        }
-
-        .comparison-cell:first-child {
-          flex: 0 0 100%;
-          background: var(--color-gray-lighter);
-          border-bottom: 1px solid var(--color-gray-light);
-        }
-
-        .comparison-cell {
-          flex: 1 1 calc(50% - 1px);
-        }
-      }
-
-      .product-badge {
-        background: var(--color-accent);
-        color: var(--color-dark);
-        padding: 0.2rem 1rem;
-        border-radius: var(--border-radius-pill);
-        font-size: 0.8rem;
-        font-weight: 600;
-        display: inline-block;
-      }
-
-      .comparison-cell img {
-        width: 100%;
-        max-width: 200px;
-        height: 120px;
-        object-fit: cover;
-        border-radius: var(--border-radius);
-        margin: 0 auto 1rem;
-      }
-
-      .comparison-cell .price {
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: var(--color-primary);
-      }
-
-      .comparison-cell .old-price {
-        font-size: 1rem;
-        color: var(--color-gray);
-        text-decoration: line-through;
-      }
-
-      .comparison-cell .btn {
-        margin-top: 1rem;
-      }
-
-      .comparison-cell .check-yes {
-        color: #28a745;
-        font-size: 1.5rem;
-      }
-
-      .comparison-cell .check-no {
-        color: #dc3545;
-        font-size: 1.5rem;
-      }
-
-      /* Feature highlight */
-      .feature-highlight {
-        background: var(--color-primary-light);
-        color: var(--color-primary);
-        padding: 0.2rem 0.5rem;
-        border-radius: var(--border-radius);
-        font-size: 0.8rem;
-        margin-left: 0.5rem;
-      }
-
-      /* Add more button */
-      .add-more {
-        background: var(--color-gray-lighter);
-        border: 2px dashed var(--color-gray-light);
-        border-radius: var(--border-radius-lg);
-        padding: 2rem;
-        text-align: center;
-        cursor: pointer;
-        transition: all var(--transition-fast);
-      }
-
-      .add-more:hover {
-        border-color: var(--color-primary);
-        background: var(--color-primary-light);
-      }
-
-      .add-more i {
-        font-size: 2rem;
-        color: var(--color-primary);
-        margin-bottom: 0.5rem;
-      }
-
-      .add-more p {
-        color: var(--color-gray);
-        margin: 0;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="site-wrapper">
-      <!-- HEADER (same as index.html) -->
-      <div class="header">
-        <nav class="navbar navbar-expand-lg">
-          <div class="container">
-            <a class="navbar-brand" href="/">
-              <img src="assets/img/logo/logo-dark.svg" alt="SAIL ENERGY" class="logo-img" loading="eager" />
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMainContent">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarMainContent">
-              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link" href="/">Главная</a></li>
-                <li class="nav-item"><a class="nav-link active" href="/courses/">Обучение</a></li>
-                <li class="nav-item"><a class="nav-link" href="/regattas/">Регаты</a></li>
-                <li class="nav-item"><a class="nav-link" href="/events/">Мероприятия</a></li>
-                <li class="nav-item"><a class="nav-link" href="/news/">Новости</a></li>
-                <li class="nav-item"><a class="nav-link" href="/contacts/">Контакты</a></li>
-              </ul>
-              <div class="header-contacts">
-                <div class="header-contact-item">
-                  <a href="tel:+79215882378"><i class="fas fa-phone-alt me-1"></i>+7 (921) 588-23-78</a>
-                </div>
-                <div class="header-social">
-                  <a href="https://t.me/sailenergy/" class="social-icon"><i class="fab fa-telegram"></i></a>
-                  <a href="https://vk.com/sailenergy" class="social-icon"><i class="fab fa-vk"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </nav>
+  <div class="container py-5">
+    <!-- Course Selector -->
+    <div class="course-selector">
+      <div class="course-select">
+        <select id="course1">
+          <option value="skipper">Bareboat Skipper Sail</option>
+          <option value="yachtmaster" selected>Yachtmaster Coastal</option>
+          <option value="crew">Основы яхтинга</option>
+          <option value="captain">Капитанский курс</option>
+        </select>
       </div>
-
-      <main class="main">
-        <!-- Page Header -->
-        <section class="comparison-header">
-          <div class="container">
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Главная</a></li>
-                <li class="breadcrumb-item"><a href="/courses/">Обучение</a></li>
-                <li class="breadcrumb-item active">Сравнение курсов</li>
-              </ol>
-            </nav>
-            <h1>Сравнение курсов</h1>
-            <p class="lead">Выберите до 3 курсов для сравнения</p>
-          </div>
-        </section>
-
-        <div class="container py-5">
-          <!-- Course Selector -->
-          <div class="course-selector">
-            <div class="course-select">
-              <select id="course1">
-                <option value="skipper">Bareboat Skipper Sail</option>
-                <option value="yachtmaster" selected>Yachtmaster Coastal</option>
-                <option value="crew">Основы яхтинга</option>
-                <option value="captain">Капитанский курс</option>
-              </select>
-            </div>
-            <div class="vs-divider">VS</div>
-            <div class="course-select">
-              <select id="course2">
-                <option value="skipper" selected>Bareboat Skipper Sail</option>
-                <option value="yachtmaster">Yachtmaster Coastal</option>
-                <option value="crew">Основы яхтинга</option>
-                <option value="captain">Капитанский курс</option>
-              </select>
-            </div>
-            <div class="add-more" id="addCourse">
-              <i class="fas fa-plus-circle"></i>
-              <p>Добавить курс</p>
-            </div>
-          </div>
-
-          <!-- Comparison Table -->
-          <div class="comparison-table">
-            <!-- Header with images -->
-            <div class="comparison-row">
-              <div class="comparison-cell">Курс</div>
-              <div class="comparison-cell">
-                <img src="assets/img/courses/skipper-sail.jpg" alt="Bareboat Skipper" />
-                <h3 class="h5">Bareboat Skipper Sail</h3>
-                <span class="product-badge">Лицензионный</span>
-              </div>
-              <div class="comparison-cell">
-                <img src="assets/img/courses/yachtmaster-coastal.jpg" alt="Yachtmaster Coastal" />
-                <h3 class="h5">Yachtmaster Coastal</h3>
-                <span class="product-badge">Продвинутый</span>
-              </div>
-            </div>
-
-            <!-- Price -->
-            <div class="comparison-row">
-              <div class="comparison-cell">Стоимость</div>
-              <div class="comparison-cell">
-                <span class="price">2 400 €</span>
-              </div>
-              <div class="comparison-cell">
-                <span class="old-price">3 200 €</span>
-                <span class="price">2 720 €</span>
-                <span class="feature-highlight">-15%</span>
-              </div>
-            </div>
-
-            <!-- Duration -->
-            <div class="comparison-row">
-              <div class="comparison-cell">Длительность</div>
-              <div class="comparison-cell">14 дней</div>
-              <div class="comparison-cell">7 дней</div>
-            </div>
-
-            <!-- Location -->
-            <div class="comparison-row">
-              <div class="comparison-cell">Локация</div>
-              <div class="comparison-cell">Турция, Фетхие</div>
-              <div class="comparison-cell">Хорватия, Сплит</div>
-            </div>
-
-            <!-- Level -->
-            <div class="comparison-row">
-              <div class="comparison-cell">Уровень</div>
-              <div class="comparison-cell">Начальный</div>
-              <div class="comparison-cell">Продвинутый</div>
-            </div>
-
-            <!-- License -->
-            <div class="comparison-row">
-              <div class="comparison-cell">Лицензия IYT</div>
-              <div class="comparison-cell"><i class="fas fa-check check-yes"></i></div>
-              <div class="comparison-cell"><i class="fas fa-check check-yes"></i></div>
-            </div>
-
-            <!-- Accommodation -->
-            <div class="comparison-row">
-              <div class="comparison-cell">Проживание на яхте</div>
-              <div class="comparison-cell"><i class="fas fa-check check-yes"></i></div>
-              <div class="comparison-cell"><i class="fas fa-check check-yes"></i></div>
-            </div>
-
-            <!-- Meals -->
-            <div class="comparison-row">
-              <div class="comparison-cell">Питание</div>
-              <div class="comparison-cell">Полный пансион</div>
-              <div class="comparison-cell">Полный пансион</div>
-            </div>
-
-            <!-- Night sailing -->
-            <div class="comparison-row">
-              <div class="comparison-cell">Ночная навигация</div>
-              <div class="comparison-cell"><i class="fas fa-times check-no"></i></div>
-              <div class="comparison-cell"><i class="fas fa-check check-yes"></i></div>
-            </div>
-
-            <!-- Max students -->
-            <div class="comparison-row">
-              <div class="comparison-cell">Макс. студентов</div>
-              <div class="comparison-cell">6</div>
-              <div class="comparison-cell">4</div>
-            </div>
-
-            <!-- Language -->
-            <div class="comparison-row">
-              <div class="comparison-cell">Язык обучения</div>
-              <div class="comparison-cell">Русский, Английский</div>
-              <div class="comparison-cell">Русский</div>
-            </div>
-
-            <!-- Next dates -->
-            <div class="comparison-row">
-              <div class="comparison-cell">Ближайшие даты</div>
-              <div class="comparison-cell">11 апр, 9 май, 6 июн</div>
-              <div class="comparison-cell">15 июн, 13 июл, 10 авг</div>
-            </div>
-
-            <!-- Action buttons -->
-            <div class="comparison-row">
-              <div class="comparison-cell"></div>
-              <div class="comparison-cell">
-                <a href="/product.html" class="btn btn-primary btn-sm">Выбрать</a>
-              </div>
-              <div class="comparison-cell">
-                <a href="/product.html" class="btn btn-primary btn-sm">Выбрать</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Summary -->
-          <div class="row g-4 mt-5">
-            <div class="col-md-6">
-              <div class="card border-0 shadow-sm">
-                <div class="card-body p-4">
-                  <h3 class="h5 fw-bold mb-3">Для кого Bareboat Skipper</h3>
-                  <p>
-                    Идеальный старт для новичков. За 14 дней вы освоите все базовые навыки управления яхтой и получите
-                    международную лицензию.
-                  </p>
-                  <ul class="list-unstyled">
-                    <li><i class="fas fa-check text-success me-2"></i> Без опыта</li>
-                    <li><i class="fas fa-check text-success me-2"></i> Интенсивная практика</li>
-                    <li><i class="fas fa-check text-success me-2"></i> Проживание на яхте</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="card border-0 shadow-sm">
-                <div class="card-body p-4">
-                  <h3 class="h5 fw-bold mb-3">Для кого Yachtmaster Coastal</h3>
-                  <p>
-                    Для опытных шкиперов, желающих повысить квалификацию. Включает ночную навигацию и сложные
-                    метеоусловия.
-                  </p>
-                  <ul class="list-unstyled">
-                    <li><i class="fas fa-check text-success me-2"></i> Требуется опыт 500 миль</li>
-                    <li><i class="fas fa-check text-success me-2"></i> Ночные переходы</li>
-                    <li><i class="fas fa-check text-success me-2"></i> Управление экипажем</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-
-      <!-- FOOTER (same as index.html) -->
-      <footer class="footer">
-        <div class="container">
-          <div class="footer-grid">
-            <div class="footer-col footer-col-about">
-              <img src="assets/img/logo/logo-light.svg" alt="SAIL ENERGY" class="footer-logo" />
-              <p class="footer-about">
-                Парусный клуб SAIL ENERGY — обучение яхтингу, спортивная команда, корпоративные регаты и путешествия под
-                парусом.
-              </p>
-              <div class="footer-social">
-                <a href="https://youtube.com/@sailenergy"><i class="fab fa-youtube"></i></a>
-                <a href="https://t.me/sailenergy/"><i class="fab fa-telegram"></i></a>
-                <a href="https://vk.com/sailenergy"><i class="fab fa-vk"></i></a>
-              </div>
-            </div>
-            <div class="footer-col footer-col-menu">
-              <h4 class="footer-title">О клубе</h4>
-              <ul class="footer-links">
-                <li><a href="/team/">Команда</a></li>
-                <li><a href="/articles/">Статьи</a></li>
-                <li><a href="/reviews/">Отзывы</a></li>
-                <li><a href="/contacts/">Контакты</a></li>
-              </ul>
-            </div>
-            <div class="footer-col footer-col-menu">
-              <h4 class="footer-title">Регаты</h4>
-              <ul class="footer-links">
-                <li><a href="/regattas/marmaris-race-week/">Marmaris Race Week</a></li>
-                <li><a href="/regattas/open-sailing-week/">Open Sailing Week</a></li>
-                <li><a href="/regattas/spb-cup/">Летний Кубок СПб</a></li>
-              </ul>
-            </div>
-            <div class="footer-col footer-col-menu">
-              <h4 class="footer-title">Курсы</h4>
-              <ul class="footer-links">
-                <li><a href="/courses/bareboat-skipper/">Bareboat Skipper</a></li>
-                <li><a href="/courses/yachtmaster-coastal/">Yachtmaster Coastal</a></li>
-                <li><a href="/courses/online-basics/">Основы яхтинга</a></li>
-              </ul>
-            </div>
-            <div class="footer-col footer-col-contact">
-              <h4 class="footer-title">Контакты</h4>
-              <ul class="footer-contact">
-                <li><i class="fas fa-phone"></i> <a href="tel:+79215882378">+7 (921) 588-23-78</a></li>
-                <li><i class="fas fa-envelope"></i> <a href="mailto:info@sailenergy.ru">info@sailenergy.ru</a></li>
-                <li><i class="fas fa-map-marker-alt"></i> Санкт-Петербург</li>
-              </ul>
-            </div>
-          </div>
-          <div class="footer-bottom">
-            <p>
-              © 2022-2026 SAIL ENERGY. <a href="/privacy/">Политика конфиденциальности</a> |
-              <a href="/sitemap/">Карта сайта</a>
-            </p>
-          </div>
-        </div>
-        <button id="backToTop" class="back-to-top"><i class="fas fa-chevron-up"></i></button>
-      </footer>
+      <div class="vs-divider">VS</div>
+      <div class="course-select">
+        <select id="course2">
+          <option value="skipper" selected>Bareboat Skipper Sail</option>
+          <option value="yachtmaster">Yachtmaster Coastal</option>
+          <option value="crew">Основы яхтинга</option>
+          <option value="captain">Капитанский курс</option>
+        </select>
+      </div>
+      <div class="add-more" id="addCourse">
+        <i class="fas fa-plus-circle"></i>
+        <p>Добавить курс</p>
+      </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <!-- Comparison Table -->
+    <div class="comparison-table">
+      <!-- Header with images -->
+      <div class="comparison-row">
+        <div class="comparison-cell">Курс</div>
+        <div class="comparison-cell">
+          <img src="assets/img/courses/skipper-sail.jpg" alt="Bareboat Skipper" />
+          <h3 class="h5">Bareboat Skipper Sail</h3>
+          <span class="product-badge">Лицензионный</span>
+        </div>
+        <div class="comparison-cell">
+          <img src="assets/img/courses/yachtmaster-coastal.jpg" alt="Yachtmaster Coastal" />
+          <h3 class="h5">Yachtmaster Coastal</h3>
+          <span class="product-badge">Продвинутый</span>
+        </div>
+      </div>
 
-    <script>
-      $(document).ready(function () {
-        // Add more course
-        $("#addCourse").on("click", function () {
-          alert("Добавление третьего курса в разработке");
-        });
+      <!-- Price -->
+      <div class="comparison-row">
+        <div class="comparison-cell">Стоимость</div>
+        <div class="comparison-cell">
+          <span class="price">2 400 €</span>
+        </div>
+        <div class="comparison-cell">
+          <span class="old-price">3 200 €</span>
+          <span class="price">2 720 €</span>
+          <span class="feature-highlight">-15%</span>
+        </div>
+      </div>
 
-        // Update comparison on select change
-        $("#course1, #course2").on("change", function () {
-          // Здесь будет AJAX загрузка данных
-          console.log("Обновление сравнения...");
-        });
-      });
-    </script>
-  </body>
-</html>
+      <!-- Duration -->
+      <div class="comparison-row">
+        <div class="comparison-cell">Длительность</div>
+        <div class="comparison-cell">14 дней</div>
+        <div class="comparison-cell">7 дней</div>
+      </div>
+
+      <!-- Location -->
+      <div class="comparison-row">
+        <div class="comparison-cell">Локация</div>
+        <div class="comparison-cell">Турция, Фетхие</div>
+        <div class="comparison-cell">Хорватия, Сплит</div>
+      </div>
+
+      <!-- Level -->
+      <div class="comparison-row">
+        <div class="comparison-cell">Уровень</div>
+        <div class="comparison-cell">Начальный</div>
+        <div class="comparison-cell">Продвинутый</div>
+      </div>
+
+      <!-- License -->
+      <div class="comparison-row">
+        <div class="comparison-cell">Лицензия IYT</div>
+        <div class="comparison-cell"><i class="fas fa-check check-yes"></i></div>
+        <div class="comparison-cell"><i class="fas fa-check check-yes"></i></div>
+      </div>
+
+      <!-- Accommodation -->
+      <div class="comparison-row">
+        <div class="comparison-cell">Проживание на яхте</div>
+        <div class="comparison-cell"><i class="fas fa-check check-yes"></i></div>
+        <div class="comparison-cell"><i class="fas fa-check check-yes"></i></div>
+      </div>
+
+      <!-- Meals -->
+      <div class="comparison-row">
+        <div class="comparison-cell">Питание</div>
+        <div class="comparison-cell">Полный пансион</div>
+        <div class="comparison-cell">Полный пансион</div>
+      </div>
+
+      <!-- Night sailing -->
+      <div class="comparison-row">
+        <div class="comparison-cell">Ночная навигация</div>
+        <div class="comparison-cell"><i class="fas fa-times check-no"></i></div>
+        <div class="comparison-cell"><i class="fas fa-check check-yes"></i></div>
+      </div>
+
+      <!-- Max students -->
+      <div class="comparison-row">
+        <div class="comparison-cell">Макс. студентов</div>
+        <div class="comparison-cell">6</div>
+        <div class="comparison-cell">4</div>
+      </div>
+
+      <!-- Language -->
+      <div class="comparison-row">
+        <div class="comparison-cell">Язык обучения</div>
+        <div class="comparison-cell">Русский, Английский</div>
+        <div class="comparison-cell">Русский</div>
+      </div>
+
+      <!-- Next dates -->
+      <div class="comparison-row">
+        <div class="comparison-cell">Ближайшие даты</div>
+        <div class="comparison-cell">11 апр, 9 май, 6 июн</div>
+        <div class="comparison-cell">15 июн, 13 июл, 10 авг</div>
+      </div>
+
+      <!-- Action buttons -->
+      <div class="comparison-row">
+        <div class="comparison-cell"></div>
+        <div class="comparison-cell">
+          <a href="/product.html" class="btn btn-primary btn-sm">Выбрать</a>
+        </div>
+        <div class="comparison-cell">
+          <a href="/product.html" class="btn btn-primary btn-sm">Выбрать</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="row g-4 mt-5">
+      <div class="col-md-6">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4">
+            <h3 class="h5 fw-bold mb-3">Для кого Bareboat Skipper</h3>
+            <p>
+              Идеальный старт для новичков. За 14 дней вы освоите все базовые навыки управления яхтой и получите
+              международную лицензию.
+            </p>
+            <ul class="list-unstyled">
+              <li><i class="fas fa-check text-success me-2"></i> Без опыта</li>
+              <li><i class="fas fa-check text-success me-2"></i> Интенсивная практика</li>
+              <li><i class="fas fa-check text-success me-2"></i> Проживание на яхте</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4">
+            <h3 class="h5 fw-bold mb-3">Для кого Yachtmaster Coastal</h3>
+            <p>
+              Для опытных шкиперов, желающих повысить квалификацию. Включает ночную навигацию и сложные
+              метеоусловия.
+            </p>
+            <ul class="list-unstyled">
+              <li><i class="fas fa-check text-success me-2"></i> Требуется опыт 500 миль</li>
+              <li><i class="fas fa-check text-success me-2"></i> Ночные переходы</li>
+              <li><i class="fas fa-check text-success me-2"></i> Управление экипажем</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+@@include('html/footer.html')
