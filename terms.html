@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="ru-RU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SAIL ENERGY — Пользовательское соглашение</title>
+    <meta name="description" content="Пользовательское соглашение и условия использования сайта SAIL ENERGY." />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png" />
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/custom.css" />
+
+    <style>
+      /* Terms page specific styles */
+      .terms-header {
+        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+        color: white;
+        padding: 3rem 0;
+        text-align: center;
+      }
+
+      .terms-header h1 {
+        color: white;
+        margin-bottom: 0.5rem;
+      }
+
+      .terms-content {
+        padding: 4rem 0;
+      }
+
+      /* Sticky sidebar navigation */
+      .terms-nav {
+        position: sticky;
+        top: 100px;
+        max-height: calc(100vh - 120px);
+        overflow-y: auto;
+        padding-right: 1rem;
+      }
+
+      @media (max-width: 991px) {
+        .terms-nav {
+          position: static;
+          margin-bottom: 2rem;
+          max-height: none;
+        }
+      }
+
+      .terms-nav .nav {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+
+      .terms-nav-link {
+        display: block;
+        padding: 0.6rem 1rem;
+        color: var(--color-gray-dark);
+        border-left: 3px solid transparent;
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        transition: all var(--transition-fast);
+        text-decoration: none;
+      }
+
+      .terms-nav-link:hover {
+        color: var(--color-primary);
+        background: var(--color-primary-light);
+        border-left-color: var(--color-primary);
+      }
+
+      .terms-nav-link.active {
+        color: var(--color-primary);
+        font-weight: 600;
+        background: var(--color-primary-light);
+        border-left-color: var(--color-primary);
+      }
+
+      .terms-nav-link small {
+        display: block;
+        font-size: 0.85rem;
+        color: var(--color-gray);
+        margin-top: 0.1rem;
+      }
+
+      /* Text content */
+      .terms-section {
+        margin-bottom: 3rem;
+        scroll-margin-top: 100px;
+      }
+
+      .terms-section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--color-primary-light);
+      }
+
+      .terms-section h3 {
+        font-size: 1.3rem;
+        margin: 1.5rem 0 1rem;
+        color: var(--color-dark);
+      }
+
+      .terms-section p {
+        margin-bottom: 1rem;
+        line-height: 1.7;
+      }
+
+      .terms-section ul,
+      .terms-section ol {
+        margin-bottom: 1.5rem;
+        padding-left: 1.5rem;
+      }
+
+      .terms-section li {
+        margin-bottom: 0.5rem;
+      }
+
+      .terms-section table {
+        width: 100%;
+        margin: 1.5rem 0;
+        border-collapse: collapse;
+      }
+
+      .terms-section th {
+        background: var(--color-primary-light);
+        padding: 0.75rem;
+        text-align: left;
+        font-weight: 600;
+      }
+
+      .terms-section td {
+        padding: 0.75rem;
+        border-bottom: 1px solid var(--color-gray-light);
+      }
+
+      .terms-section .alert {
+        background: var(--color-primary-light);
+        border-left: 4px solid var(--color-primary);
+        padding: 1rem;
+        border-radius: var(--border-radius);
+        margin: 1.5rem 0;
+      }
+
+      .terms-section blockquote {
+        padding: 1rem 1.5rem;
+        background: var(--color-gray-lighter);
+        border-left: 4px solid var(--color-primary);
+        border-radius: var(--border-radius);
+        font-style: italic;
+        margin: 1.5rem 0;
+      }
+
+      /* Mobile select */
+      .terms-mobile-select {
+        display: none;
+        margin-bottom: 2rem;
+      }
+
+      @media (max-width: 991px) {
+        .terms-mobile-select {
+          display: block;
+        }
+
+        .terms-nav {
+          display: none;
+        }
+      }
+
+      .terms-mobile-select select {
+        width: 100%;
+        padding: 1rem;
+        border: 2px solid var(--color-gray-light);
+        border-radius: var(--border-radius);
+        font-size: 1rem;
+        background-color: white;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="site-wrapper">
+      <!-- HEADER (same as index.html) -->
+      <div class="header">
+        <nav class="navbar navbar-expand-lg">
+          <div class="container">
+            <a class="navbar-brand" href="/">
+              <img src="assets/img/logo/logo-dark.svg" alt="SAIL ENERGY" class="logo-img" loading="eager" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMainContent">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMainContent">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" href="/">Главная</a></li>
+                <li class="nav-item"><a class="nav-link" href="/courses/">Обучение</a></li>
+                <li class="nav-item"><a class="nav-link" href="/regattas/">Регаты</a></li>
+                <li class="nav-item"><a class="nav-link" href="/events/">Мероприятия</a></li>
+                <li class="nav-item"><a class="nav-link" href="/news/">Новости</a></li>
+                <li class="nav-item"><a class="nav-link" href="/contacts/">Контакты</a></li>
+              </ul>
+              <div class="header-contacts">
+                <div class="header-contact-item">
+                  <a href="tel:+79215882378"><i class="fas fa-phone-alt me-1"></i>+7 (921) 588-23-78</a>
+                </div>
+                <div class="header-social">
+                  <a href="https://t.me/sailenergy/" class="social-icon"><i class="fab fa-telegram"></i></a>
+                  <a href="https://vk.com/sailenergy" class="social-icon"><i class="fab fa-vk"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <main class="main">
+        <!-- Page Header -->
+        <section class="terms-header">
+          <div class="container">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Главная</a></li>
+                <li class="breadcrumb-item active">Пользовательское соглашение</li>
+              </ol>
+            </nav>
+            <h1>Пользовательское соглашение</h1>
+            <p class="lead">Последнее обновление: 1 января 2026 года</p>
+          </div>
+        </section>
+
+        <div class="terms-content">
+          <div class="container">
+            <!-- Mobile Navigation -->
+            <div class="terms-mobile-select">
+              <select id="mobileNav">
+                <option value="#section1">1. Общие положения</option>
+                <option value="#section2">2. Регистрация и аккаунт</option>
+                <option value="#section3">3. Услуги и оплата</option>
+                <option value="#section4">4. Права и обязанности</option>
+                <option value="#section5">5. Ответственность</option>
+                <option value="#section6">6. Конфиденциальность</option>
+                <option value="#section7">7. Изменение условий</option>
+                <option value="#section8">8. Реквизиты</option>
+              </select>
+            </div>
+
+            <div class="row">
+              <!-- Sidebar Navigation -->
+              <div class="col-lg-3">
+                <div class="terms-nav">
+                  <div class="nav flex-column" id="termsNav">
+                    <a class="terms-nav-link active" href="#section1">
+                      <strong>1. Общие положения</strong>
+                      <small>Основные определения</small>
+                    </a>
+                    <a class="terms-nav-link" href="#section2">
+                      <strong>2. Регистрация и аккаунт</strong>
+                      <small>Создание и ведение</small>
+                    </a>
+                    <a class="terms-nav-link" href="#section3">
+                      <strong>3. Услуги и оплата</strong>
+                      <small>Условия предоставления</small>
+                    </a>
+                    <a class="terms-nav-link" href="#section4">
+                      <strong>4. Права и обязанности</strong>
+                      <small>Сторон</small>
+                    </a>
+                    <a class="terms-nav-link" href="#section5">
+                      <strong>5. Ответственность</strong>
+                      <small>Ограничения</small>
+                    </a>
+                    <a class="terms-nav-link" href="#section6">
+                      <strong>6. Конфиденциальность</strong>
+                      <small>Защита данных</small>
+                    </a>
+                    <a class="terms-nav-link" href="#section7">
+                      <strong>7. Изменение условий</strong>
+                      <small>Порядок внесения</small>
+                    </a>
+                    <a class="terms-nav-link" href="#section8">
+                      <strong>8. Реквизиты</strong>
+                      <small>Контактная информация</small>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Main Content -->
+              <div class="col-lg-9">
+                <div class="terms-document">
+                  <!-- Section 1 -->
+                  <section id="section1" class="terms-section">
+                    <h2>1. Общие положения</h2>
+                    <p>
+                      1.1. Настоящее Пользовательское соглашение (далее — Соглашение) регулирует отношения между SAIL
+                      ENERGY (далее — «Клуб», «мы», «нас») и пользователем (далее — «Пользователь», «вы») при
+                      использовании сайта https://sailenergy.ru и всех связанных с ним сервисов.
+                    </p>
+                    <p>
+                      1.2. Используя сайт, вы подтверждаете свое согласие с условиями настоящего Соглашения. Если вы не
+                      согласны с каким-либо пунктом, пожалуйста, прекратите использование сайта.
+                    </p>
+                    <p>
+                      1.3. Клуб оставляет за собой право вносить изменения в Соглашение без уведомления пользователей.
+                      Новая версия Соглашения вступает в силу с момента ее публикации.
+                    </p>
+
+                    <div class="alert">
+                      <i class="fas fa-info-circle me-2"></i>
+                      <strong>Важно:</strong> Перед бронированием курсов или участием в регатах внимательно ознакомьтесь
+                      с условиями.
+                    </div>
+                  </section>
+
+                  <!-- Section 2 -->
+                  <section id="section2" class="terms-section">
+                    <h2>2. Регистрация и аккаунт</h2>
+                    <p>
+                      2.1. Для доступа к некоторым функциям сайта (бронирование, личный кабинет) требуется регистрация.
+                    </p>
+                    <p>
+                      2.2. При регистрации вы обязуетесь предоставлять достоверную информацию и поддерживать ее в
+                      актуальном состоянии.
+                    </p>
+                    <p>
+                      2.3. Вы несете ответственность за сохранность своих учетных данных. Все действия, совершенные с
+                      вашего аккаунта, считаются совершенными вами.
+                    </p>
+                    <p>
+                      2.4. Клуб имеет право заблокировать аккаунт при нарушении условий Соглашения или по запросу
+                      пользователя.
+                    </p>
+                  </section>
+
+                  <!-- Section 3 -->
+                  <section id="section3" class="terms-section">
+                    <h2>3. Услуги и оплата</h2>
+                    <h3>3.1. Предоставляемые услуги</h3>
+                    <ul>
+                      <li>Обучение яхтингу по стандартам IYT</li>
+                      <li>Организация регат и соревнований</li>
+                      <li>Чартер яхт и путешествия</li>
+                      <li>Консультационные услуги</li>
+                    </ul>
+
+                    <h3>3.2. Оплата</h3>
+                    <p>3.2.1. Стоимость услуг указывается на сайте в евро или рублях по курсу ЦБ РФ на день оплаты.</p>
+                    <p>3.2.2. Оплата производится 100% предоплатой. Возможна оплата частями по согласованию.</p>
+                    <p>
+                      3.2.3. При отмене бронирования за 30 дней и более — возврат 100%, за 14-29 дней — 50%, менее 14
+                      дней — возврат не производится.
+                    </p>
+
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Срок отмены</th>
+                          <th>Сумма возврата</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Более 30 дней</td>
+                          <td>100%</td>
+                        </tr>
+                        <tr>
+                          <td>14-29 дней</td>
+                          <td>50%</td>
+                        </tr>
+                        <tr>
+                          <td>Менее 14 дней</td>
+                          <td>0%</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </section>
+
+                  <!-- Section 4 -->
+                  <section id="section4" class="terms-section">
+                    <h2>4. Права и обязанности сторон</h2>
+                    <h3>4.1. Клуб обязуется:</h3>
+                    <ul>
+                      <li>Предоставлять услуги в соответствии с описанием</li>
+                      <li>Обеспечивать безопасность участников</li>
+                      <li>Соблюдать конфиденциальность данных</li>
+                    </ul>
+
+                    <h3>4.2. Пользователь обязуется:</h3>
+                    <ul>
+                      <li>Соблюдать правила техники безопасности</li>
+                      <li>Своевременно оплачивать услуги</li>
+                      <li>Не нарушать права других пользователей</li>
+                    </ul>
+
+                    <blockquote>
+                      <p>
+                        «Безопасность на воде — наша главная ценность. Все инструкторы имеют международные сертификаты и
+                        многолетний опыт.»
+                      </p>
+                      <footer>— Команда SAIL ENERGY</footer>
+                    </blockquote>
+                  </section>
+
+                  <!-- Section 5 -->
+                  <section id="section5" class="terms-section">
+                    <h2>5. Ответственность</h2>
+                    <p>
+                      5.1. Клуб не несет ответственности за невозможность использования сайта по техническим причинам.
+                    </p>
+                    <p>
+                      5.2. В случае форс-мажорных обстоятельств (стихийные бедствия, военные действия и т.п.)
+                      обязательства сторон могут быть изменены.
+                    </p>
+                    <p>
+                      5.3. Клуб не отвечает за действия третьих лиц, включая погодные условия и действия других
+                      участников.
+                    </p>
+                  </section>
+
+                  <!-- Section 6 -->
+                  <section id="section6" class="terms-section">
+                    <h2>6. Конфиденциальность</h2>
+                    <p>
+                      6.1. Клуб собирает и обрабатывает персональные данные в соответствии с Федеральным законом №152-ФЗ
+                      «О персональных данных».
+                    </p>
+                    <p>6.2. Подробная информация содержится в <a href="/privacy/">Политике конфиденциальности</a>.</p>
+                  </section>
+
+                  <!-- Section 7 -->
+                  <section id="section7" class="terms-section">
+                    <h2>7. Изменение условий</h2>
+                    <p>7.1. Клуб имеет право изменять условия Соглашения в одностороннем порядке.</p>
+                    <p>7.2. Актуальная версия всегда доступна по адресу https://sailenergy.ru/terms/.</p>
+                    <p>7.3. Продолжение использования сайта после изменений означает ваше согласие с новой версией.</p>
+                  </section>
+
+                  <!-- Section 8 -->
+                  <section id="section8" class="terms-section">
+                    <h2>8. Реквизиты</h2>
+                    <p><strong>Наименование:</strong> SAIL ENERGY (ИП Иванов И.И.)</p>
+                    <p><strong>ИНН:</strong> 123456789012</p>
+                    <p><strong>ОГРН:</strong> 123456789012345</p>
+                    <p><strong>Юридический адрес:</strong> 197000, г. Санкт-Петербург, ул. Морская, д. 1</p>
+                    <p><strong>Телефон:</strong> <a href="tel:+79215882378">+7 (921) 588-23-78</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:info@sailenergy.ru">info@sailenergy.ru</a></p>
+                  </section>
+
+                  <!-- Last update -->
+                  <div class="mt-5 pt-4 border-top text-muted small">
+                    <p>Дата последнего обновления: 1 января 2026 г.</p>
+                    <p>Версия документа: 3.0</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- FOOTER (same as index.html) -->
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-grid">
+            <div class="footer-col footer-col-about">
+              <img src="assets/img/logo/logo-light.svg" alt="SAIL ENERGY" class="footer-logo" />
+              <p class="footer-about">
+                Парусный клуб SAIL ENERGY — обучение яхтингу, спортивная команда, корпоративные регаты и путешествия под
+                парусом.
+              </p>
+              <div class="footer-social">
+                <a href="https://youtube.com/@sailenergy"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/sailenergy/"><i class="fab fa-telegram"></i></a>
+                <a href="https://vk.com/sailenergy"><i class="fab fa-vk"></i></a>
+              </div>
+            </div>
+            <div class="footer-col footer-col-menu">
+              <h4 class="footer-title">О клубе</h4>
+              <ul class="footer-links">
+                <li><a href="/team/">Команда</a></li>
+                <li><a href="/articles/">Статьи</a></li>
+                <li><a href="/reviews/">Отзывы</a></li>
+                <li><a href="/contacts/">Контакты</a></li>
+              </ul>
+            </div>
+            <div class="footer-col footer-col-menu">
+              <h4 class="footer-title">Регаты</h4>
+              <ul class="footer-links">
+                <li><a href="/regattas/marmaris-race-week/">Marmaris Race Week</a></li>
+                <li><a href="/regattas/open-sailing-week/">Open Sailing Week</a></li>
+                <li><a href="/regattas/spb-cup/">Летний Кубок СПб</a></li>
+              </ul>
+            </div>
+            <div class="footer-col footer-col-menu">
+              <h4 class="footer-title">Курсы</h4>
+              <ul class="footer-links">
+                <li><a href="/courses/bareboat-skipper/">Bareboat Skipper</a></li>
+                <li><a href="/courses/yachtmaster-coastal/">Yachtmaster Coastal</a></li>
+                <li><a href="/courses/online-basics/">Основы яхтинга</a></li>
+              </ul>
+            </div>
+            <div class="footer-col footer-col-contact">
+              <h4 class="footer-title">Контакты</h4>
+              <ul class="footer-contact">
+                <li><i class="fas fa-phone"></i> <a href="tel:+79215882378">+7 (921) 588-23-78</a></li>
+                <li><i class="fas fa-envelope"></i> <a href="mailto:info@sailenergy.ru">info@sailenergy.ru</a></li>
+                <li><i class="fas fa-map-marker-alt"></i> Санкт-Петербург</li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>
+              © 2022-2026 SAIL ENERGY. <a href="/privacy/">Политика конфиденциальности</a> |
+              <a href="/sitemap/">Карта сайта</a>
+            </p>
+          </div>
+        </div>
+        <button id="backToTop" class="back-to-top"><i class="fas fa-chevron-up"></i></button>
+      </footer>
+
+      <!-- MODALS (same as index.html) -->
+      <div class="modal fade" id="consultationModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <div class="modal-title">Оставьте свои контакты</div>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <form id="consultationForm" data-validate="true">
+                <div class="mb-3">
+                  <label class="form-label">Имя</label>
+                  <input type="text" class="form-control" placeholder="Ваше имя" required />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Телефон</label>
+                  <input type="tel" class="form-control" placeholder="+7 (999) 123-45-67" required />
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Заказать звонок</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <!-- Page specific JS -->
+    <script>
+      $(document).ready(function () {
+        // Smooth scroll for navigation
+        $(".terms-nav-link, #mobileNav").on("click", function (e) {
+          e.preventDefault();
+          const target = $(this).attr("href");
+          if (target && target.startsWith("#")) {
+            const offset = $(".header").height() + 20;
+            $("html, body").animate(
+              {
+                scrollTop: $(target).offset().top - offset,
+              },
+              500,
+            );
+          }
+        });
+
+        // Mobile navigation
+        $("#mobileNav").on("change", function () {
+          const target = $(this).val();
+          if (target) {
+            const offset = $(".header").height() + 20;
+            $("html, body").animate(
+              {
+                scrollTop: $(target).offset().top - offset,
+              },
+              500,
+            );
+          }
+        });
+
+        // Active nav item on scroll
+        $(window).on("scroll", function () {
+          const scrollPos = $(document).scrollTop();
+          const offset = $(".header").height() + 50;
+
+          $(".terms-section").each(function () {
+            const currLink = $(this);
+            const refElement = $(currLink.attr("href"));
+            if (refElement.length) {
+              const refTop = refElement.offset().top - offset;
+              if (refTop <= scrollPos && refTop + refElement.height() > scrollPos) {
+                $(".terms-nav-link").removeClass("active");
+                $('.terms-nav-link[href="#' + currLink.attr("id") + '"]').addClass("active");
+              }
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
