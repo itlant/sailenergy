@@ -8,10 +8,26 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarMainContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="/">Главная</a></li>
-          <li class="nav-item"><a class="nav-link" href="/courses/">Обучение</a></li>
-          <li class="nav-item"><a class="nav-link" href="/regattas/">Регаты</a></li>
+        <ul class="navbar-nav ms-auto mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="/">Главная</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="/courses/" data-bs-toggle="dropdown">Обучение</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/courses/bareboat-skipper/">Bareboat Skipper</a></li>
+              <li><a class="dropdown-item" href="/courses/yachtmaster-coastal/">Yachtmaster Coastal</a></li>
+              <li><a class="dropdown-item" href="/courses/online-basics/">Основы яхтинга</a></li>
+              <li><a class="dropdown-item" href="/courses/">Все курсы</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="/regattas/" data-bs-toggle="dropdown">Регаты</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/regattas/marmaris-race-week/">Marmaris Race Week</a></li>
+              <li><a class="dropdown-item" href="/regattas/open-sailing-week/">Open Sailing Week</a></li>
+              <li><a class="dropdown-item" href="/regattas/spb-cup/">Летний Кубок СПб</a></li>
+              <li><a class="dropdown-item" href="/regattas/">Все регаты</a></li>
+            </ul>
+          </li>
           <li class="nav-item"><a class="nav-link" href="/events/">Мероприятия</a></li>
           <li class="nav-item"><a class="nav-link" href="/news/">Новости</a></li>
           <li class="nav-item"><a class="nav-link" href="/contacts/">Контакты</a></li>
