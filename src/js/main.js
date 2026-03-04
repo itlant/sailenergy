@@ -33,7 +33,8 @@
   }
 
   function validatePhone(phone) {
-    const phoneRegex = /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
+    const phoneRegex =
+      /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
     return phoneRegex.test(phone.replace(/\D/g, ""));
   }
 
@@ -89,18 +90,101 @@
   $(document).ready(function () {
     console.log("Sail Energy JS initialized");
 
+    // Core
     initBackToTop();
     initPhoneMask();
     initCookieModal();
     initScrollCTA();
+    initDropdowns();
+    initMobileMenu();
+    initHideContactsOnOverflow();
+
+    // Carousels
     initCarousels();
     initHeroWheelhouse();
+
+    // Forms & Modals
     initModalHandlers();
     initFormValidation();
   });
 
   /* ============================================================================
-     03. Carousels
+     03. Dropdown Menu (Click only)
+     ============================================================================ */
+
+  function initDropdowns() {
+    // Toggle dropdown on click
+    $(".dropdown-toggle").on("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      // Для мобильных устройств не закрываем dropdown при клике на родительский пункт
+      if (window.innerWidth < 992) {
+        // Просто переключаем класс, без дополнительной логики
+        const $dropdown = $(this).closest(".dropdown");
+        $dropdown.toggleClass("show");
+        $(this).next(".dropdown-menu").toggleClass("show");
+        $(this).attr("aria-expanded", $dropdown.hasClass("show"));
+        return;
+      }
+
+      // Остальной код для десктопа...
+      const $toggle = $(this);
+      const $dropdown = $toggle.closest(".dropdown");
+      const $menu = $toggle.next(".dropdown-menu");
+      const isOpen = $dropdown.hasClass("show");
+
+      // Close all other dropdowns
+      $(".dropdown.show")
+        .not($dropdown)
+        .each(function () {
+          $(this).removeClass("show");
+          $(this).find(".dropdown-menu").removeClass("show");
+          $(this).find(".dropdown-toggle").attr("aria-expanded", "false");
+        });
+
+      // Toggle current dropdown
+      if (!isOpen) {
+        $dropdown.addClass("show");
+        $menu.addClass("show");
+        $toggle.attr("aria-expanded", "true");
+      } else {
+        $dropdown.removeClass("show");
+        $menu.removeClass("show");
+        $toggle.attr("aria-expanded", "false");
+      }
+    });
+
+    // Close dropdown when clicking outside
+    $(document).on("click", function (e) {
+      if (!$(e.target).closest(".dropdown").length) {
+        $(".dropdown.show").each(function () {
+          $(this).removeClass("show");
+          $(this).find(".dropdown-menu").removeClass("show");
+          $(this).find(".dropdown-toggle").attr("aria-expanded", "false");
+        });
+      }
+    });
+
+    // Prevent closing when clicking inside dropdown menu
+    $(".dropdown-menu").on("click", function (e) {
+      e.stopPropagation();
+    });
+
+    // Handle escape key
+    $(document).on("keydown", function (e) {
+      if (e.key === "Escape") {
+        $(".dropdown.show").each(function () {
+          $(this).removeClass("show");
+          $(this).find(".dropdown-menu").removeClass("show");
+          $(this).find(".dropdown-toggle").attr("aria-expanded", "false");
+        });
+      }
+    });
+  }
+
+  /* ============================================================================
+     04. Carousels
      ============================================================================ */
 
   function initCarousels() {
@@ -125,7 +209,7 @@
   }
 
   /* ============================================================================
-     04. Hero Wheelhouse Slider
+     05. Hero Wheelhouse Slider
      ============================================================================ */
 
   function initHeroWheelhouse() {
@@ -188,7 +272,9 @@
 
       $(".theme-btn").removeClass("active");
       $(`.theme-btn[data-theme="${currentTheme}"]`).addClass("active");
-      $("#currentThemeDisplay").text($(`.theme-btn[data-theme="${currentTheme}"] .theme-name`).text());
+      $("#currentThemeDisplay").text(
+        $(`.theme-btn[data-theme="${currentTheme}"] .theme-name`).text(),
+      );
 
       setTimeout(() => {
         isUpdatingFromSlider = false;
@@ -197,7 +283,7 @@
   }
 
   /* ============================================================================
-     05. Back to Top
+     06. Back to Top
      ============================================================================ */
 
   function initBackToTop() {
@@ -215,7 +301,7 @@
   }
 
   /* ============================================================================
-     06. Phone Mask
+     07. Phone Mask
      ============================================================================ */
 
   function initPhoneMask() {
@@ -225,13 +311,16 @@
       });
 
       input.addEventListener("blur", function () {
-        this.classList.toggle("is-invalid", this.value && !validatePhone(this.value));
+        this.classList.toggle(
+          "is-invalid",
+          this.value && !validatePhone(this.value),
+        );
       });
     });
   }
 
   /* ============================================================================
-     07. Modals
+     08. Modals
      ============================================================================ */
 
   function initModalHandlers() {
@@ -255,20 +344,31 @@
   }
 
   /* ============================================================================
-     08. Form Validation
+     09. Form Validation
      ============================================================================ */
 
   function initFormValidation() {
-    $('form[data-validate="true"], #courseForm, #regattaForm, #consultationForm, #ctaForm').on("submit", function (e) {
+    $(
+      'form[data-validate="true"], #courseForm, #regattaForm, #consultationForm, #ctaForm',
+    ).on("submit", function (e) {
       e.preventDefault();
 
       const $form = $(this);
       const $phoneInput = $form.find('input[type="tel"]');
-      const $privacyCheck = $form.find('input[type="checkbox"][name="privacy"], input[type="checkbox"][name="terms"]');
+      const $privacyCheck = $form.find(
+        'input[type="checkbox"][name="privacy"], input[type="checkbox"][name="terms"]',
+      );
 
-      if ($phoneInput.length && $phoneInput.val() && !validatePhone($phoneInput.val())) {
+      if (
+        $phoneInput.length &&
+        $phoneInput.val() &&
+        !validatePhone($phoneInput.val())
+      ) {
         $phoneInput.addClass("is-invalid");
-        showNotification("error", "Пожалуйста, введите корректный номер телефона");
+        showNotification(
+          "error",
+          "Пожалуйста, введите корректный номер телефона",
+        );
         return false;
       }
 
@@ -278,7 +378,10 @@
         return false;
       }
 
-      showNotification("success", "Заявка отправлена! Мы свяжемся с вами в ближайшее время.");
+      showNotification(
+        "success",
+        "Заявка отправлена! Мы свяжемся с вами в ближайшее время.",
+      );
 
       const $modal = $form.closest(".modal");
       if ($modal.length && typeof bootstrap !== "undefined") {
@@ -296,7 +399,7 @@
   }
 
   /* ============================================================================
-     09. Cookie Modal
+     10. Cookie Modal
      ============================================================================ */
 
   function initCookieModal() {
@@ -310,17 +413,19 @@
       }, 10000);
     }
 
-    document.getElementById("closeCookies")?.addEventListener("click", function () {
-      localStorage.setItem("cookiesAccepted", "true");
-      cookieModal.classList.remove("show");
-      setTimeout(() => {
-        cookieModal.style.display = "none";
-      }, 300);
-    });
+    document
+      .getElementById("closeCookies")
+      ?.addEventListener("click", function () {
+        localStorage.setItem("cookiesAccepted", "true");
+        cookieModal.classList.remove("show");
+        setTimeout(() => {
+          cookieModal.style.display = "none";
+        }, 300);
+      });
   }
 
   /* ============================================================================
-     10. Scroll CTA
+     11. Scroll CTA
      ============================================================================ */
 
   function initScrollCTA() {
@@ -333,9 +438,15 @@
     let scrollCTAShown = false;
 
     window.addEventListener("scroll", function () {
-      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      const currentScroll =
+        window.pageYOffset || document.documentElement.scrollTop;
 
-      if (!scrollCTAShown && currentScroll > 20000 && currentScroll < lastScrollTop && currentScroll > 500) {
+      if (
+        !scrollCTAShown &&
+        currentScroll > 20000 &&
+        currentScroll < lastScrollTop &&
+        currentScroll > 500
+      ) {
         if (!localStorage.getItem("scrollCtaClosed")) {
           scrollCTA.classList.add("visible");
           scrollCTAShown = true;
@@ -351,5 +462,169 @@
         localStorage.setItem("scrollCtaClosed", "true");
       });
     }
+  }
+
+  /* ============================================================================
+     12. Hide Contacts on Overflow
+     ============================================================================ */
+
+  function initHideContactsOnOverflow() {
+    const checkOverflow = () => {
+      // Только для десктопа
+      if (window.innerWidth < 992) return;
+
+      const navbar = document.querySelector(".navbar .container");
+      const contacts = document.querySelector(".header-contacts");
+
+      if (!navbar || !contacts) return;
+
+      // Проверяем, помещается ли меню без контактов
+      const tempContacts = contacts.cloneNode(true);
+      tempContacts.style.visibility = "hidden";
+      tempContacts.style.position = "absolute";
+      tempContacts.style.width = "auto";
+      tempContacts.classList.remove("hide-on-overflow");
+
+      navbar.appendChild(tempContacts);
+      const contactsWidth = tempContacts.offsetWidth;
+      navbar.removeChild(tempContacts);
+
+      // Проверяем общую ширину
+      const navbarWidth = navbar.offsetWidth;
+      const logo = document.querySelector(".navbar-brand");
+      const toggler = document.querySelector(".navbar-toggler");
+      const nav = document.querySelector(".navbar-nav");
+
+      let usedWidth = logo.offsetWidth + (toggler?.offsetWidth || 0) + 40;
+
+      if (nav) {
+        usedWidth += nav.scrollWidth;
+      }
+
+      // Если не помещается, скрываем контакты
+      if (usedWidth + contactsWidth > navbarWidth) {
+        contacts.classList.add("hide-on-overflow");
+      } else {
+        contacts.classList.remove("hide-on-overflow");
+      }
+    };
+
+    window.addEventListener("load", checkOverflow);
+    window.addEventListener("resize", checkOverflow);
+    setTimeout(checkOverflow, 300);
+  }
+
+  /* ============================================================================
+     13. Mobile Menu Enhancement
+     ============================================================================ */
+
+  function initMobileMenu() {
+    const toggler = document.querySelector(".navbar-toggler");
+    const collapse = document.querySelector(".navbar-collapse");
+
+    if (!toggler || !collapse) return;
+
+    // Функция для блокировки/разблокировки скролла
+    const toggleBodyScroll = (disable) => {
+      if (disable) {
+        document.body.style.overflow = "hidden";
+        document.body.style.height = "100vh";
+        document.body.style.position = "fixed";
+        document.body.style.width = "100%";
+        document.body.style.top = `-${window.scrollY}px`;
+      } else {
+        const scrollY = document.body.style.top;
+        document.body.style.overflow = "";
+        document.body.style.height = "";
+        document.body.style.position = "";
+        document.body.style.width = "";
+        document.body.style.top = "";
+        window.scrollTo(0, parseInt(scrollY || "0") * -1);
+      }
+    };
+
+    // Обработка клика по бургеру
+    toggler.addEventListener("click", function () {
+      const isExpanded = this.getAttribute("aria-expanded") === "true";
+
+      if (isExpanded) {
+        // Меню открывается
+        setTimeout(() => {
+          toggleBodyScroll(true);
+        }, 10);
+      } else {
+        // Меню закрывается
+        toggleBodyScroll(false);
+      }
+    });
+
+    // Слушаем события Bootstrap collapse
+    collapse.addEventListener("shown.bs.collapse", function () {
+      toggleBodyScroll(true);
+    });
+
+    collapse.addEventListener("hidden.bs.collapse", function () {
+      toggleBodyScroll(false);
+    });
+
+    // Закрытие меню при клике на ссылку
+    collapse.querySelectorAll(".nav-link").forEach((link) => {
+      link.addEventListener("click", (e) => {
+        // Не закрываем, если это ссылка с dropdown
+        if (link.classList.contains("dropdown-toggle")) {
+          return;
+        }
+
+        if (window.innerWidth < 992) {
+          const bsCollapse = bootstrap.Collapse.getInstance(collapse);
+          if (bsCollapse) {
+            bsCollapse.hide();
+          }
+          toggleBodyScroll(false);
+        }
+      });
+    });
+
+    // Закрытие при клике вне меню
+    document.addEventListener("click", (e) => {
+      if (window.innerWidth < 992) {
+        const isClickInside =
+          collapse.contains(e.target) || toggler.contains(e.target);
+        const isExpanded = toggler.getAttribute("aria-expanded") === "true";
+
+        if (!isClickInside && isExpanded) {
+          const bsCollapse = bootstrap.Collapse.getInstance(collapse);
+          if (bsCollapse) {
+            bsCollapse.hide();
+          }
+          toggleBodyScroll(false);
+        }
+      }
+    });
+
+    // Закрытие при изменении размера окна
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 992) {
+        const bsCollapse = bootstrap.Collapse.getInstance(collapse);
+        if (bsCollapse && collapse.classList.contains("show")) {
+          bsCollapse.hide();
+        }
+        toggleBodyScroll(false);
+      }
+    });
+
+    // Закрытие при нажатии Escape
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && window.innerWidth < 992) {
+        const isExpanded = toggler.getAttribute("aria-expanded") === "true";
+        if (isExpanded) {
+          const bsCollapse = bootstrap.Collapse.getInstance(collapse);
+          if (bsCollapse) {
+            bsCollapse.hide();
+          }
+          toggleBodyScroll(false);
+        }
+      }
+    });
   }
 })(jQuery);

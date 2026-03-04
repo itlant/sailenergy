@@ -23,12 +23,19 @@
 }
 
 .hero-slider-container {
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 0;
+}
+
+@media (min-width: 992px) {
+  .hero-slider-container {
+    display: block;
+}
 }
 
 .hero-background-carousel,
@@ -106,12 +113,6 @@
   padding: 3rem 0;
 }
 
-@media (max-width: 767px) {
-  .hero-content {
-    padding: 2rem 0;
-  }
-}
-
 .hero-wheelhouse .hero-badge {
   display: inline-block;
   background: rgba(255,255,255,0.1);
@@ -171,22 +172,6 @@
   flex-wrap: wrap;
   gap: 2rem;
   margin-top: 3rem;
-}
-
-@media (max-width: 767px) {
-
-  /* .stat-item {
-    flex: 1 1 calc(33.333% - 1rem);
-    text-align: center;
-  }
-
-  .stat-number {
-    font-size: 1.5rem;
-  }
-
-  .stat-label {
-    font-size: 0.7rem;
-  } */
 }
 
 .stat-item {
@@ -396,7 +381,7 @@
 
 .advantage-card {
   text-align: center;
-  padding: 1.5rem;
+  padding: 1rem;
   background-color: var(--color-white);
   border-radius: var(--border-radius-lg);
   border: 1px solid var(--color-gray-light);
@@ -406,7 +391,7 @@
 
 @media (min-width: 768px) {
   .advantage-card {
-    padding: 2rem;
+    padding: 1.5rem;
   }
 }
 
@@ -606,14 +591,14 @@
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   margin-top: 2rem;
+  grid-auto-flow: dense;
 }
 
 @media (min-width: 768px) {
   .gallery-grid {
-    grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
     margin-top: 3rem;
   }
@@ -625,38 +610,58 @@
   border-radius: var(--border-radius-lg);
   aspect-ratio: 1/1;
   cursor: pointer;
+  width: 100%;
+  height: 100%;
 }
 
+/* Крупный элемент (занимает 2 колонки по ширине и 2 по высоте) */
 .gallery-item-large {
   grid-column: span 2;
   grid-row: span 2;
   aspect-ratio: 1/1;
 }
 
+/* Широкий элемент (занимает 2 колонки, 1 по высоте) */
 .gallery-item-wide {
   grid-column: span 2;
+  grid-row: span 1;
   aspect-ratio: 2/1;
 }
 
+/* Мобильная версия */
 @media (max-width: 767px) {
-  .gallery-item-large,
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .gallery-item-large {
+    grid-column: span 2;
+    grid-row: span 1;
+    aspect-ratio: 2/1;
+  }
+
   .gallery-item-wide {
     grid-column: span 2;
-    aspect-ratio: 1/1;
+    grid-row: span 1;
+    aspect-ratio: 2/1;
   }
 }
 
+/* Изображения */
 .gallery-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform var(--transition-slow);
+  display: block;
 }
 
 .gallery-item:hover img {
   transform: scale(1.1);
 }
 
+/* Оверлей */
 .gallery-overlay {
   position: absolute;
   top: 0;
@@ -669,6 +674,7 @@
   justify-content: center;
   opacity: 0;
   transition: opacity var(--transition-normal);
+  pointer-events: none; /* Чтобы не мешал клику */
 }
 
 .gallery-item:hover .gallery-overlay {
@@ -686,6 +692,7 @@
   transform: scale(1);
 }
 
+/* Lightbox */
 .lightbox {
   position: fixed;
   top: 0;
@@ -722,6 +729,7 @@
   align-items: center;
   justify-content: center;
   transition: all var(--transition-fast);
+  z-index: 1061;
 }
 
 .lightbox-close:hover {
@@ -759,7 +767,7 @@
 
 .event-date {
   text-align: center;
-  min-width: 70px;
+  min-width: 40px;
 }
 
 .event-date .date-day {
@@ -867,7 +875,7 @@
 
 .opportunity-card {
   text-align: center;
-  padding: 2rem;
+  padding: 1rem;
   background-color: var(--color-white);
   border-radius: var(--border-radius-lg);
   border: 1px solid var(--color-gray-light);
@@ -895,6 +903,7 @@
 }
 
 .opportunity-card p {
+  margin-bottom: 0;
   color: var(--color-gray);
   font-size: 0.95rem;
   line-height: 1.5;
@@ -966,12 +975,19 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  flex-shrink: 0;
 }
 
 .testimonial-avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.testimonial-avatar.avatar-fallback {
+  background-color: var(--color-primary-light);
 }
 
 .testimonial-avatar.avatar-fallback img {
@@ -980,8 +996,12 @@
 
 .testimonial-avatar.avatar-fallback .avatar-fallback-icon {
   display: flex !important;
-  font-size: 3rem;
-  color: var(--color-gray);
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 2.5rem;
+  color: var(--color-primary);
   line-height: 1;
 }
 
