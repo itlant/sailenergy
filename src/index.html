@@ -182,7 +182,10 @@
   </section>
 
   <!-- GALLERY -->
-  @@include('html/gallery.html')
+  @@include('html/gallery.html', {
+  "title": "Наши моменты",
+  "description": "Фотографии с регат, тренировок и путешествий"
+  })
 
   <!-- EVENTS -->
   <section class="section upcoming-events bg-light">
@@ -258,7 +261,10 @@
   @@include('html/opportunities.html')
 
   <!-- TESTIMONIALS -->
-  @@include('html/testimonials.html')
+  @@include('html/testimonials.html', {
+  "title": "Отзывы",
+  "description": ""
+  })
 
   <!-- FAQ -->
   @@include('html/faq.html')

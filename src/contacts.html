@@ -2,22 +2,18 @@
 @@include('html/header.html')
 
 <main class="main">
-  <!-- Хлебные крошки -->
-  <nav aria-label="breadcrumb" class="bg-light py-3">
-    <div class="container">
-      <ol class="breadcrumb mb-0">
-        <li class="breadcrumb-item"><a href="index.html"><i class="fas fa-home"></i><span
-              class="visually-hidden">Главная</span></a></li>
-        <li class="breadcrumb-item active">Контакты</li>
-      </ol>
-    </div>
-  </nav>
-
   <!-- Хедер страницы -->
-  <section class="page-header">
+  <section class="page-header contacts-header">
     <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/"><i class="fas fa-home"></i><span
+                class="visually-hidden">Главная</span></a></li>
+          <li class="breadcrumb-item active">Контакты</li>
+        </ol>
+      </nav>
       <h1 class="page-title">Контакты</h1>
-      <div class="page-description">Свяжитесь с нами любым удобным способом</div>
+      <div class="lead">Свяжитесь с нами любым удобным способом</div>
     </div>
   </section>
 
@@ -68,10 +64,10 @@
             <div class="flex-shrink-0 me-3">
               <div class="bg-primary bg-opacity-10 p-3 rounded-circle"
                 style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
-                <i class="fas fa-phone-alt fa-lg text-primary"></i>
+                <i class="fas fa-phone-alt fa-lg text-light"></i>
               </div>
             </div>
-            <div>
+            <div class="d-block">
               <h3 class="h6 fw-bold mb-1">Телефон</h3>
               <a href="tel:+79215882378" class="text-dark text-decoration-none">+7 (921) 588-23-78</a>
               <p class="text-muted small mb-0 mt-1">Пн-Пт: 9:00-18:00 (МСК)</p>
@@ -82,10 +78,10 @@
             <div class="flex-shrink-0 me-3">
               <div class="bg-primary bg-opacity-10 p-3 rounded-circle"
                 style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
-                <i class="fas fa-envelope fa-lg text-primary"></i>
+                <i class="fas fa-envelope fa-lg text-light"></i>
               </div>
             </div>
-            <div>
+            <div class="d-block">
               <h3 class="h6 fw-bold mb-1">Email</h3>
               <a href="mailto:info@sailenergy.ru" class="text-dark text-decoration-none">info@sailenergy.ru</a>
               <p class="text-muted small mb-0 mt-1">Ответим в течение 2 часов</p>
@@ -96,10 +92,10 @@
             <div class="flex-shrink-0 me-3">
               <div class="bg-primary bg-opacity-10 p-3 rounded-circle"
                 style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
-                <i class="fas fa-map-marker-alt fa-lg text-primary"></i>
+                <i class="fas fa-map-marker-alt fa-lg text-light"></i>
               </div>
             </div>
-            <div>
+            <div class="d-block">
               <h3 class="h6 fw-bold mb-1">Адрес</h3>
               <p class="mb-1">Санкт-Петербург</p>
               <p class="text-muted small mb-0">просп. Крузенштерна, 18</p>
@@ -107,7 +103,7 @@
           </div>
 
           <h3 class="h6 fw-bold mb-3 mt-5">Мы в соцсетях</h3>
-          <div>
+          <div class="d-block">
             <a href="#" class="social-link-contact"><i class="fab fa-youtube"></i></a>
             <a href="#" class="social-link-contact"><i class="fab fa-telegram"></i></a>
             <a href="#" class="social-link-contact"><i class="fab fa-vk"></i></a>

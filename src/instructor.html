@@ -2,211 +2,222 @@
 @@include('html/header.html')
 
 <main class="main">
-  <!-- Header -->
-  <section class="instructor-header">
+  <!-- Single Header -->
+  <section class="single-header review-header">
     <div class="container">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="/">Главная</a></li>
-          <li class="breadcrumb-item"><a href="/team/">Команда</a></li>
-          <li class="breadcrumb-item active">Александр Морской</li>
+          <li class="breadcrumb-item"><a href="/"><i class="fas fa-home"></i><span
+                class="visually-hidden">Главная</span></a></li>
+          <li class="breadcrumb-item"><a href="catalog.html">Отзывы</a></li>
+          <li class="breadcrumb-item active">Олег Ушаков</li>
         </ol>
       </nav>
-    </div>
+      <div class="header-card">
+        <div class="instructor-profile">
+          <div class="instructor-avatar">
+            <img src="assets/img/templates/image-placeholder-1200x800.png" alt="Александр Морской" />
+          </div>
+
+          <h1 class="instructor-name">Александр Морской</h1>
+          <div class="instructor-title">Старший инструктор IYT, капитан-наставник</div>
+
+          <div class="instructor-stats">
+            <div class="stat-item">
+              <div class="stat-number">15</div>
+              <div class="stat-label">Лет опыта</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">500+</div>
+              <div class="stat-label">Учеников</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">8</div>
+              <div class="stat-label">Стран</div>
+            </div>
+          </div>
+
+          <!-- <div class="instructor-social">
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div> -->
+
+
+        </div>
+      </div>
+
   </section>
 
   <div class="container">
-    <!-- Profile Card -->
-    <div class="instructor-profile">
-      <div class="instructor-avatar">
-        <img src="assets/img/templates/image-placeholder-1200x800.png" alt="Александр Морской" />
-      </div>
 
-      <h1 class="instructor-name">Александр Морской</h1>
-      <div class="instructor-title">Старший инструктор IYT, капитан-наставник</div>
+    <!-- Tabs -->
+    <div class="instructor-tabs">
+      <button class="instructor-tab active" data-tab="about">О себе</button>
+      <button class="instructor-tab" data-tab="certificates">Сертификаты</button>
+      <button class="instructor-tab" data-tab="reviews">Отзывы</button>
+      <button class="instructor-tab" data-tab="schedule">Расписание</button>
+    </div>
 
-      <div class="instructor-stats">
-        <div class="stat-item">
-          <div class="stat-number">15</div>
-          <div class="stat-label">Лет опыта</div>
+    <!-- About Tab -->
+    <div class="tab-pane active" id="about">
+      <div class="row">
+        <div class="col-lg-8">
+          <h3 class="h5 fw-bold mb-3">Биография</h3>
+          <p>
+            Александр — профессиональный яхтенный капитан с 15-летним опытом. Начал свою карьеру в 2010 году с
+            обучения в Великобритании, затем работал инструктором в Турции, Греции и Хорватии.
+          </p>
+          <p>
+            Специализируется на подготовке шкиперов международного уровня. Более 500 выпускников успешно сдали
+            экзамены IYT и управляют яхтами по всему миру.
+          </p>
+
+          <h4 class="h6 fw-bold mt-4 mb-3">Специализация</h4>
+          <ul>
+            <li>Подготовка к IYT Bareboat Skipper</li>
+            <li>Yachtmaster Coastal и Offshore</li>
+            <li>Ночная навигация и сложные метеоусловия</li>
+            <li>Тактика регат и гоночные стратегии</li>
+          </ul>
         </div>
-        <div class="stat-item">
-          <div class="stat-number">500+</div>
-          <div class="stat-label">Учеников</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">8</div>
-          <div class="stat-label">Стран</div>
-        </div>
-      </div>
-
-      <div class="instructor-social">
-        <a href="#"><i class="fab fa-telegram"></i></a>
-        <a href="#"><i class="fab fa-whatsapp"></i></a>
-        <a href="#"><i class="fab fa-linkedin"></i></a>
-      </div>
-
-      <!-- Tabs -->
-      <div class="instructor-tabs">
-        <button class="instructor-tab active" data-tab="about">О себе</button>
-        <button class="instructor-tab" data-tab="certificates">Сертификаты</button>
-        <button class="instructor-tab" data-tab="reviews">Отзывы</button>
-        <button class="instructor-tab" data-tab="schedule">Расписание</button>
-      </div>
-
-      <!-- About Tab -->
-      <div class="tab-pane active" id="about">
-        <div class="row">
-          <div class="col-lg-8">
-            <h3 class="h5 fw-bold mb-3">Биография</h3>
-            <p>
-              Александр — профессиональный яхтенный капитан с 15-летним опытом. Начал свою карьеру в 2010 году с
-              обучения в Великобритании, затем работал инструктором в Турции, Греции и Хорватии.
-            </p>
-            <p>
-              Специализируется на подготовке шкиперов международного уровня. Более 500 выпускников успешно сдали
-              экзамены IYT и управляют яхтами по всему миру.
-            </p>
-
-            <h4 class="h6 fw-bold mt-4 mb-3">Специализация</h4>
-            <ul>
-              <li>Подготовка к IYT Bareboat Skipper</li>
-              <li>Yachtmaster Coastal и Offshore</li>
-              <li>Ночная навигация и сложные метеоусловия</li>
-              <li>Тактика регат и гоночные стратегии</li>
+        <div class="col-lg-4">
+          <div class="bg-light p-4 rounded-lg">
+            <h4 class="h6 fw-bold mb-3">Языки</h4>
+            <ul class="list-unstyled">
+              <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Русский (родной)</li>
+              <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Английский (IELTS 7.5)</li>
+              <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Турецкий (разговорный)</li>
             </ul>
           </div>
-          <div class="col-lg-4">
-            <div class="bg-light p-4 rounded-lg">
-              <h4 class="h6 fw-bold mb-3">Языки</h4>
-              <ul class="list-unstyled">
-                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Русский (родной)</li>
-                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Английский (IELTS 7.5)</li>
-                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Турецкий (разговорный)</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Certificates Tab -->
-      <div class="tab-pane" id="certificates">
-        <h3 class="h5 fw-bold mb-4">Сертификаты и квалификации</h3>
-
-        <div class="certificates-grid">
-          <div class="certificate-card">
-            <div class="certificate-icon"><i class="fas fa-certificate"></i></div>
-            <div class="certificate-title">IYT Yachtmaster Ocean</div>
-            <div class="certificate-issuer">IYT, 2018</div>
-          </div>
-          <div class="certificate-card">
-            <div class="certificate-icon"><i class="fas fa-certificate"></i></div>
-            <div class="certificate-title">IYT Instructor</div>
-            <div class="certificate-issuer">IYT, 2015</div>
-          </div>
-          <div class="certificate-card">
-            <div class="certificate-icon"><i class="fas fa-certificate"></i></div>
-            <div class="certificate-title">VHF Radio Operator</div>
-            <div class="certificate-issuer">Ofcom, 2014</div>
-          </div>
-          <div class="certificate-card">
-            <div class="certificate-icon"><i class="fas fa-certificate"></i></div>
-            <div class="certificate-title">First Aid at Sea</div>
-            <div class="certificate-issuer">Red Cross, 2023</div>
-          </div>
-        </div>
-
-        <h4 class="h6 fw-bold mt-4 mb-3">Достижения</h4>
-        <ul>
-          <li>Победитель Marmaris Race Week 2019 (класс J/70)</li>
-          <li>Участник Rolex Fastnet Race 2021</li>
-          <li>Финалист Чемпионата России по парусному спорту 2022</li>
-        </ul>
-      </div>
-
-      <!-- Reviews Tab -->
-      <div class="tab-pane" id="reviews">
-        <h3 class="h5 fw-bold mb-4">Отзывы учеников</h3>
-
-        <div class="reviews-list">
-          <div class="review-card">
-            <div class="review-header">
-              <div class="reviewer-avatar">
-                <img src="assets/img/templates/image-placeholder-1200x800.png" alt="Иван" />
-              </div>
-              <div class="reviewer-info">
-                <h4>Иван Петров</h4>
-                <div class="review-date">Май 2025</div>
-              </div>
-              <div class="review-rating">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-            </div>
-            <div class="review-content">
-              Александр — лучший инструктор! За 14 дней курса Bareboat Skipper я не только получил права, но и
-              настоящую уверенность в управлении яхтой. Очень доходчиво объясняет сложные вещи.
-            </div>
-          </div>
-
-          <div class="review-card">
-            <div class="review-header">
-              <div class="reviewer-avatar">
-                <img src="assets/img/templates/image-placeholder-1200x800.png" alt="Мария" />
-              </div>
-              <div class="reviewer-info">
-                <h4>Мария Соколова</h4>
-                <div class="review-date">Август 2025</div>
-              </div>
-              <div class="review-rating">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-              </div>
-            </div>
-            <div class="review-content">
-              Прошла курс Yachtmaster Coastal. Очень довольна! Александр научил ночной навигации и работе в
-              сложных погодных условиях. Отличный преподаватель и просто хороший человек.
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Schedule Tab -->
-      <div class="tab-pane" id="schedule">
-        <h3 class="h5 fw-bold mb-4">Ближайшие курсы с Александром</h3>
-
-        <ul class="schedule-list">
-          <li class="schedule-item">
-            <div class="schedule-date">11-24 апр</div>
-            <div class="schedule-course">Bareboat Skipper Sail</div>
-            <div class="schedule-location">Турция, Фетхие</div>
-            <span class="schedule-status status-available">Есть места</span>
-          </li>
-          <li class="schedule-item">
-            <div class="schedule-date">2-9 май</div>
-            <div class="schedule-course">Open Sailing Week</div>
-            <div class="schedule-location">Турция, Гечек</div>
-            <span class="schedule-status status-full">Мест нет</span>
-          </li>
-          <li class="schedule-item">
-            <div class="schedule-date">15-22 июн</div>
-            <div class="schedule-course">Yachtmaster Coastal</div>
-            <div class="schedule-location">Хорватия, Сплит</div>
-            <span class="schedule-status status-available">4 места</span>
-          </li>
-        </ul>
-
-        <div class="text-center mt-4">
-          <a href="/catalog.html" class="btn btn-primary">Смотреть все курсы</a>
         </div>
       </div>
     </div>
+
+    <!-- Certificates Tab -->
+    <div class="tab-pane" id="certificates">
+      <h3 class="h5 fw-bold mb-4">Сертификаты и квалификации</h3>
+
+      <div class="certificates-grid">
+        <div class="certificate-card">
+          <div class="certificate-icon"><i class="fas fa-certificate"></i></div>
+          <div class="certificate-title">IYT Yachtmaster Ocean</div>
+          <div class="certificate-issuer">IYT, 2018</div>
+        </div>
+        <div class="certificate-card">
+          <div class="certificate-icon"><i class="fas fa-certificate"></i></div>
+          <div class="certificate-title">IYT Instructor</div>
+          <div class="certificate-issuer">IYT, 2015</div>
+        </div>
+        <div class="certificate-card">
+          <div class="certificate-icon"><i class="fas fa-certificate"></i></div>
+          <div class="certificate-title">VHF Radio Operator</div>
+          <div class="certificate-issuer">Ofcom, 2014</div>
+        </div>
+        <div class="certificate-card">
+          <div class="certificate-icon"><i class="fas fa-certificate"></i></div>
+          <div class="certificate-title">First Aid at Sea</div>
+          <div class="certificate-issuer">Red Cross, 2023</div>
+        </div>
+      </div>
+
+      <h4 class="h6 fw-bold mt-4 mb-3">Достижения</h4>
+      <ul>
+        <li>Победитель Marmaris Race Week 2019 (класс J/70)</li>
+        <li>Участник Rolex Fastnet Race 2021</li>
+        <li>Финалист Чемпионата России по парусному спорту 2022</li>
+      </ul>
+    </div>
+
+    <!-- Reviews Tab -->
+    <div class="tab-pane" id="reviews">
+      <h3 class="h5 fw-bold mb-4">Отзывы учеников</h3>
+
+      <div class="reviews-list">
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-avatar">
+              <img src="assets/img/templates/image-placeholder-1200x800.png" alt="Иван" />
+            </div>
+            <div class="reviewer-info">
+              <h4>Иван Петров</h4>
+              <div class="review-date">Май 2025</div>
+            </div>
+            <div class="review-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          <div class="review-content">
+            Александр — лучший инструктор! За 14 дней курса Bareboat Skipper я не только получил права, но и
+            настоящую уверенность в управлении яхтой. Очень доходчиво объясняет сложные вещи.
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-avatar">
+              <img src="assets/img/templates/image-placeholder-1200x800.png" alt="Мария" />
+            </div>
+            <div class="reviewer-info">
+              <h4>Мария Соколова</h4>
+              <div class="review-date">Август 2025</div>
+            </div>
+            <div class="review-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          <div class="review-content">
+            Прошла курс Yachtmaster Coastal. Очень довольна! Александр научил ночной навигации и работе в
+            сложных погодных условиях. Отличный преподаватель и просто хороший человек.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Schedule Tab -->
+    <div class="tab-pane" id="schedule">
+      <h3 class="h5 fw-bold mb-4">Ближайшие курсы с Александром</h3>
+
+      <ul class="schedule-list">
+        <li class="schedule-item">
+          <div class="schedule-date">11-24 апр</div>
+          <div class="schedule-course">Bareboat Skipper Sail</div>
+          <div class="schedule-location">Турция, Фетхие</div>
+          <span class="schedule-status status-available">Есть места</span>
+        </li>
+        <li class="schedule-item">
+          <div class="schedule-date">2-9 май</div>
+          <div class="schedule-course">Open Sailing Week</div>
+          <div class="schedule-location">Турция, Гечек</div>
+          <span class="schedule-status status-full">Мест нет</span>
+        </li>
+        <li class="schedule-item">
+          <div class="schedule-date">15-22 июн</div>
+          <div class="schedule-course">Yachtmaster Coastal</div>
+          <div class="schedule-location">Хорватия, Сплит</div>
+          <span class="schedule-status status-available">4 места</span>
+        </li>
+      </ul>
+
+      <div class="text-center mt-4">
+        <a href="/catalog.html" class="btn btn-primary">Смотреть все курсы</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gallery -->
+  @@include('html/gallery.html', {
+  "title": "Моменты с инструктором",
+  "description": "Фотографии с регат, тренировок и путешествий"
+  })
   </div>
 </main>
 

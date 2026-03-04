@@ -109,7 +109,7 @@
 }
 
 .hero-content {
-  color: white;
+  color: var(--color-white);
   padding: 3rem 0;
 }
 
@@ -118,7 +118,7 @@
   background: rgba(255,255,255,0.1);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255,255,255,0.2);
-  color: white;
+  color: var(--color-white);
   font-weight: 600;
   font-size: 0.9rem;
   padding: 0.5rem 1.5rem;
@@ -127,7 +127,7 @@
 }
 
 .hero-wheelhouse .hero-title {
-  color: white;
+  color: var(--color-white);
   margin-bottom: 1.5rem;
 }
 
@@ -148,11 +148,11 @@
 
 .hero-wheelhouse .btn-outline-light {
   border-color: rgba(255,255,255,0.3);
-  color: white;
+  color: var(--color-white);
 }
 
 .hero-wheelhouse .btn-outline-light:hover {
-  background-color: white;
+  background-color: var(--color-white);
   color: var(--color-dark);
 }
 
@@ -182,7 +182,7 @@
   display: block;
   font-size: 2rem;
   font-weight: 800;
-  color: white;
+  color: var(--color-white);
   line-height: 1;
   margin-bottom: 0.25rem;
 }
@@ -207,7 +207,7 @@
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: var(--border-radius-lg);
     padding: 2rem 1.5rem;
-    color: white;
+    color: var(--color-white);
     box-shadow: 0 20px 40px rgba(0,0,0,0.3);
     max-width: 350px;
     margin-left: auto;
@@ -220,7 +220,7 @@
   font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: 0.25rem;
-  color: white;
+  color: var(--color-white);
 }
 
 .theme-selector-subtitle {
@@ -244,7 +244,7 @@
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: var(--border-radius);
-  color: white;
+  color: var(--color-white);
   text-align: left;
   transition: all var(--transition-normal);
   cursor: pointer;
@@ -277,7 +277,7 @@
 
 .theme-btn.active .theme-icon {
   background: var(--color-primary);
-  color: white;
+  color: var(--color-white);
 }
 
 .theme-info {
@@ -719,7 +719,7 @@
   right: 20px;
   background: rgba(255,255,255,0.1);
   border: none;
-  color: white;
+  color: var(--color-white);
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -915,6 +915,8 @@
 
 .testimonials-carousel .owl-item {
   padding: 0.5rem;
+  display: flex;
+  height: auto; /* Важно для одинаковой высоты */
 }
 
 @media (min-width: 768px) {
@@ -923,18 +925,35 @@
   }
 }
 
+.testimonials-carousel .owl-stage {
+  display: flex;
+  align-items: stretch; /* Растягиваем элементы по высоте */
+}
+
 .testimonial-item {
   background-color: var(--color-white);
   border-radius: var(--border-radius-lg);
   padding: 2rem;
   box-shadow: var(--shadow-md);
   border: 1px solid var(--color-gray-light);
+  height: 100%; /* Занимаем всю высоту родителя */
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow var(--transition-normal), transform var(--transition-normal);
+}
+
+.testimonial-item:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
 }
 
 .testimonial-content {
   position: relative;
   padding-top: 2rem;
   margin-bottom: 2rem;
+  flex: 1 0 auto; /* Растягиваем контент, чтобы занять доступное пространство */
+  display: flex;
+  flex-direction: column;
 }
 
 .testimonial-content i.fa-quote-left {
@@ -944,6 +963,7 @@
   font-size: 2.5rem;
   color: var(--color-primary);
   opacity: 0.2;
+  line-height: 1;
 }
 
 @media (min-width: 992px) {
@@ -957,12 +977,20 @@
   color: var(--color-gray-dark);
   font-style: italic;
   line-height: 1.7;
+  margin-bottom: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* Ограничиваем текст 4 строками */
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
 }
 
 .testimonial-author {
   display: flex;
   align-items: center;
   gap: 1rem;
+  margin-top: auto; /* Прижимаем к низу */
+  flex-shrink: 0; /* Запрещаем сжатие */
 }
 
 .testimonial-avatar {
@@ -1005,35 +1033,94 @@
   line-height: 1;
 }
 
-.testimonial-author h4 {
+.testimonial-author h4,
+.testimonial-author .h6 {
   font-size: 1rem;
   font-weight: 700;
   margin-bottom: 0.25rem;
+  color: var(--color-dark);
 }
 
 .testimonial-author span {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--color-gray);
+  display: block;
+  line-height: 1.3;
 }
 
+/* Dots */
 .owl-dots {
   margin-top: 2rem;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 .owl-dot {
   display: inline-block;
   width: 10px;
   height: 10px;
-  margin: 0 5px;
+  margin: 0;
   background-color: var(--color-gray-light);
   border-radius: 50%;
   transition: all var(--transition-fast);
+  cursor: pointer;
+  border: none;
+  padding: 0;
 }
 
 .owl-dot.active {
   background-color: var(--color-primary);
   transform: scale(1.3);
+}
+
+/* Navigation (опционально) */
+.owl-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.owl-nav button {
+  pointer-events: auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-white) !important;
+  border: 1px solid var(--color-gray-light) !important;
+  color: var(--color-primary) !important;
+  font-size: 1.2rem !important;
+  margin: 0 10px;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.owl-nav button:hover {
+  background: var(--color-primary) !important;
+  color: var(--color-white) !important;
+  border-color: var(--color-primary) !important;
+  transform: scale(1.1);
+}
+
+/* Адаптивность */
+@media (max-width: 767px) {
+  .testimonial-item {
+    padding: 1.5rem;
+  }
+
+  .testimonial-content p {
+    -webkit-line-clamp: 3; /* На мобильных меньше строк */
+  }
+
+  .owl-nav {
+    display: none; /* Скрываем навигацию на мобильных */
+  }
 }
 
 /* ============================================================================
@@ -1356,22 +1443,10 @@
    14. Catalog Page
    ============================================================================ */
 
-.catalog-header {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  color: white;
-  padding: 4rem 0;
-  text-align: center;
-}
-
 .catalog-header h1 {
-  color: white;
+  color: var(--color-white);
   font-size: 3rem;
   margin-bottom: 1rem;
-}
-
-.catalog-header .breadcrumb {
-  justify-content: center;
-  background: transparent;
 }
 
 .catalog-header .breadcrumb-item,
@@ -1380,7 +1455,7 @@
 }
 
 .catalog-header .breadcrumb-item.active {
-  color: white;
+  color: var(--color-white);
 }
 
 .filters-panel {
@@ -1443,7 +1518,7 @@
   border-radius: var(--border-radius);
   font-size: 0.95rem;
   color: var(--color-dark);
-  background-color: white;
+  background-color: var(--color-white);
   cursor: pointer;
 }
 
@@ -1495,6 +1570,13 @@
   gap: 1rem;
 }
 
+.results-stats {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .results-count {
   font-size: 1rem;
   color: var(--color-gray);
@@ -1521,7 +1603,7 @@
   border: 2px solid var(--color-gray-light);
   border-radius: var(--border-radius);
   font-size: 0.9rem;
-  background-color: white;
+  background-color: var(--color-white);
   cursor: pointer;
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236c757d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
@@ -1554,7 +1636,7 @@
 .category-tab.active {
   background: var(--color-primary);
   border-color: var(--color-primary);
-  color: white;
+  color: var(--color-white);
 }
 
 .other-services {
@@ -1588,14 +1670,15 @@
 }
 
 .service-card {
+  padding: 2rem 1.5rem;
+  position: relative;
   background: white;
   border-radius: var(--border-radius-lg);
-  padding: 2rem 1.5rem;
   text-align: center;
   border: 1px solid var(--color-gray-light);
   transition: all var(--transition-normal);
   height: 100%;
-  position: relative;
+  text-decoration: none;
 }
 
 .service-card:hover {
@@ -1730,7 +1813,7 @@
 .page-item.active .page-link {
   background: var(--color-primary);
   border-color: var(--color-primary);
-  color: white;
+  color: var(--color-white);
 }
 
 /* ============================================================================
@@ -1739,12 +1822,12 @@
 
 .product-header {
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  color: white;
+  color: var(--color-white);
   padding: 3rem 0;
 }
 
 .product-header h1 {
-  color: white;
+  color: var(--color-white);
   margin-bottom: 0.5rem;
 }
 
@@ -1971,7 +2054,7 @@
 
 .related-products .owl-nav button:hover {
   background: var(--color-primary);
-  color: white;
+  color: var(--color-white);
 }
 
 .product-accordion {
@@ -2007,7 +2090,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--color-white);
   transition: all var(--transition-fast);
 }
 
@@ -2087,7 +2170,7 @@
 
 .error-search button {
   background: var(--color-primary);
-  color: white;
+  color: var(--color-white);
   border: none;
   padding: 0 2rem;
 }
@@ -2115,7 +2198,7 @@
   align-items: center;
   justify-content: center;
   font-size: 3rem;
-  color: white;
+  color: var(--color-white);
   animation: scaleIn 0.5s ease;
 }
 
@@ -2163,13 +2246,13 @@
 
 .terms-header {
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  color: white;
+  color: var(--color-white);
   padding: 3rem 0;
   text-align: center;
 }
 
 .terms-header h1 {
-  color: white;
+  color: var(--color-white);
   margin-bottom: 0.5rem;
 }
 
@@ -2307,7 +2390,7 @@
   border: 2px solid var(--color-gray-light);
   border-radius: var(--border-radius);
   font-size: 1rem;
-  background-color: white;
+  background-color: var(--color-white);
   cursor: pointer;
 }
 
@@ -2317,12 +2400,12 @@
 
 .account-header {
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  color: white;
+  color: var(--color-white);
   padding: 3rem 0;
 }
 
 .account-header h1 {
-  color: white;
+  color: var(--color-white);
   margin-bottom: 0.5rem;
 }
 
@@ -2346,7 +2429,7 @@
 }
 
 .account-welcome h2 {
-  color: white;
+  color: var(--color-white);
   font-size: 1.5rem;
   margin-bottom: 0.25rem;
 }
@@ -2539,7 +2622,7 @@
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
-  color: white;
+  color: var(--color-white);
 }
 
 .achievement-title {
@@ -2594,13 +2677,13 @@
 
 .payment-header {
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  color: white;
+  color: var(--color-white);
   padding: 3rem 0;
   text-align: center;
 }
 
 .payment-header h1 {
-  color: white;
+  color: var(--color-white);
   margin-bottom: 0.5rem;
 }
 
@@ -2717,7 +2800,7 @@
 
 .pay-button {
   background: var(--color-primary);
-  color: white;
+  color: var(--color-white);
   border: none;
   padding: 1rem;
   font-size: 1.2rem;
@@ -2761,13 +2844,18 @@
 
 .search-header {
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  color: white;
+  color: var(--color-white);
   padding: 3rem 0;
   text-align: center;
 }
 
+.search-header .breadcrumb-item,
+.search-header .breadcrumb-item a {
+  color: var(--color-white);
+}
+
 .search-header h1 {
-  color: white;
+  color: var(--color-white);
   margin-bottom: 1rem;
 }
 
@@ -2793,7 +2881,7 @@
   top: 50%;
   transform: translateY(-50%);
   background: var(--color-primary);
-  color: white;
+  color: var(--color-white);
   border: none;
   width: 50px;
   height: 50px;
@@ -2839,7 +2927,7 @@
 
 .filter-tab.active {
   background: var(--color-primary);
-  color: white;
+  color: var(--color-white);
 }
 
 .search-result-item {
@@ -2947,13 +3035,13 @@
 
 .comparison-header {
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  color: white;
+  color: var(--color-white);
   padding: 3rem 0;
   text-align: center;
 }
 
 .comparison-header h1 {
-  color: white;
+  color: var(--color-white);
   margin-bottom: 0.5rem;
 }
 
@@ -2975,7 +3063,7 @@
   border: 2px solid var(--color-gray-light);
   border-radius: var(--border-radius);
   font-size: 1rem;
-  background-color: white;
+  background-color: var(--color-white);
   cursor: pointer;
 }
 
@@ -3116,12 +3204,12 @@
 
 .instructor-header {
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  color: white;
+  color: var(--color-white);
   padding: 3rem 0;
 }
 
 .instructor-header h1 {
-  color: white;
+  color: var(--color-white);
   margin-bottom: 0.5rem;
 }
 
@@ -3129,7 +3217,7 @@
   background: white;
   border-radius: var(--border-radius-lg);
   padding: 2rem;
-  margin-top: -4rem;
+  /* margin-top: -4rem; */
   box-shadow: var(--shadow-lg);
   position: relative;
   z-index: 10;
@@ -3175,10 +3263,10 @@
 .instructor-tabs {
   display: flex;
   gap: 0.5rem;
-  border-bottom: 2px solid var(--color-gray-light);
+  /* border-bottom: 2px solid var(--color-gray-light); */
   margin-bottom: 2rem;
-  overflow-x: auto;
-  padding-bottom: 0.5rem;
+  /* overflow-x: auto; */
+  /* padding-bottom: 0.5rem; */
 }
 
 .instructor-tab {
@@ -3237,11 +3325,8 @@
   color: var(--color-gray);
 }
 
-.review-header-card {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  border-radius: 20px;
-  padding: 2.5rem;
-  margin-bottom: 2.5rem;
+.review-header .breadcrumb {
+  justify-content: flex-start;
 }
 
 .review-avatar-large {
@@ -3301,13 +3386,6 @@
   border: 1px solid var(--color-gray-light);
   border-radius: var(--border-radius-lg);
   padding: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.review-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
   margin-bottom: 1rem;
 }
 
@@ -3402,12 +3480,12 @@
 
 .yacht-header {
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  color: white;
+  color: var(--color-white);
   padding: 3rem 0;
 }
 
 .yacht-header h1 {
-  color: white;
+  color: var(--color-white);
   margin-bottom: 0.5rem;
 }
 
@@ -3449,7 +3527,7 @@
 
 .calendar-nav button:hover {
   background: var(--color-primary);
-  color: white;
+  color: var(--color-white);
 }
 
 .calendar-weekdays {
@@ -3491,7 +3569,7 @@
 
 .calendar-day:hover:not(.booked) {
   background: var(--color-primary);
-  color: white;
+  color: var(--color-white);
 }
 
 .equipment-list {
@@ -3520,7 +3598,7 @@
 
 .blog-header {
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  color: white;
+  color: var(--color-white);
   padding: 3rem 0;
   text-align: center;
 }
@@ -3533,7 +3611,7 @@
 }
 
 .blog-header h1 {
-  color: white;
+  color: var(--color-white);
   max-width: 800px;
   margin: 0 auto 1rem;
 }
@@ -3801,7 +3879,7 @@
 .faq-category-btn.active {
   background: var(--color-primary);
   border-color: var(--color-primary);
-  color: white;
+  color: var(--color-white);
 }
 
 .faq-section {
@@ -4063,6 +4141,7 @@
 }
 
 .social-link-contact {
+  margin-right: 0.75rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -4070,9 +4149,9 @@
   height: 48px;
   background: rgba(86, 144, 231, 0.1);
   color: #5690e7;
+  text-decoration: none;
   border-radius: 50%;
   transition: all 0.3s ease;
-  margin-right: 0.75rem;
 }
 
 .social-link-contact:hover {

@@ -2,28 +2,24 @@
 @@include('html/header.html')
 
 <main class="main">
-  <!-- Хлебные крошки -->
-  <nav aria-label="breadcrumb" class="bg-light py-3">
+  <!-- Single Header -->
+  <section class="single-header review-header">
     <div class="container">
-      <ol class="breadcrumb mb-0">
-        <li class="breadcrumb-item"><a href="index.html"><i class="fas fa-home"></i><span
-              class="visually-hidden">Главная</span></a></li>
-        <li class="breadcrumb-item"><a href="all-reviews.html">Отзывы</a></li>
-        <li class="breadcrumb-item active">Олег Ушаков</li>
-      </ol>
-    </div>
-  </nav>
-
-  <!-- Заголовок и информация об авторе -->
-  <section class="py-4">
-    <div class="container">
-      <div class="review-header-card">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/"><i class="fas fa-home"></i><span
+                class="visually-hidden">Главная</span></a></li>
+          <li class="breadcrumb-item"><a href="catalog.html">Отзывы</a></li>
+          <li class="breadcrumb-item active">Олег Ушаков</li>
+        </ol>
+      </nav>
+      <div class="header-card">
         <div class="row align-items-center">
           <div class="col-md-auto text-center text-md-start mb-4 mb-md-0">
             <img src="../assets/img/reviews/review-1.jpg" alt="Олег Ушаков" class="review-avatar-large">
           </div>
           <div class="col-md">
-            <h1 class="h2 fw-bold mb-2">Олег Ушаков</h1>
+            <h1 class="single-title">Олег Ушаков</h1>
 
             <div class="d-flex flex-wrap align-items-center mb-3">
               <div class="review-rating-static me-3">
@@ -83,17 +79,6 @@
         <!-- Сайдбар -->
         <div class="col-lg-4">
           <div class="sidebar-sticky">
-            <!-- Рейтинг -->
-            <div class="card border-0 shadow-sm mb-4">
-              <div class="card-body p-4 text-center">
-                <div class="display-1 fw-bold text-primary lh-1">5.0</div>
-                <div class="review-rating-static my-2">
-                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                    class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <p class="small text-muted mb-0">2023 год</p>
-              </div>
-            </div>
 
             <!-- Информация о курсе -->
             <div class="card border-0 shadow-sm mb-4">
@@ -133,71 +118,10 @@
     </div>
   </section>
 
-  <!-- Похожие отзывы -->
-  <section class="py-5 bg-light mt-5">
-    <div class="container">
-      <h2 class="h3 text-center mb-5">Похожие отзывы</h2>
-      <div class="row g-4">
-        <!-- Карточка отзыва 1 -->
-        <div class="col-md-4">
-          <div class="card border-0 shadow-sm h-100">
-            <div class="card-body">
-              <div class="d-flex align-items-center mb-3">
-                <img src="../assets/img/reviews/review-2.jpg" class="rounded-circle me-3" width="60" height="60"
-                  style="object-fit: cover;">
-                <div>
-                  <h4 class="h6 fw-bold mb-1">Мария Хурамшина</h4>
-                  <div class="small text-warning"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                      class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                </div>
-              </div>
-              <p class="small text-muted mb-3">Курс Bareboat Skipper Sail</p>
-              <p class="small">Привет всем! Хочу рассказать о школе, где я проходила курсы IYT...</p>
-              <a href="#" class="btn btn-sm btn-outline-primary mt-2">Читать полностью</a>
-            </div>
-          </div>
-        </div>
-        <!-- Карточка отзыва 2 -->
-        <div class="col-md-4">
-          <div class="card border-0 shadow-sm h-100">
-            <div class="card-body">
-              <div class="d-flex align-items-center mb-3">
-                <img src="../assets/img/reviews/review-3.jpg" class="rounded-circle me-3" width="60" height="60"
-                  style="object-fit: cover;">
-                <div>
-                  <h4 class="h6 fw-bold mb-1">Алексей Иванов</h4>
-                  <div class="small text-warning"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                      class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                </div>
-              </div>
-              <p class="small text-muted mb-3">Курс Yachtmaster Coastal</p>
-              <p class="small">Профессиональный подход, отличная теория и практика...</p>
-              <a href="#" class="btn btn-sm btn-outline-primary mt-2">Читать полностью</a>
-            </div>
-          </div>
-        </div>
-        <!-- Карточка отзыва 3 -->
-        <div class="col-md-4">
-          <div class="card border-0 shadow-sm h-100">
-            <div class="card-body">
-              <div class="d-flex align-items-center mb-3">
-                <img src="../assets/img/reviews/review-4.jpg" class="rounded-circle me-3" width="60" height="60"
-                  style="object-fit: cover;">
-                <div>
-                  <h4 class="h6 fw-bold mb-1">Екатерина Смирнова</h4>
-                  <div class="small text-warning"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                      class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                </div>
-              </div>
-              <p class="small text-muted mb-3">Курс International Crew</p>
-              <p class="small">Отличная подготовка для первого выхода в море...</p>
-              <a href="#" class="btn btn-sm btn-outline-primary mt-2">Читать полностью</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  @@include('html/testimonials.html', {
+  "title": "Похожие отзывы",
+  "description": "Что говорят о нашем обучении"
+  })
 
   <!-- CTA -->
   <section class="cta-section py-5">

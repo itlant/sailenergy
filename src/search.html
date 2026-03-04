@@ -7,13 +7,13 @@
     <div class="container">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="/">Главная</a></li>
-          <li class="breadcrumb-item active">Поиск</li>
+          <li class="breadcrumb-item"><a href="/"><i class="fas fa-home"></i><span
+                class="visually-hidden">Главная</span></a></li>
+          <li class="breadcrumb-item active">Каталог курсов</li>
         </ol>
       </nav>
       <h1>Поиск по сайту</h1>
       <p class="lead">Найдите курсы, регаты, статьи и события</p>
-
       <form class="search-box" action="/search/" method="get">
         <input type="text" name="q" placeholder="Яхтинг, регата, обучение..." value="яхтинг" autofocus />
         <button type="submit"><i class="fas fa-search"></i></button>
@@ -38,7 +38,7 @@
     <div class="results-stats">
       <div class="results-count"><strong>12</strong> результатов по запросу «<strong>яхтинг</strong>»</div>
       <div class="results-sort">
-        <select>
+        <select class="form-select">
           <option>По релевантности</option>
           <option>По дате (новые)</option>
           <option>По дате (старые)</option>
@@ -67,7 +67,7 @@
             <span><i class="fas fa-tag me-1"></i> 2 400 €</span>
           </div>
         </div>
-        <a href="/product.html" class="result-link"></a>
+        <a href="product.html" class="result-link stretched-link"></a>
       </div>
 
       <!-- Result 2 - Regatta -->
@@ -88,7 +88,7 @@
             <span><i class="fas fa-users me-1"></i> 20 команд</span>
           </div>
         </div>
-        <a href="/product.html" class="result-link"></a>
+        <a href="product.html" class="result-link stretched-link"></a>
       </div>
 
       <!-- Result 3 - Article -->
@@ -108,7 +108,7 @@
             <span><i class="far fa-eye me-1"></i> 2.5K просмотров</span>
           </div>
         </div>
-        <a href="/blog-post.html" class="result-link"></a>
+        <a href="blog-post.html" class="result-link stretched-link"></a>
       </div>
 
       <!-- Result 4 - Event -->
@@ -128,7 +128,7 @@
             <span><i class="fas fa-map-marker-alt me-1"></i> Санкт-Петербург</span>
           </div>
         </div>
-        <a href="/product.html" class="result-link"></a>
+        <a href="product.html" class="result-link stretched-link"></a>
       </div>
     </div>
 
