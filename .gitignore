@@ -1,0 +1,40 @@
+# --- Папка сборки (результат работы Gulp) ---
+/dist/
+/build/
+
+# --- Зависимости Node.js ---
+/node_modules/
+/package-lock.json
+
+# --- Файлы операционной системы ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Редакторы кода и IDE ---
+/.vscode/
+/.idea/
+/*.iml
+/.project
+/.settings
+
+# --- Логи и временные файлы ---
+*.log
+*.tmp
+*.cache
+
+# --- DOCKER ---
+.env
+docker-compose.override.yml
+
+# --- PROJECT FILES (WordPress и архивы) ---
+*.sql
+*.zip
+
+# --- ВИДЕО (САМОЕ ВАЖНОЕ ИСПРАВЛЕНИЕ) ---
+# Мы не храним сырые видео в Git, чтобы не раздувать репозиторий.
+# Видео для героя будет загружаться отдельно на хостинг.
+*.mp4
+*.webm
+*.mov
+*.avi

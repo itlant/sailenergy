@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      SAIL ENERGY — Парусный клуб и школа яхтинга в Санкт-Петербурге
+    </title>
+    <meta
+      name="description"
+      content="Обучение яхтингу по стандартам IYT в Турции и СПб. Участие в регатах, корпоративные мероприятия, аренда яхт. Инструкторы — чемпионы России."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://sailenergy.ru/" />
+
+    <!-- Open Graph -->
+    <meta
+      property="og:title"
+      content="SAIL ENERGY — Парусный клуб и школа яхтинга"
+    />
+    <meta
+      property="og:description"
+      content="Обучение, регаты, аренда яхт. Официальный центр IYT в России."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sailenergy.ru/" />
+    <meta
+      property="og:image"
+      content="https://sailenergy.ru/assets/img/sailenergy-template-img-og.jpg"
+    />
+
+    <!-- STYLES INCLUDE -->
+    @@include('html/_styles.html')
+  </head>
+  <body>
+    <!-- HEADER START -->
+    @@include('html/_header.html')
+    <!-- HEADER END -->
+
+    <div class="wrapper d-flex flex-column">
+      <main>
+        <section class="py-5 bg-light min-vh-100 d-flex align-items-center">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-md-8 col-lg-6">
+                <div
+                  class="card border-0 shadow-sm rounded-4 p-5 text-center bg-white"
+                >
+                  <i class="fas fa-times-circle text-danger fs-1 mb-3"></i>
+                  <h2 class="fw-bold text-dark mb-3">Ошибка отправки</h2>
+                  <p class="text-muted mb-4">
+                    Пожалуйста, попробуйте позже или свяжитесь с нами по
+                    телефону.
+                  </p>
+                  <a href="/" class="btn btn-outline-dark rounded-pill px-5"
+                    >Попробовать снова</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- FOOTER START -->
+      @@include('html/_footer.html')
+      <!-- FOOTER END -->
+    </div>
+
+    <!-- MODAL START -->
+    @@include('html/_modal.html')
+    <!-- MODAL END -->
+
+    <!-- SCRIPTS INCLUDE -->
+    @@include('html/_scripts.html')
+  </body>
+</html>

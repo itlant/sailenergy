@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="ru">
+  @@include('html/_head.html', { "title": "Обучение яхтингу: курсы от новичка до капитана | SAIL ENERGY", "description": "Программы обучения яхтингу по стандартам IYT. Курсы «Матрос», «Шкипер» (Bareboat), «Yachtmaster». Интенсивная практика в Турции.", "og_title": "Курсы яхтинга с нуля до профи", "og_description": "Международные лицензии, обучение на яхтах в реальном море."})
+  <body>
+    <!-- HEADER START -->
+    @@include('html/_header.html')
+    <!-- HEADER END -->
+
+    <!-- BREADCRUMBS START -->
+    @@include('html/_breadcrumbs.html')
+    <!-- BREADCRUMBS END -->
+
+    <div class="wrapper d-flex flex-column">
+      <main>
+        <section class="bg-light" id="courses">
+          <div class="container py-5">
+            <div class="row mb-5">
+              <div class="col-lg-8 mx-auto text-center">
+                <h1 class="display-5 fw-bold">
+                  Наши <span class="text-teal">курсы</span>
+                </h1>
+                <p class="lead text-muted">
+                  Выберите программу обучения, которая соответствует вашему
+                  уровню.
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-3">
+                <div
+                  class="card border-0 shadow-sm rounded-4 p-4 sticky-top"
+                  style="top: 100px"
+                >
+                  <h5 class="fw-bold mb-3">Уровень</h5>
+                  <div class="form-check mb-2">
+                    <input
+                      class="form-check-input filter-radio"
+                      type="radio"
+                      name="level"
+                      id="levelAll"
+                      value="all"
+                      checked
+                    />
+                    <label class="form-check-label" for="levelAll">Все</label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input
+                      class="form-check-input filter-radio"
+                      type="radio"
+                      name="level"
+                      id="levelStart"
+                      value="start"
+                    />
+                    <label class="form-check-label" for="levelStart"
+                      >Новичок</label
+                    >
+                  </div>
+                  <div class="form-check mb-2">
+                    <input
+                      class="form-check-input filter-radio"
+                      type="radio"
+                      name="level"
+                      id="levelPro"
+                      value="pro"
+                    />
+                    <label class="form-check-label" for="levelPro"
+                      >Опытный</label
+                    >
+                  </div>
+                  <div class="form-check mb-2">
+                    <input
+                      class="form-check-input filter-radio"
+                      type="radio"
+                      name="level"
+                      id="levelMaster"
+                      value="master"
+                    />
+                    <label class="form-check-label" for="levelMaster"
+                      >Профи (Yachtmaster)</label
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-9">
+                <div class="row g-4" id="courses-grid">
+                  <!-- LEVEL: START (Новичок) -->
+                  <div class="col-md-6 col-lg-4 course-card" data-level="start">
+                    <div
+                      class="card service-card h-100 p-4 shadow-sm text-center border-0 bg-white rounded-4"
+                    >
+                      <div
+                        class="card-body d-flex flex-column align-items-center"
+                      >
+                        <div
+                          class="icon-circle bg-light text-teal mb-4 rounded-circle"
+                          style="width: 70px; height: 70px"
+                        >
+                          <i class="fas fa-anchor fs-2"></i>
+                        </div>
+                        <h3 class="card-title fw-bold">Матрос (Crew)</h3>
+                        <p class="card-text text-muted">
+                          Начальный курс. Изучите основы парусного дела и
+                          научитесь помогать шкиперу.
+                        </p>
+                        <a
+                          href="#"
+                          class="stretched-link text-decoration-none text-teal mt-auto"
+                          >Подробнее &rarr;</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 col-lg-4 course-card" data-level="start">
+                    <div
+                      class="card service-card h-100 p-4 shadow-sm text-center border-0 bg-white rounded-4"
+                    >
+                      <div
+                        class="card-body d-flex flex-column align-items-center"
+                      >
+                        <div
+                          class="icon-circle bg-light text-teal mb-4 rounded-circle"
+                          style="width: 70px; height: 70px"
+                        >
+                          <i class="fas fa-water fs-2"></i>
+                        </div>
+                        <h3 class="card-title fw-bold">Базовый шкипер</h3>
+                        <p class="card-text text-muted">
+                          Короткий интенсив для тех, кто хочет управлять яхтой в
+                          спокойных водах.
+                        </p>
+                        <a
+                          href="#"
+                          class="stretched-link text-decoration-none text-teal mt-auto"
+                          >Подробнее &rarr;</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- LEVEL: PRO (Опытный) -->
+                  <div class="col-md-6 col-lg-4 course-card" data-level="pro">
+                    <div
+                      class="card service-card h-100 p-4 shadow-sm text-center border-0 bg-white rounded-4"
+                    >
+                      <div
+                        class="card-body d-flex flex-column align-items-center"
+                      >
+                        <div
+                          class="icon-circle bg-light text-teal mb-4 rounded-circle"
+                          style="width: 70px; height: 70px"
+                        >
+                          <i class="fas fa-ship fs-2"></i>
+                        </div>
+                        <h3 class="card-title fw-bold">Шкипер (Bareboat)</h3>
+                        <p class="card-text text-muted">
+                          14-дневный интенсив в Турции. Получите международную
+                          лицензию IYT для аренды яхт.
+                        </p>
+                        <a
+                          href="#"
+                          class="stretched-link text-decoration-none text-teal mt-auto"
+                          >Подробнее &rarr;</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 col-lg-4 course-card" data-level="pro">
+                    <div
+                      class="card service-card h-100 p-4 shadow-sm text-center border-0 bg-white rounded-4"
+                    >
+                      <div
+                        class="card-body d-flex flex-column align-items-center"
+                      >
+                        <div
+                          class="icon-circle bg-light text-teal mb-4 rounded-circle"
+                          style="width: 70px; height: 70px"
+                        >
+                          <i class="fas fa-sailboat fs-2"></i>
+                        </div>
+                        <h3 class="card-title fw-bold">
+                          Продвинутая навигация
+                        </h3>
+                        <p class="card-text text-muted">
+                          Освойте прокладку курса, работу с картами и сложные
+                          маневры в порту.
+                        </p>
+                        <a
+                          href="#"
+                          class="stretched-link text-decoration-none text-teal mt-auto"
+                          >Подробнее &rarr;</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- LEVEL: MASTER (Профи / Yachtmaster) -->
+                  <div
+                    class="col-md-6 col-lg-4 course-card"
+                    data-level="master"
+                  >
+                    <div
+                      class="card service-card h-100 p-4 shadow-sm text-center border-0 bg-white rounded-4"
+                    >
+                      <div
+                        class="card-body d-flex flex-column align-items-center"
+                      >
+                        <div
+                          class="icon-circle bg-light text-teal mb-4 rounded-circle"
+                          style="width: 70px; height: 70px"
+                        >
+                          <i class="fas fa-map-signs fs-2"></i>
+                        </div>
+                        <h3 class="card-title fw-bold">Yachtmaster Coastal</h3>
+                        <p class="card-text text-muted">
+                          Профессиональный уровень для опытных капитанов. Ночные
+                          переходы, сложная навигация.
+                        </p>
+                        <a
+                          href="#"
+                          class="stretched-link text-decoration-none text-teal mt-auto"
+                          >Подробнее &rarr;</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="col-md-6 col-lg-4 course-card"
+                    data-level="master"
+                  >
+                    <div
+                      class="card service-card h-100 p-4 shadow-sm text-center border-0 bg-white rounded-4"
+                    >
+                      <div
+                        class="card-body d-flex flex-column align-items-center"
+                      >
+                        <div
+                          class="icon-circle bg-light text-teal mb-4 rounded-circle"
+                          style="width: 70px; height: 70px"
+                        >
+                          <i class="fas fa-star fs-2"></i>
+                        </div>
+                        <h3 class="card-title fw-bold">Гоночный шкипер</h3>
+                        <p class="card-text text-muted">
+                          Тактика на старте, работа с полярами, скоростное
+                          глиссирование для регат.
+                        </p>
+                        <a
+                          href="#"
+                          class="stretched-link text-decoration-none text-teal mt-auto"
+                          >Подробнее &rarr;</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- FOOTER START -->
+      @@include('html/_footer.html')
+      <!-- FOOTER END -->
+    </div>
+
+    <!-- MODAL START -->
+    @@include('html/_modal.html')
+    <!-- MODAL END -->
+
+    <!-- SCRIPTS INCLUDE -->
+    @@include('html/_scripts.html')
+
+    <!-- ЛОГИКА ФИЛЬТРАЦИИ -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const radios = document.querySelectorAll(".filter-radio");
+        const cards = document.querySelectorAll(".course-card");
+
+        radios.forEach((radio) => {
+          radio.addEventListener("change", function () {
+            const selectedLevel = this.value;
+
+            cards.forEach((card) => {
+              // Если выбрано "Все" ИЛИ уровень карточки совпадает с выбранным
+              if (
+                selectedLevel === "all" ||
+                card.dataset.level === selectedLevel
+              ) {
+                card.style.display = "block";
+              } else {
+                card.style.display = "none";
+              }
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

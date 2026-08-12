@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ru">
+  @@include('html/_head.html', { "title": "Календарь парусных регат 2026 | SAIL ENERGY", "description": "Расписание международных и любительских парусных гонок. Гечек (Турция), Мармарис, Сочи, Санкт-Петербург. Участвуйте в регатах SAIL ENERGY.", "og_title": "Регаты и парусные гонки 2026", "og_description": "Примите участие в соревнованиях под парусом. Календарь, локации и регистрация." })
+  <body>
+    <!-- HEADER START -->
+    @@include('html/_header.html')
+    <!-- HEADER END -->
+
+    <!-- BREADCRUMBS START -->
+    @@include('html/_breadcrumbs.html')
+    <!-- BREADCRUMBS END -->
+
+    <div class="wrapper d-flex flex-column">
+      <main>
+        <section class="bg-light pb-5" id="regattas">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-3">
+                <div
+                  class="card border-0 shadow-sm rounded-4 p-4 sticky-top"
+                  style="top: 100px"
+                >
+                  <h5 class="fw-bold mb-3">Фильтр</h5>
+                  <div class="mb-3">
+                    <label class="fw-medium small text-muted mb-1">Месяц</label>
+                    <select class="form-select border-0 bg-light">
+                      <option>Все</option>
+                      <option>Май</option>
+                      <option>Июнь</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label class="fw-medium small text-muted mb-1"
+                      >Страна</label
+                    >
+                    <select class="form-select border-0 bg-light">
+                      <option>Все</option>
+                      <option>Турция</option>
+                      <option>Россия</option>
+                    </select>
+                  </div>
+                  <button class="btn btn-teal w-100">Применить</button>
+                </div>
+              </div>
+
+              <div class="col-lg-9">
+                <div class="row g-4">
+                  <div class="col-md-6 col-lg-4">
+                    <div
+                      class="card regatta-card bg-white text-dark border-0 h-100 shadow-sm rounded-4 overflow-hidden"
+                    >
+                      <div class="position-relative">
+                        <span
+                          class="badge bg-teal text-white position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill"
+                          >Май 2026</span
+                        >
+                        <img
+                          src="./assets/img/sailenergy-template-img-6.jpg"
+                          class="card-img-top"
+                          alt="Open Sailing Week"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div class="card-body p-4 flex-column на card-body">
+                        <h3 class="card-title fw-bold">Open Sailing Week</h3>
+                        <p class="card-text text-muted small mb-0">
+                          Турция. Старт сезона.
+                        </p>
+                        <a
+                          href="#"
+                          class="stretched-link text-teal text-decoration-none mt-auto"
+                          >Подробнее &rarr;</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 col-lg-4">
+                    <div
+                      class="card regatta-card bg-white text-dark border-0 h-100 shadow-sm rounded-4 overflow-hidden"
+                    >
+                      <div class="position-relative">
+                        <span
+                          class="badge bg-teal text-white position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill"
+                          >Май 2026</span
+                        >
+                        <img
+                          src="./assets/img/sailenergy-template-img-6.jpg"
+                          class="card-img-top"
+                          alt="Open Sailing Week"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div class="card-body p-4 flex-column на card-body">
+                        <h3 class="card-title fw-bold">Open Sailing Week</h3>
+                        <p class="card-text text-muted small mb-0">
+                          Турция. Старт сезона.
+                        </p>
+                        <a
+                          href="#"
+                          class="stretched-link text-teal text-decoration-none mt-auto"
+                          >Подробнее &rarr;</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- FOOTER START -->
+      @@include('html/_footer.html')
+      <!-- FOOTER END -->
+    </div>
+
+    <!-- MODAL START -->
+    @@include('html/_modal.html')
+    <!-- MODAL END -->
+
+    <!-- SCRIPTS INCLUDE -->
+    @@include('html/_scripts.html')
+  </body>
+</html>

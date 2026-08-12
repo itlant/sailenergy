@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ru">
+  @@include('html/_head.html', { "title": "Фотогалерея парусных регат и обучения | SAIL ENERGY", "description": "Яркие моменты парусной жизни: регаты в Турции, тренировки в Петербурге, команда SAIL ENERGY. Фото и видео наших путешествий.", "og_title": "Галерея SAIL ENERGY", "og_description": "Море, ветер и паруса в лучших фотографиях." })
+  <body>
+    <!-- HEADER START -->
+    @@include('html/_header.html')
+    <!-- HEADER END -->
+
+    <!-- BREADCRUMBS START -->
+    @@include('html/_breadcrumbs.html')
+    <!-- BREADCRUMBS END -->
+
+    <div class="wrapper d-flex flex-column">
+      <main>
+        <section class="bg-light">
+          <div class="container py-5">
+            <h1 class="display-5 fw-bold text-center mb-4">
+              Галерея <span class="text-teal">событий</span>
+            </h1>
+
+            <div class="d-flex justify-content-center gap-3 mb-5 flex-wrap">
+              <button
+                class="btn btn-outline-teal rounded-pill px-4 active"
+                data-filter="*"
+              >
+                Все
+              </button>
+              <button
+                class="btn btn-outline-teal rounded-pill px-4"
+                data-filter=".regatta"
+              >
+                Регаты
+              </button>
+              <button
+                class="btn btn-outline-teal rounded-pill px-4"
+                data-filter=".training"
+              >
+                Тренировки
+              </button>
+              <button
+                class="btn btn-outline-teal rounded-pill px-4"
+                data-filter=".team"
+              >
+                Команда
+              </button>
+            </div>
+
+            <div class="row g-4 gallery-grid">
+              <!-- Элемент галереи -->
+              <div class="col-md-6 col-lg-4 gallery-item regatta">
+                <div
+                  class="position-relative rounded-4 overflow-hidden shadow-sm"
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1595821714129-db77bd8dc581?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    class="img-fluid w-100"
+                    style="height: 300px; object-fit: cover"
+                    alt="Регата"
+                  />
+                  <div
+                    class="position-absolute bottom-0 start-0 w-100 p-3 text-white bg-dark-custom bg-opacity-75"
+                  >
+                    <p class="mb-0 fw-bold small">Гонка в Гечеке</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-lg-4 gallery-item training">
+                <div
+                  class="position-relative rounded-4 overflow-hidden shadow-sm"
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1535930740097-08a9151c308a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                    class="img-fluid w-100"
+                    style="height: 300px; object-fit: cover"
+                    alt="Тренировка"
+                  />
+                  <div
+                    class="position-absolute bottom-0 start-0 w-100 p-3 text-white bg-dark-custom bg-opacity-75"
+                  >
+                    <p class="mb-0 fw-bold small">Обучение в СПб</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Повторить div для других фото -->
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- FOOTER START -->
+      @@include('html/_footer.html')
+      <!-- FOOTER END -->
+    </div>
+
+    <!-- MODAL START -->
+    @@include('html/_modal.html')
+    <!-- MODAL END -->
+
+    <!-- SCRIPTS INCLUDE -->
+    @@include('html/_scripts.html')
+
+    <script>
+      const btns = document.querySelectorAll("[data-filter]");
+      const items = document.querySelectorAll(".gallery-item");
+
+      btns.forEach((btn) => {
+        btn.addEventListener("click", function () {
+          btns.forEach((b) => b.classList.remove("active"));
+          this.classList.add("active");
+          const filter = this.dataset.filter;
+          items.forEach((item) => {
+            if (
+              filter === "*" ||
+              item.classList.contains(filter.substring(1))
+            ) {
+              item.style.display = "block";
+            } else {
+              item.style.display = "none";
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ru">
+  @@include('html/_head.html', { "title": "Полезное для яхтсменов: статьи, гайды, советы | SAIL ENERGY", "description": "Где брать прогноз погоды? Что взять с собой на яхту? Как выбрать навигационное приложение? Полезные статьи для яхтсменов и капитанов.", "og_title": "Морская азбука и советы от SAIL ENERGY", "og_description": "Всё, что нужно знать перед выходом в море." })
+  <body>
+    <!-- HEADER START -->
+    @@include('html/_header.html')
+    <!-- HEADER END -->
+
+    <!-- BREADCRUMBS START -->
+    @@include('html/_breadcrumbs.html')
+    <!-- BREADCRUMBS END -->
+
+    <div class="wrapper d-flex flex-column">
+      <main>
+        <section class="pb-5 bg-light">
+          <div class="container">
+            <div class="row mb-5">
+              <div class="col-lg-8 mx-auto text-center">
+                <h1 class="display-5 fw-bold">Полезное</h1>
+                <p class="lead text-muted">
+                  Советы, гайды и статьи для яхтсменов.
+                </p>
+              </div>
+            </div>
+            <div class="row g-4">
+              <div class="col-md-6 col-lg-4">
+                <div
+                  class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden"
+                >
+                  <img
+                    src="./assets/img/sailenergy-template-img-1.jpg"
+                    class="card-img-top"
+                    style="height: 200px; object-fit: cover"
+                    alt="Статья"
+                  />
+                  <div class="card-body p-4">
+                    <span class="badge bg-light text-dark border mb-2"
+                      >Навигация</span
+                    >
+                    <h5 class="card-title fw-bold">
+                      Как выбрать навигационное приложение?
+                    </h5>
+                    <p class="card-text text-muted small">
+                      Обзор лучших программ для яхтсменов...
+                    </p>
+                    <a
+                      href="#"
+                      class="stretched-link text-teal text-decoration-none"
+                      >Читать &rarr;</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <!-- Повторить div для других статей -->
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- FOOTER START -->
+      @@include('html/_footer.html')
+      <!-- FOOTER END -->
+    </div>
+
+    <!-- MODAL START -->
+    @@include('html/_modal.html')
+    <!-- MODAL END -->
+
+    <!-- SCRIPTS INCLUDE -->
+    @@include('html/_scripts.html')
+  </body>
+</html>

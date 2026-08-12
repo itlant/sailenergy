@@ -1,0 +1,17 @@
+// --- COLORS ---
+$se-teal: #25b89a;
+$se-dark: #12141c;
+$se-gray: #e5e7eb;
+$se-white: #ffffff;
+$se-black: #333333;
+
+// --- FONTS ---
+$font-heading: 'Montserrat', sans-serif;
+$font-body: 'Roboto', sans-serif;
+
+// --- GLOBAL VARIABLES (CSS Variables) ---
+:root {
+  --se-teal: #{$se-teal};
+  --se-dark: #{$se-dark};
+  --se-gray: #{$se-gray};
+}

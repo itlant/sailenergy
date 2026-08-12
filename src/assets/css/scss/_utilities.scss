@@ -1,0 +1,117 @@
+/* --- RESET & BASE --- */
+body {
+  font-family: $font-body;
+  color: $se-black;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.navbar-brand {
+  font-family: $font-heading;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+}
+
+a {
+  color: inherit;
+  @include transition(all);
+}
+
+/* --- CUSTOM UTILITIES --- */
+.text-teal {
+  color: var(--se-teal);
+}
+.bg-dark-custom {
+  background-color: var(--se-dark);
+}
+.bg-teal {
+  background-color: var(--se-teal);
+}
+.border-teal {
+  border-color: var(--se-teal) !important;
+}
+.hover-teal {
+  &:hover {
+    color: var(--se-teal) !important;
+  }
+}
+
+/* --- BUTTONS BASE --- */
+.btn {
+  font-family: $font-heading;
+}
+
+/* --- POSITION HELPERS --- */
+.position-relative {
+  position: relative;
+}
+.z-1 {
+  z-index: 1;
+}
+.z-2 {
+  z-index: 2;
+}
+.z-3 {
+  z-index: 3;
+}
+
+/* --- SIDEBAR --- */
+.nav-sidebar {
+  .nav-link {
+    color: $se-black !important;
+    &:hover {
+      color: $se-teal !important;
+    }
+    &.active {
+      text-decoration: none !important;
+      background: inherit !important;
+      color: $se-teal !important;
+    }
+    &::after {
+      width: 0 !important;
+    }
+  }
+}
+
+/* --- UTILITIES FOR NEW PAGES --- */
+.object-fit-cover {
+  object-fit: cover;
+}
+.sticky-top {
+  position: sticky;
+  top: 20px;
+  z-index: 10;
+}
+.nav-pills .nav-link.active {
+  background-color: var(--se-teal) !important;
+}
+
+.bg-dark-custom.bg-opacity-75 {
+  background-color: rgba(18, 20, 28, 0.85) !important;
+}
+
+/* --- STICKY FOOTER --- */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 90vh;
+}
+
+main {
+    flex-grow: 1; /* Блок main растягивается на всё свободное место */
+}
+
+.card-body {
+    &.d-flex {
+        &.flex-column {
+            .stretched-link {
+                margin-top: auto; /* Прижимает ссылку к низу, если у карточки есть flex-column */
+            }
+        }
+    }
+}

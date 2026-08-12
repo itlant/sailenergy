@@ -1,0 +1,29 @@
+.btn-teal {
+  color: $se-white;
+  border: 2px solid var(--se-teal);
+  font-weight: 500;
+  background-color: var(--se-teal);
+  @include transition(all);
+  box-shadow: 0 4px 15px rgba($se-teal, 0.3);
+
+  &:hover {
+    background-color: #1ea085;
+    border-color: #1ea085;
+    color: $se-white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba($se-teal, 0.4);
+  }
+}
+
+.btn-outline-teal {
+  border: 2px solid var(--se-teal);
+  color: var(--se-teal);
+  font-weight: 600;
+  @include transition(all);
+
+  &:hover {
+    background-color: var(--se-teal);
+    color: $se-white;
+    transform: translateY(-2px);
+  }
+}

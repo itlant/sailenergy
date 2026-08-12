@@ -1,0 +1,49 @@
+/* --- PAGINATION --- */
+.pagination {
+  gap: 5px;
+
+  .page-link {
+    color: var(--se-teal);
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50% !important;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: var(--se-teal);
+      color: #fff;
+      border-color: var(--se-teal);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba($se-teal, 0.3);
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0.2rem rgba($se-teal, 0.3);
+      background-color: transparent;
+      color: var(--se-teal);
+    }
+  }
+
+  .page-item {
+    &.active .page-link {
+      background-color: var(--se-teal);
+      border-color: var(--se-teal);
+      color: #fff;
+      box-shadow: 0 4px 10px rgba($se-teal, 0.3);
+    }
+
+    &.disabled .page-link {
+      color: rgba(255, 255, 255, 0.3);
+      background-color: transparent;
+      border-color: rgba(255, 255, 255, 0.05);
+      cursor: not-allowed;
+      transform: none;
+    }
+  }
+}
