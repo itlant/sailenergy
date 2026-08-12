@@ -2,6 +2,10 @@
 Theme Name: SAIL ENERGY Theme
 Theme URI: https://sailenergy.ru/
 Author: SAIL ENERGY Team
-Description: Кастомная тема для парусного клуба SAIL ENERGY.
+Author URI: https://sailenergy.ru/
+Description: Кастомная тема для парусного клуба SAIL ENERGY. Поддерживает ACF, кастомные типы записей для регат, курсов и команды.
 Version: 1.0.0
+License: GPL v2 or later
+Text Domain: sailenergy
+Domain Path: /languages
 */

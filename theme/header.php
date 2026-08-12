@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+
+<head>
+  <meta charset="<?php bloginfo('charset'); ?>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <?php wp_head(); ?>
+</head>
+
+<body <?php body_class(); ?>>
+  <?php wp_body_open(); ?>
+
+  <!-- HEADER -->
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark-custom py-3 transition-nav">
+    <div class="container">
+      <!-- LOGO -->
+      <a class="navbar-brand d-flex align-items-center" href="<?php echo home_url(); ?>">
+        <img src="<?php echo sailenergy_get_logo(); ?>" alt="Sail Energy logo" height="40" class="me-2">
+      </a>
+
+      <!-- BURGER -->
+      <button class="navbar-toggler border-0 order-1 ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="d-flex align-items-center order-2 order-lg-3 gap-2 gap-lg-3">
+        <!-- SEARCH BUTTON -->
+        <div class="header__search d-flex align-items-center">
+          <button class="search-toggle btn btn-link text-white-50 p-0" aria-label="Открыть поиск">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="M21 21L16.65 16.65"></path>
+            </svg>
+          </button>
+
+          <form class="search-form" action="<?php echo home_url(); ?>" method="get" role="search">
+            <div class="input-group">
+              <input type="text" class="form-control border-0 shadow-none" placeholder="Поиск по сайту..." name="s" aria-label="Поиск" value="<?php echo get_search_query(); ?>">
+              <button class="btn btn-teal" type="submit" aria-label="Найти">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <path d="M21 21L16.65 16.65"></path>
+                </svg>
+              </button>
+              <button type="button" class="btn btn-outline-light search-close" aria-label="Закрыть поиск">✕</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- SOCIALS -->
+        <?php $socials = sailenergy_get_socials(); ?>
+        <?php if (!empty($socials)): ?>
+          <div class="d-flex gap-2 d-none d-md-flex">
+            <?php if (!empty($socials['vk'])): ?>
+              <a href="<?php echo esc_url($socials['vk']); ?>" class="text-white-50 hover-teal" target="_blank"><i class="fab fa-vk"></i></a>
+            <?php endif; ?>
+            <?php if (!empty($socials['youtube'])): ?>
+              <a href="<?php echo esc_url($socials['youtube']); ?>" class="text-white-50 hover-teal" target="_blank"><i class="fab fa-youtube"></i></a>
+            <?php endif; ?>
+            <?php if (!empty($socials['telegram'])): ?>
+              <a href="<?php echo esc_url($socials['telegram']); ?>" class="text-white-50 hover-teal" target="_blank"><i class="fab fa-telegram"></i></a>
+            <?php endif; ?>
+          </div>
+        <?php endif; ?>
+
+        <!-- BUTTON (Hide for Mobile) -->
+        <button class="btn btn-teal rounded-pill px-4 py-2 btn-header d-none d-lg-block" data-bs-toggle="modal" data-bs-target="#callbackModal">
+          Личный кабинет
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse order-3 order-lg-2" id="navbarNav">
+        <?php
+        wp_nav_menu(array(
+          'theme_location' => 'primary',
+          'container'      => false,
+          'menu_class'     => 'navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-2 mt-3 mt-lg-0',
+          'fallback_cb'    => false,
+          'depth'          => 2,
+          'walker'         => new WP_Bootstrap_Navwalker(),
+        ));
+        ?>
+
+        <!-- BUTTON (Hide for Desktop) -->
+        <button class="btn btn-teal rounded-pill px-4 py-2 w-100 d-lg-none mt-3" data-bs-toggle="modal" data-bs-target="#callbackModal">
+          Личный кабинет
+        </button>
+      </div>
+    </div>
+  </nav>
