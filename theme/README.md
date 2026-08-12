@@ -34,6 +34,8 @@ cd ../project-root/theme
 git add .
 git commit -m "Обновил стили"
 git push
+
+
 ⚠️ Важные нюансы
 Для статики (CSS, JS):
 bash
@@ -46,6 +48,8 @@ npm run dev
 # Gulp компилирует style.scss → style.min.css
 # Автоматически кладёт результат в theme/assets/css/style.min.css
 # Docker видит этот файл → изменения применяются на сайте
+
+
 Для PHP-файлов:
 bash
 # Просто редактируешь файлы в theme/
@@ -53,6 +57,8 @@ bash
 
 # Docker сразу видит новый файл
 # WordPress подхватывает его без перезагрузки
+
+
 🎯 Итог
 text
 Gulp (компилирует) → theme/ → Docker (монтирует) → WordPress (показывает)

@@ -75,9 +75,9 @@
           'theme_location' => 'primary',
           'container'      => false,
           'menu_class'     => 'navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-2 mt-3 mt-lg-0',
-          'fallback_cb'    => false,
-          'depth'          => 2,
+          'fallback_cb'    => 'WP_Bootstrap_Navwalker::fallback',
           'walker'         => new WP_Bootstrap_Navwalker(),
+          'depth'          => 2,
         ));
         ?>
 

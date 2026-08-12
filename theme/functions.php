@@ -222,3 +222,40 @@ function sailenergy_pagination()
     echo '</nav>';
   }
 }
+
+// ============================================
+// ПОДКЛЮЧЕНИЕ NAV WALKER
+// ============================================
+
+require_once get_template_directory() . '/inc/class-wp-bootstrap-navwalker.php';
+
+// ============================================
+// РЕГИСТРАЦИЯ МЕНЮ С ПОДДЕРЖКОЙ WALKER
+// ============================================
+
+add_action('after_setup_theme', function () {
+  register_nav_menus(array(
+    'primary' => __('Главное меню', 'sailenergy'),
+    'footer'  => __('Меню в подвале', 'sailenergy'),
+  ));
+});
+
+// ============================================
+// 6. ДОБАВЛЯЕМ КЛАССЫ ДЛЯ МЕНЮ
+// ============================================
+
+add_filter('nav_menu_link_attributes', function ($atts, $item, $args, $depth) {
+  // Добавляем класс nav-link к ссылкам
+  if (strpos($atts['class'] ?? '', 'dropdown-toggle') === false) {
+    $atts['class'] = isset($atts['class']) ? $atts['class'] . ' nav-link' : 'nav-link';
+  }
+  return $atts;
+}, 10, 4);
+
+// Добавляем класс nav-item к li
+add_filter('nav_menu_css_class', function ($classes, $item, $args, $depth) {
+  if (!in_array('dropdown', $classes)) {
+    $classes[] = 'nav-item';
+  }
+  return $classes;
+}, 10, 4);
