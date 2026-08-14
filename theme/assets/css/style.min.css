@@ -192,6 +192,9 @@ main {
 
 /* --- NAV-LINKS --- */
 .nav-link {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   color: rgba(255, 255, 255, 0.85) !important;
   position: relative;
   font-weight: 500;
@@ -214,6 +217,76 @@ main {
   width: 100%;
 }
 
+/* --- Десктоп (>= 992px) --- */
+@media (min-width: 992px) {
+  .navbar-nav .dropdown {
+    position: relative;
+  }
+  .navbar-nav .dropdown .dropdown-menu {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px);
+    -webkit-transition: opacity 0.3s ease, visibility 0.3s ease, -webkit-transform 0.3s ease;
+    transition: opacity 0.3s ease, visibility 0.3s ease, -webkit-transform 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease, -webkit-transform 0.3s ease;
+    -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    padding: 10px 0;
+    border: none;
+    background: #fff;
+    min-width: 220px;
+  }
+  .navbar-nav .dropdown .dropdown-menu .dropdown-item {
+    padding: 8px 24px;
+    font-weight: 500;
+    color: #333;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+  }
+  .navbar-nav .dropdown .dropdown-menu .dropdown-item:hover {
+    background-color: var(--se-teal);
+    color: #fff;
+  }
+  .navbar-nav .dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+/* --- Мобильные устройства (< 992px) --- */
+@media (max-width: 991.98px) {
+  .navbar-nav .dropdown .dropdown-menu {
+    display: none;
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: none;
+    transform: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 5px 0;
+    border: none;
+  }
+  .navbar-nav .dropdown .dropdown-menu.show {
+    display: block;
+  }
+  .navbar-nav .dropdown .dropdown-menu .dropdown-item {
+    color: rgba(255, 255, 255, 0.8);
+    padding: 8px 24px 8px 40px;
+  }
+  .navbar-nav .dropdown .dropdown-menu .dropdown-item:hover {
+    color: var(--se-teal);
+    background: transparent;
+  }
+  .navbar-nav .dropdown:hover .dropdown-menu {
+    display: none;
+  }
+}
 /* --- HEADER SHRINK EFFECT --- */
 .navbar-shrink {
   padding-top: 8px !important;

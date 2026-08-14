@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Template Name: Курсы
+ * Template Name: Обучение (лендинг)
  */
 ?>
 
@@ -11,18 +11,15 @@
   <main>
     <?php sailenergy_breadcrumbs(); ?>
 
-    <section class="py-5 bg-light" id="courses">
-      <div class="container py-5">
-        <div class="row mb-5">
-          <div class="col-lg-8 mx-auto text-center">
-            <h1 class="display-5 fw-bold">
-              Наши <span class="text-teal">курсы</span>
-            </h1>
-            <p class="lead text-muted">
-              Выберите программу обучения, которая соответствует вашему уровню.
-            </p>
-          </div>
-        </div>
+    <section class="py-5 bg-light">
+      <div class="container py-3">
+        <h1 class="display-5 fw-bold text-center mb-4">
+          Обучение <span class="text-teal">яхтингу</span>
+        </h1>
+        <p class="text-center text-muted mb-5">
+          Выберите программу, которая соответствует вашему уровню подготовки
+        </p>
+
         <div class="row g-4">
           <?php
           $courses = get_posts(array(
@@ -47,27 +44,19 @@
                     <div class="icon-circle bg-light text-teal mb-4 rounded-circle d-flex align-items-center justify-content-center" style="width: 70px; height: 70px;">
                       <i class="<?php echo esc_attr($icon); ?> fs-2"></i>
                     </div>
-                    <h3 class="card-title fw-bold"><?php echo get_the_title($course); ?></h3>
+                    <h4 class="card-title fw-bold"><?php echo get_the_title($course); ?></h4>
                     <?php if ($level_label) : ?>
                       <span class="badge bg-teal text-white mb-2"><?php echo $level_label; ?></span>
-                    <?php endif; ?>
-                    <?php $duration = get_field('course_duration', $course->ID); ?>
-                    <?php if ($duration) : ?>
-                      <p class="text-muted small">Длительность: <?php echo esc_html($duration); ?></p>
                     <?php endif; ?>
                     <p class="card-text text-muted"><?php echo wp_trim_words(get_the_excerpt($course), 15); ?></p>
                     <a href="<?php echo get_permalink($course); ?>" class="stretched-link text-teal text-decoration-none mt-auto">Подробнее &rarr;</a>
                   </div>
                 </div>
               </div>
-            <?php
+          <?php
             endforeach;
-          else :
-            ?>
-            <div class="col-12 text-center">
-              <p class="text-muted">Курсы будут добавлены в ближайшее время.</p>
-            </div>
-          <?php endif; ?>
+          endif;
+          ?>
         </div>
       </div>
     </section>

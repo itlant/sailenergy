@@ -47,21 +47,9 @@
           </form>
         </div>
 
-        <!-- SOCIALS -->
-        <?php $socials = sailenergy_get_socials(); ?>
-        <?php if (!empty($socials)): ?>
-          <div class="d-flex gap-2 d-none d-md-flex">
-            <?php if (!empty($socials['vk'])): ?>
-              <a href="<?php echo esc_url($socials['vk']); ?>" class="text-white-50 hover-teal" target="_blank"><i class="fab fa-vk"></i></a>
-            <?php endif; ?>
-            <?php if (!empty($socials['youtube'])): ?>
-              <a href="<?php echo esc_url($socials['youtube']); ?>" class="text-white-50 hover-teal" target="_blank"><i class="fab fa-youtube"></i></a>
-            <?php endif; ?>
-            <?php if (!empty($socials['telegram'])): ?>
-              <a href="<?php echo esc_url($socials['telegram']); ?>" class="text-white-50 hover-teal" target="_blank"><i class="fab fa-telegram"></i></a>
-            <?php endif; ?>
-          </div>
-        <?php endif; ?>
+        <!-- SOCIALS START -->
+        <?php get_template_part('template-parts/socials'); ?>
+        <!-- SOCIALS END -->
 
         <!-- BUTTON (Hide for Mobile) -->
         <button class="btn btn-teal rounded-pill px-4 py-2 btn-header d-none d-lg-block" data-bs-toggle="modal" data-bs-target="#callbackModal">
@@ -77,7 +65,7 @@
           'menu_class'     => 'navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-2 mt-3 mt-lg-0',
           'fallback_cb'    => 'WP_Bootstrap_Navwalker::fallback',
           'walker'         => new WP_Bootstrap_Navwalker(),
-          'depth'          => 2,
+          'depth'          => 3,
         ));
         ?>
 

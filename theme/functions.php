@@ -36,13 +36,29 @@ function sailenergy_setup()
   // Поддержка меню
   register_nav_menus(array(
     'primary' => __('Главное меню', 'sailenergy'),
-    'footer'  => __('Меню в подвале', 'sailenergy'),
+    'footer_1'  => __('Меню в подвале Навигация', 'sailenergy'),
+    'footer_2'  => __('Меню в подвале Полезное', 'sailenergy'),
   ));
 
   // Поддержка виджетов
   add_theme_support('widgets');
 }
 add_action('after_setup_theme', 'sailenergy_setup');
+
+// Поддержка подменю через кастомный walker
+add_filter('nav_menu_submenu_css_class', function ($classes, $args, $depth) {
+  $classes[] = 'dropdown-menu';
+  return $classes;
+}, 10, 3);
+
+// Добавляем класс dropdown-item для подпунктов меню
+add_filter('nav_menu_link_attributes', function ($atts, $item, $args, $depth) {
+  // Если это пункт подменю (depth > 0)
+  if ($depth > 0 && strpos($atts['class'] ?? '', 'dropdown-toggle') === false) {
+    $atts['class'] = isset($atts['class']) ? $atts['class'] . ' dropdown-item' : 'dropdown-item';
+  }
+  return $atts;
+}, 10, 4);
 
 // ============================================
 // 2. ПОДКЛЮЧЕНИЕ СТИЛЕЙ И СКРИПТОВ
@@ -53,19 +69,19 @@ function sailenergy_scripts()
   $version = wp_get_theme()->get('Version');
 
   // Стили
-  wp_enqueue_style('sailenergy-style', get_template_directory_uri() . '/assets/css/style.min.css', array(), $version);
   wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Roboto:wght@300;400;500&display=swap', array(), null);
   wp_enqueue_style('fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css', array(), null);
-  wp_enqueue_style('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css', array(), null);
-  wp_enqueue_style('owl-carousel', 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css', array(), null);
-  wp_enqueue_style('owl-theme', 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css', array(), null);
   wp_enqueue_style('aos', 'https://unpkg.com/aos@2.3.1/dist/aos.css', array(), null);
+  wp_enqueue_style('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css', array(), null);
+  wp_enqueue_style('owl-theme', 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css', array(), null);
+  wp_enqueue_style('owl-carousel', 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css', array(), null);
+  wp_enqueue_style('sailenergy-style', get_template_directory_uri() . '/assets/css/style.min.css', array(), $version);
 
   // Скрипты
+  wp_enqueue_script('aos', 'https://unpkg.com/aos@2.3.1/dist/aos.js', array(), null, true);
   wp_enqueue_script('bootstrap-bundle', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js', array(), null, true);
   wp_enqueue_script('jquery', 'https://code.jquery.com/jquery-3.6.0.min.js', array(), null, true);
   wp_enqueue_script('owl-carousel', 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js', array('jquery'), null, true);
-  wp_enqueue_script('aos', 'https://unpkg.com/aos@2.3.1/dist/aos.js', array(), null, true);
   wp_enqueue_script('sailenergy-main', get_template_directory_uri() . '/assets/js/main.min.js', array('jquery', 'aos', 'owl-carousel'), $version, true);
 
   // Локализация для AJAX

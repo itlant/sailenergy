@@ -8,15 +8,9 @@
 
 if (! class_exists('WP_Bootstrap_Navwalker')) {
 
-  /**
-   * WP_Bootstrap_Navwalker class.
-   */
   class WP_Bootstrap_Navwalker extends Walker_Nav_Menu
   {
 
-    /**
-     * Starts the list before the elements are added.
-     */
     public function start_lvl(&$output, $depth = 0, $args = array())
     {
       if (isset($args->item_spacing) && 'discard' === $args->item_spacing) {
@@ -31,13 +25,9 @@ if (! class_exists('WP_Bootstrap_Navwalker')) {
       // Default class to add to <ul>
       $classes = array('dropdown-menu');
 
-      // Add submenu class for Bootstrap
       $output .= $n . $indent . '<ul class="' . implode(' ', $classes) . '">' . $n;
     }
 
-    /**
-     * Starts the element output.
-     */
     public function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0)
     {
       if (isset($args->item_spacing) && 'discard' === $args->item_spacing) {
@@ -61,15 +51,14 @@ if (! class_exists('WP_Bootstrap_Navwalker')) {
         $classes[] = 'dropdown';
       }
 
-      /**
-       * Filters the arguments for a single nav menu item.
-       */
+      // Добавляем nav-item только для верхнего уровня (depth=0)
+      if ($depth === 0) {
+        $classes[] = 'nav-item';
+      }
+
       $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args, $depth));
       $class_names = $class_names ? ' class="' . esc_attr($class_names) . '"' : '';
 
-      /**
-       * Filters the ID applied to a menu item's list item element.
-       */
       $id = apply_filters('nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args, $depth);
       $id = $id ? ' id="' . esc_attr($id) . '"' : '';
 
@@ -81,9 +70,6 @@ if (! class_exists('WP_Bootstrap_Navwalker')) {
       $atts['rel']    = ! empty($item->xfn) ? $item->xfn : '';
       $atts['href']   = ! empty($item->url) ? $item->url : '';
 
-      /**
-       * Filters the HTML attributes applied to a menu item's anchor element.
-       */
       $atts = apply_filters('nav_menu_link_attributes', $atts, $item, $args, $depth);
 
       $attributes = '';
@@ -94,38 +80,32 @@ if (! class_exists('WP_Bootstrap_Navwalker')) {
         }
       }
 
-      /** This filter is documented in wp-includes/post-template.php */
       $title = apply_filters('the_title', $item->title, $item->ID);
-
-      /**
-       * Filters a menu item's title.
-       */
       $title = apply_filters('nav_menu_item_title', $title, $item, $args, $depth);
 
-      // Add dropdown toggle for parent items
+      // Формируем ссылку с правильными классами
+      $link_classes = 'nav-link';
+
       if ($args->has_children) {
-        $item_output  = $args->before;
-        $item_output .= '<a class="nav-link dropdown-toggle" href="#"' . $attributes . ' role="button" data-bs-toggle="dropdown" aria-expanded="false">';
-        $item_output .= $args->link_before . $title . $args->link_after;
-        $item_output .= '</a>';
-        $item_output .= $args->after;
-      } else {
-        $item_output  = $args->before;
-        $item_output .= '<a class="nav-link"' . $attributes . '>';
-        $item_output .= $args->link_before . $title . $args->link_after;
-        $item_output .= '</a>';
-        $item_output .= $args->after;
+        $link_classes .= ' dropdown-toggle';
+      }
+      // Если это подменю (depth > 0), меняем класс на dropdown-item
+      if ($depth > 0) {
+        $link_classes = 'dropdown-item';
+        if ($args->has_children) {
+          $link_classes = 'dropdown-item dropdown-toggle';
+        }
       }
 
-      /**
-       * Filters a menu item's starting output.
-       */
+      $item_output = $args->before;
+      $item_output .= '<a class="' . $link_classes . '"' . $attributes . '>';
+      $item_output .= $args->link_before . $title . $args->link_after;
+      $item_output .= '</a>';
+      $item_output .= $args->after;
+
       $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
     }
 
-    /**
-     * Ends the element output, if needed.
-     */
     public function end_el(&$output, $item, $depth = 0, $args = array())
     {
       if (isset($args->item_spacing) && 'discard' === $args->item_spacing) {
@@ -138,9 +118,6 @@ if (! class_exists('WP_Bootstrap_Navwalker')) {
       $output .= "</li>{$n}";
     }
 
-    /**
-     * Ends the list of after the elements are added.
-     */
     public function end_lvl(&$output, $depth = 0, $args = array())
     {
       if (isset($args->item_spacing) && 'discard' === $args->item_spacing) {
@@ -154,9 +131,6 @@ if (! class_exists('WP_Bootstrap_Navwalker')) {
       $output .= "$indent</ul>{$n}";
     }
 
-    /**
-     * Display array of elements hierarchically.
-     */
     public function display_element($element, &$children_elements, $max_depth, $depth, $args, &$output)
     {
       if (! $element) {
@@ -165,7 +139,6 @@ if (! class_exists('WP_Bootstrap_Navwalker')) {
 
       $id_field = $this->db_fields['id'];
 
-      // Display this element.
       if (is_object($args[0])) {
         $args[0]->has_children = ! empty($children_elements[$element->$id_field]);
       }
@@ -173,13 +146,9 @@ if (! class_exists('WP_Bootstrap_Navwalker')) {
       parent::display_element($element, $children_elements, $max_depth, $depth, $args, $output);
     }
 
-    /**
-     * Menu fallback
-     */
     public static function fallback($args)
     {
       if (current_user_can('edit_theme_options')) {
-        /* translators: %s: link to menu editor */
         $fallback_text = sprintf(
           __('Add a menu to this location. %s', 'sailenergy'),
           '<a href="' . admin_url('nav-menus.php') . '">' . __('Create a menu', 'sailenergy') . '</a>'
@@ -193,7 +162,7 @@ if (! class_exists('WP_Bootstrap_Navwalker')) {
         'menu_class'      => 'navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-2 mt-3 mt-lg-0',
         'fallback_cb'     => false,
         'echo'            => true,
-        'depth'           => 2,
+        'depth'           => 3,
         'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
       );
 
