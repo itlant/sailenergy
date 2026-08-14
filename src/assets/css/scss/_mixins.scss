@@ -3,18 +3,29 @@
   transition: #{$property} #{$duration} #{$ease};
 }
 
-// --- MEDIA QUERIES HELPERS ---
-@mixin respond-to($breakpoint) {
+// --- BREAKPOINTS ---
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+@mixin respond-down($breakpoint) {
   @if $breakpoint == sm {
     @media (max-width: 576px) { @content; }
   }
-  @if $breakpoint == md {
+  @else if $breakpoint == md {
     @media (max-width: 768px) { @content; }
   }
-  @if $breakpoint == lg {
+  @else if $breakpoint == lg {
     @media (max-width: 992px) { @content; }
   }
-  @if $breakpoint == xl {
+  @else if $breakpoint == xl {
     @media (max-width: 1200px) { @content; }
+  }
+  @else {
+    @media (max-width: $breakpoint) { @content; }
   }
 }

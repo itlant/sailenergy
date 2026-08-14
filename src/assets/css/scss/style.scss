@@ -1,11 +1,12 @@
 /* --- IMPORT ALL PARTIALS --- */
-@import 'variables';
-@import 'mixins';
-@import 'utilities';
-@import 'buttons';
-@import 'header';
-@import 'hero';
-@import 'cards';
-@import 'faq';
-@import 'breadcrumbs';
-@import 'pagination';
+@use "variables";
+@use "mixins";
+@use "utilities";
+@use "buttons";
+@use "header";
+@use "hero";
+@use "cards";
+@use "faq";
+@use "team";
+@use "breadcrumbs";
+@use "pagination";

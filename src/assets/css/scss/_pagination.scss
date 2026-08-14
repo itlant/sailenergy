@@ -1,3 +1,6 @@
+@use "variables" as *;
+@use "mixins" as *;
+
 /* --- PAGINATION --- */
 .pagination {
   gap: 5px;

@@ -7,7 +7,10 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateHeaderOffset() {
     if (navbar) {
       const height = navbar.offsetHeight;
-      document.documentElement.style.setProperty("--header-height", height + "px");
+      document.documentElement.style.setProperty(
+        "--header-height",
+        height + "px",
+      );
       document.body.style.paddingTop = height + "px";
     }
   }
@@ -82,6 +85,95 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+/* --- МОБИЛЬНОЕ МЕНЮ: OVERLAY И БЛОКИРОВКА --- */
+document.addEventListener("DOMContentLoaded", function () {
+  const navbarToggler = document.querySelector(".navbar-toggler");
+  const navbarCollapse = document.querySelector(".navbar-collapse");
+  const overlay = document.querySelector(".navbar-overlay");
+  const body = document.body;
+
+  if (!navbarToggler || !navbarCollapse || !overlay) return;
+
+  function toggleMenu(open) {
+    const isOpen =
+      open !== undefined ? open : navbarCollapse.classList.contains("show");
+
+    if (isOpen) {
+      // Открываем меню
+      navbarCollapse.classList.add("show");
+      overlay.classList.add("active");
+      body.classList.add("menu-open");
+      navbarToggler.setAttribute("aria-expanded", "true");
+    } else {
+      // Закрываем меню
+      navbarCollapse.classList.remove("show");
+      overlay.classList.remove("active");
+      body.classList.remove("menu-open");
+      navbarToggler.setAttribute("aria-expanded", "false");
+    }
+  }
+
+  // Клик по бургеру
+  navbarToggler.addEventListener("click", function (e) {
+    e.stopPropagation();
+    const isOpen = navbarCollapse.classList.contains("show");
+    toggleMenu(!isOpen);
+  });
+
+  // Клик по overlay (закрывает меню)
+  overlay.addEventListener("click", function () {
+    toggleMenu(false);
+  });
+
+  // Закрытие по Escape
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      toggleMenu(false);
+    }
+  });
+
+  // Закрытие при клике на ссылку в меню
+  navbarCollapse
+    .querySelectorAll(".nav-link, .dropdown-item, .btn")
+    .forEach(function (link) {
+      link.addEventListener("click", function () {
+        // Не закрываем, если это dropdown-toggle
+        if (!this.classList.contains("dropdown-toggle")) {
+          toggleMenu(false);
+        }
+      });
+    });
+
+  // Обработка resize (закрываем при переходе на десктоп)
+  let resizeTimer;
+  window.addEventListener("resize", function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
+      if (window.innerWidth >= 992) {
+        toggleMenu(false);
+      }
+    }, 250);
+  });
+
+  // Обработка dropdown-toggle на мобильных
+  if (window.innerWidth < 992) {
+    document
+      .querySelectorAll(".navbar-nav .dropdown-toggle")
+      .forEach(function (toggle) {
+        toggle.addEventListener("click", function (e) {
+          e.preventDefault();
+          const parent = this.closest(".dropdown");
+          if (parent) {
+            const menu = parent.querySelector(".dropdown-menu");
+            if (menu) {
+              menu.classList.toggle("show");
+            }
+          }
+        });
+      });
+  }
+});
+
 // AOS
 AOS.init({
   duration: 800,
@@ -98,21 +190,19 @@ jQuery(document).ready(function ($) {
       margin: 20, // Отступ между слайдами
       nav: true, // Стрелки влево/вправо
       dots: true, // Точки внизу
-      smartSpeed: 500, // Скорость анимации
+      smartSpeed: 1200, // Скорость анимации
+      autoplay: true,
+      autoplayTimeout: 3500,
+      autoplayHoverPause: true,
+      stagePadding: 0,
       navText: [
         '<i class="fas fa-chevron-left"></i>',
         '<i class="fas fa-chevron-right"></i>',
       ],
       responsive: {
-        0: {
-          items: 1, // На мобильных - 1 карточка
-        },
-        576: {
-          items: 2, // На планшетах - 2 карточки
-        },
-        992: {
-          items: 4, // На десктопах - 4 карточки
-        },
+        0: { items: 1, stagePadding: 0 },
+        576: { items: 2, stagePadding: 30 },
+        992: { items: 4, stagePadding: 40 },
       },
     });
   }

@@ -1,3 +1,6 @@
+@use "variables" as *;
+@use "mixins" as *;
+
 /* --- ACCORDION (FAQ) --- */
 .accordion-button {
   &:not(.collapsed) {

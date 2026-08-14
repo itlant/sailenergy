@@ -1,3 +1,6 @@
+@use "variables" as *;
+@use "mixins" as *;
+
 /* --- RESET & BASE --- */
 body {
   font-family: $font-body;
@@ -5,7 +8,6 @@ body {
   overflow-x: hidden;
   padding-top: var(--header-height, 76px);
 }
-
 
 body.has-fixed-header {
   padding-top: var(--header-height, 76px);
@@ -16,7 +18,7 @@ html {
 }
 
 main {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 h1,
@@ -111,7 +113,7 @@ a {
 
 /* --- STICKY FOOTER --- */
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 90vh;
 }

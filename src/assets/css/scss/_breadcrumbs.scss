@@ -1,11 +1,8 @@
-.breadcrumb-nav {
-  padding-top: 110px;
-  padding-bottom: 30px;
-  // border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-}
+@use "mixins" as *;
 
 .breadcrumb {
-  padding: 0;
+  margin: 0;
+  padding: 2rem 0;
   background: transparent;
   border-radius: 0;
 
@@ -13,10 +10,10 @@
     font-size: 0.9rem;
     display: flex;
     align-items: center;
+    color: var(--se-dark);
 
     a {
       color: inherit;
-      // text-decoration: none;
       transition: color 0.3s ease;
 
       &:hover {
@@ -29,7 +26,6 @@
       font-weight: 500;
     }
 
-    /* Кастомный разделитель (Иконка Chevron) через SVG */
     + .breadcrumb-item::before {
       content: "";
       display: inline-block;
@@ -44,8 +40,8 @@
   }
 }
 
-@include respond-to(lg) {
+@include respond-down(lg) {
   .breadcrumb-nav {
     // padding-top: 110px;
-}
+  }
 }
