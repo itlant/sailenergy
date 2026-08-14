@@ -1,18 +1,44 @@
-/* --- HEADER SCROLL EFFECT --- */
+/* --- HEADER SCROLL EFFECT & OFFSET --- */
 document.addEventListener("DOMContentLoaded", function () {
   const navbar = document.querySelector(".navbar");
+  let ticking = false;
 
-  // Проверяем, существует ли хедер на странице
+  // Функция обновления отступа
+  function updateHeaderOffset() {
+    if (navbar) {
+      const height = navbar.offsetHeight;
+      document.documentElement.style.setProperty("--header-height", height + "px");
+      document.body.style.paddingTop = height + "px";
+    }
+  }
+
+  // Устанавливаем при загрузке
+  updateHeaderOffset();
+
+  // Эффект сжатия хедера
   if (navbar) {
     window.addEventListener("scroll", function () {
-      // Если прокрутили больше чем на 50 пикселей вниз
-      if (window.scrollY > 50) {
-        navbar.classList.add("navbar-shrink");
-      } else {
-        navbar.classList.remove("navbar-shrink");
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          if (window.scrollY > 50) {
+            navbar.classList.add("navbar-shrink");
+          } else {
+            navbar.classList.remove("navbar-shrink");
+          }
+          updateHeaderOffset();
+          ticking = false;
+        });
+        ticking = true;
       }
     });
   }
+
+  // Обновляем при изменении размера окна
+  let resizeTimer;
+  window.addEventListener("resize", function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(updateHeaderOffset, 200);
+  });
 });
 
 /* --- SEARCH TOGGLE --- */

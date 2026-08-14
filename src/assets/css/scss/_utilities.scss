@@ -3,6 +3,20 @@ body {
   font-family: $font-body;
   color: $se-black;
   overflow-x: hidden;
+  padding-top: var(--header-height, 76px);
+}
+
+
+body.has-fixed-header {
+  padding-top: var(--header-height, 76px);
+}
+
+html {
+  scroll-padding-top: var(--header-height, 76px);
+}
+
+main {
+    flex-grow: 1;
 }
 
 h1,
@@ -100,18 +114,4 @@ a {
     display: flex;
     flex-direction: column;
     min-height: 90vh;
-}
-
-main {
-    flex-grow: 1; /* Блок main растягивается на всё свободное место */
-}
-
-.card-body {
-    &.d-flex {
-        &.flex-column {
-            .stretched-link {
-                margin-top: auto; /* Прижимает ссылку к низу, если у карточки есть flex-column */
-            }
-        }
-    }
 }

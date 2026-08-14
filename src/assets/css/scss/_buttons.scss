@@ -10,7 +10,6 @@
     background-color: #1ea085;
     border-color: #1ea085;
     color: $se-white;
-    transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba($se-teal, 0.4);
   }
 }
@@ -24,6 +23,6 @@
   &:hover {
     background-color: var(--se-teal);
     color: $se-white;
-    transform: translateY(-2px);
+    // transform: translateY(-2px);
   }
 }

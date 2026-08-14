@@ -1,154 +1,165 @@
-<nav
-  class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark-custom py-3 transition-nav"
->
-  <div class="container">
-    <!-- LOGO -->
-    <a class="navbar-brand d-flex align-items-center" href="/">
-      <img
-        src="./assets/img/sailenergy-logo-web-dark.svg"
-        alt="Sail Energy logo"
-        height="40"
-        class="me-2"
-      />
-    </a>
+<header class="header header-main">
+  <nav
+    class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark-custom py-3 transition-nav"
+  >
+    <div class="container">
+      <!-- LOGO -->
+      <a class="navbar-brand d-flex align-items-center" href="/">
+        <img
+          src="./assets/img/sailenergy-logo-web-dark.svg"
+          alt="Sail Energy logo"
+          height="40"
+          class="me-2"
+        />
+      </a>
 
-    <!-- BURGER -->
-    <button
-      class="navbar-toggler border-0 order-1 ms-auto"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
+      <!-- BURGER -->
+      <button
+        class="navbar-toggler border-0 order-1 ms-auto"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <div class="d-flex align-items-center order-2 order-lg-3 gap-2 gap-lg-3">
-      <!-- SEARCH BUTTON -->
-      <div class="header__search d-flex align-items-center">
-        <button
-          class="search-toggle btn btn-link text-white-50 p-0"
-          aria-label="Открыть поиск"
-        >
-          <svg
-            width="22"
-            height="22"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+      <!-- SEARCH & SOCIALS & BUTTON (Hide for Mobile) -->
+      <div
+        class="d-none d-lg-flex align-items-center order-lg-3 gap-lg-4 ms-4"
+      >
+        <!-- SEARCH BUTTON -->
+        <div class="header__search d-flex align-items-center">
+          <button
+            class="search-toggle btn btn-link text-white-50 p-0"
+            aria-label="Открыть поиск"
           >
-            <circle cx="11" cy="11" r="8"></circle>
-            <path d="M21 21L16.65 16.65"></path>
-          </svg>
-        </button>
-
-        <form
-          class="search-form"
-          action="https://sailenergy.ru/"
-          method="get"
-          role="search"
-        >
-          <div class="input-group">
-            <input
-              type="text"
-              class="form-control border-0 shadow-none"
-              placeholder="Поиск по сайту..."
-              name="s"
-              aria-label="Поиск"
-            />
-            <button class="btn btn-teal" type="submit" aria-label="Найти">
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-              >
-                <circle cx="11" cy="11" r="8"></circle>
-                <path d="M21 21L16.65 16.65"></path>
-              </svg>
-            </button>
-            <button
-              type="button"
-              class="btn btn-outline-light search-close"
-              aria-label="Закрыть поиск"
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
             >
-              ✕
-            </button>
-          </div>
-        </form>
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="M21 21L16.65 16.65"></path>
+            </svg>
+          </button>
+
+          <form
+            class="search-form"
+            action="https://sailenergy.ru/"
+            method="get"
+            role="search"
+          >
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control border-0 shadow-none"
+                placeholder="Поиск по сайту..."
+                name="s"
+                aria-label="Поиск"
+              />
+              <button class="btn btn-teal" type="submit" aria-label="Найти">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                >
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <path d="M21 21L16.65 16.65"></path>
+                </svg>
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline-light search-close"
+                aria-label="Закрыть поиск"
+              >
+                ✕
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- SOCIALS START -->
+        <div
+          class="header__socials d-flex align-items-center text-white-50 fs-4"
+        >
+          @@include('_socials.html')
+        </div>
+        <!-- SOCIALS END -->
+
+        <!-- BUTTON (Hide for Mobile) -->
+        <button
+          class="btn btn-teal rounded-pill px-4 py-2 btn-header"
+          data-bs-toggle="modal"
+          data-bs-target="#callbackModal"
+        >
+          Личный кабинет
+        </button>
       </div>
 
-      <!-- SOCIALS START -->
-      @@include('_socials.html')
-      <!-- SOCIALS END -->
-
-      <!-- BUTTON (Hide for Mobile) -->
-      <button
-        class="btn btn-teal rounded-pill px-4 py-2 btn-header d-none d-lg-block"
-        data-bs-toggle="modal"
-        data-bs-target="#callbackModal"
-      >
-        Личный кабинет
-      </button>
+      <div class="collapse navbar-collapse order-3 order-lg-2" id="navbarNav">
+        <ul
+          class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-2 mt-3 mt-lg-0"
+        >
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle fw-medium"
+              href="/courses.html"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Обучение
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="/courses.html">Все курсы</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/courses.html#crew"
+                  >Матрос (Crew)</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="/courses.html#skipper"
+                  >Шкипер (Bareboat)</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="/courses.html#yachtmaster"
+                  >Yachtmaster</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-medium" href="/regattas.html">Регаты</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-medium" href="/club.html">Клуб</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-medium" href="/team.html">Команда</a>
+          </li>
+          <!-- BUTTON (Hide for Desktop) -->
+          <li class="nav-item d-lg-none mt-3">
+            <button
+              class="btn btn-teal rounded-pill px-4 py-2 w-100"
+              data-bs-toggle="modal"
+              data-bs-target="#callbackModal"
+            >
+              Личный кабинет
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
-
-    <div class="collapse navbar-collapse order-3 order-lg-2" id="navbarNav">
-      <ul
-        class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-2 mt-3 mt-lg-0"
-      >
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle fw-medium"
-            href="/courses.html"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Обучение
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/courses.html">Все курсы</a></li>
-            <li>
-              <a class="dropdown-item" href="/courses.html#crew"
-                >Матрос (Crew)</a
-              >
-            </li>
-            <li>
-              <a class="dropdown-item" href="/courses.html#skipper"
-                >Шкипер (Bareboat)</a
-              >
-            </li>
-            <li>
-              <a class="dropdown-item" href="/courses.html#yachtmaster"
-                >Yachtmaster</a
-              >
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link fw-medium" href="/regattas.html">Регаты</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link fw-medium" href="/club.html">Клуб</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link fw-medium" href="/team.html">Команда</a>
-        </li>
-        <!-- BUTTON (Hide for Desktop) -->
-        <li class="nav-item d-lg-none mt-3">
-          <button
-            class="btn btn-teal rounded-pill px-4 py-2 w-100"
-            data-bs-toggle="modal"
-            data-bs-target="#callbackModal"
-          >
-            Личный кабинет
-          </button>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+  </nav>
+</header>

@@ -4,6 +4,7 @@
   --se-teal: #25b89a;
   --se-dark: #12141c;
   --se-gray: #e5e7eb;
+  --header-height: 76px;
 }
 
 /* --- RESET & BASE --- */
@@ -11,6 +12,21 @@ body {
   font-family: "Roboto", sans-serif;
   color: #333333;
   overflow-x: hidden;
+  padding-top: var(--header-height, 76px);
+}
+
+body.has-fixed-header {
+  padding-top: var(--header-height, 76px);
+}
+
+html {
+  scroll-padding-top: var(--header-height, 76px);
+}
+
+main {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
 }
 
 h1,
@@ -122,16 +138,6 @@ a {
   min-height: 90vh;
 }
 
-main {
-  -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1; /* Блок main растягивается на всё свободное место */
-}
-
-.card-body.d-flex.flex-column .stretched-link {
-  margin-top: auto; /* Прижимает ссылку к низу, если у карточки есть flex-column */
-}
-
 .btn-teal {
   color: #ffffff;
   border: 2px solid var(--se-teal);
@@ -146,8 +152,6 @@ main {
   background-color: #1ea085;
   border-color: #1ea085;
   color: #ffffff;
-  -webkit-transform: translateY(-2px);
-  transform: translateY(-2px);
   -webkit-box-shadow: 0 6px 20px rgba(37, 184, 154, 0.4);
   box-shadow: 0 6px 20px rgba(37, 184, 154, 0.4);
 }
@@ -162,8 +166,6 @@ main {
 .btn-outline-teal:hover {
   background-color: var(--se-teal);
   color: #ffffff;
-  -webkit-transform: translateY(-2px);
-  transform: translateY(-2px);
 }
 
 /* --- NAVBAR --- */
@@ -192,32 +194,15 @@ main {
 
 /* --- NAV-LINKS --- */
 .nav-link {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
   color: rgba(255, 255, 255, 0.85) !important;
   position: relative;
   font-weight: 500;
+  padding-bottom: 4px;
 }
-.nav-link:hover, .nav-link.active {
-  color: #fff !important;
-}
-.nav-link::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--se-teal);
-  -webkit-transition: width 0.3s ease;
-  transition: width 0.3s ease;
-}
-.nav-link:hover::after, .nav-link.active::after {
-  width: 100%;
+.nav-link:hover, .nav-link.active, .active .nav-link {
+  color: var(--se-teal) !important;
 }
 
-/* --- Десктоп (>= 992px) --- */
 @media (min-width: 992px) {
   .navbar-nav .dropdown {
     position: relative;
@@ -258,7 +243,6 @@ main {
     transform: translateY(0);
   }
 }
-/* --- Мобильные устройства (< 992px) --- */
 @media (max-width: 991.98px) {
   .navbar-nav .dropdown .dropdown-menu {
     display: none;
@@ -493,46 +477,12 @@ main {
     }
   }
 }
-.social-icons {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 15px;
-}
-
+/* --- MOBILE SEARCH --- */
 @media (max-width: 768px) {
-  .social-icons {
+  .header__socials {
     display: none;
   }
 }
-.social-icons__link {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 12px;
-  font-weight: 600;
-  text-decoration: none;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-}
-.social-icons__link:hover {
-  border-color: var(--se-teal);
-  color: var(--se-teal);
-  -webkit-transform: translateY(-2px);
-  transform: translateY(-2px);
-}
-
 /* --- HERO --- */
 .hero-section {
   height: 100vh;
@@ -584,9 +534,16 @@ main {
 }
 
 /* --- CARDS --- */
+.card-body.d-flex.flex-column .stretched-link {
+  margin-top: auto;
+}
+
 .service-card,
 .instructor-card,
 .regatta-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), -webkit-box-shadow 0.3s ease;
   transition: -webkit-transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), -webkit-box-shadow 0.3s ease;
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;

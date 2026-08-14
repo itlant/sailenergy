@@ -19,38 +19,22 @@
 
 /* --- NAV-LINKS --- */
 .nav-link {
-  width: fit-content; // For Underline Hover
   color: rgba(255, 255, 255, 0.85) !important;
   position: relative;
   font-weight: 500;
+  padding-bottom: 4px;
 
   &:hover,
-  &.active {
-    color: #fff !important;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--se-teal);
-    @include transition(width);
-  }
-
-  &:hover::after,
-  &.active::after {
-    width: 100%;
+  &.active,
+  .active & {
+    color: var(--se-teal)!important;
   }
 }
 
 // ============================================
-// DROPDOWN HOVER (открытие по наведению)
+// DROPDOWN HOVER
 // ============================================
 
-/* --- Десктоп (>= 992px) --- */
 @media (min-width: 992px) {
   .navbar-nav {
     .dropdown {
@@ -94,7 +78,6 @@
   }
 }
 
-/* --- Мобильные устройства (< 992px) --- */
 @media (max-width: 991.98px) {
   .navbar-nav {
     .dropdown {
@@ -302,34 +285,35 @@
   }
 }
 
-.social-icons {
-  display: flex;
-  gap: 15px;
-}
+/* --- MOBILE SEARCH --- */
+// .social-icons {
+//   display: flex;
+//   gap: 15px;
+// }
 
 @include respond-to(md) {
-  .social-icons {
+  .header__socials {
     display: none;
   }
 }
 
-.social-icons__link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 12px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
+// .social-icons__link {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   width: 40px;
+//   height: 40px;
+//   border: 1px solid rgba(255, 255, 255, 0.1);
+//   border-radius: 50%;
+//   color: rgba(255, 255, 255, 0.6);
+//   font-size: 12px;
+//   font-weight: 600;
+//   text-decoration: none;
+//   transition: all 0.3s ease;
 
-  &:hover {
-    border-color: var(--se-teal);
-    color: var(--se-teal);
-    transform: translateY(-2px);
-  }
-}
+//   &:hover {
+//     border-color: var(--se-teal);
+//     color: var(--se-teal);
+//     transform: translateY(-2px);
+//   }
+// }
