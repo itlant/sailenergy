@@ -34,7 +34,7 @@
                 <?php if ($level_label) : ?>
                   <span class="badge bg-teal text-white mb-2"><?php echo $level_label; ?></span>
                 <?php endif; ?>
-                <p class="card-text text-muted"><?php echo wp_trim_words(get_the_excerpt($course), 15); ?></p>
+                <p class="card-text text-muted"><?php echo wp_trim_words(get_the_excerpt($course), 18); ?></p>
                 <a href="<?php echo get_permalink($course); ?>" class="stretched-link text-teal text-decoration-none mt-auto">Подробнее &rarr;</a>
               </div>
             </div>

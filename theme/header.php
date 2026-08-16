@@ -10,21 +10,17 @@
 <body <?php body_class(); ?>>
   <?php wp_body_open(); ?>
 
-  <!-- HEADER -->
   <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark-custom py-3 transition-nav">
     <div class="container">
-      <!-- LOGO -->
       <a class="navbar-brand d-flex align-items-center" href="<?php echo home_url(); ?>">
         <img src="<?php echo sailenergy_get_logo(); ?>" alt="Sail Energy logo" height="40" class="me-2">
       </a>
 
-      <!-- BURGER -->
       <button class="navbar-toggler border-0 order-1 ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="d-flex align-items-center order-2 order-lg-3 gap-2 gap-lg-3">
-        <!-- SEARCH BUTTON -->
+      <div class="d-none d-lg-flex align-items-center order-lg-3 gap-lg-4 ms-4">
         <div class="header__search d-flex align-items-center">
           <button class="search-toggle btn btn-link text-white-50 p-0" aria-label="Открыть поиск">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -47,11 +43,8 @@
           </form>
         </div>
 
-        <!-- SOCIALS START -->
         <?php get_template_part('template-parts/socials'); ?>
-        <!-- SOCIALS END -->
 
-        <!-- BUTTON (Hide for Mobile) -->
         <button class="btn btn-teal rounded-pill px-4 py-2 btn-header d-none d-lg-block" data-bs-toggle="modal" data-bs-target="#callbackModal">
           Личный кабинет
         </button>
@@ -69,7 +62,6 @@
         ));
         ?>
 
-        <!-- BUTTON (Hide for Desktop) -->
         <button class="btn btn-teal rounded-pill px-4 py-2 w-100 d-lg-none mt-3" data-bs-toggle="modal" data-bs-target="#callbackModal">
           Личный кабинет
         </button>

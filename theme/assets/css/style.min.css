@@ -34,8 +34,8 @@ h1,
 h2,
 h3,
 h4,
-h5,
-.navbar-brand {
+h5 {
+  margin-bottom: 1.25rem;
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   text-transform: uppercase;
@@ -606,6 +606,9 @@ a {
   object-fit: cover;
   z-index: 0;
 }
+.hero-section .hero-video.show {
+  opacity: 1 !important;
+}
 .hero-section .hero-overlay {
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(18, 20, 28, 0.6)), to(rgba(18, 20, 28, 0.8))) !important;
   background: linear-gradient(rgba(18, 20, 28, 0.6), rgba(18, 20, 28, 0.8)) !important;
@@ -672,6 +675,29 @@ a {
 
 .card-title {
   font-size: 1.15rem;
+  line-height: 1.5;
+}
+
+.team-carousel .instructor-card {
+  min-height: 400px;
+}
+.team-carousel .instructor-card .card-body {
+  min-height: 150px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+.team-carousel .instructor-card .card-text {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
 }
 
 /* --- IMPORT ALL PARTIALS --- */
@@ -691,17 +717,13 @@ a {
   background-size: 1rem;
 }
 
-/* --- OWL CAROUSEL CUSTOMIZATION --- */
-.team-carousel {
-  /* --- MOBILE STYLES --- */
+.team-carousel .owl-item {
+  padding-bottom: 1.5rem;
 }
 @media (max-width: 992px) {
   .team-carousel .owl-item {
-    padding-bottom: 1.5rem;
+    padding-bottom: 1rem;
   }
-}
-.team-carousel {
-  /* Стилизация кнопок влево/вправо */
 }
 .team-carousel .owl-nav {
   margin-top: 20px !important;
@@ -738,9 +760,6 @@ a {
   background-color: #1ea085 !important;
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
-}
-.team-carousel {
-  /* Стилизация точек (пагинация) */
 }
 .team-carousel .owl-dots {
   margin-top: 15px;
@@ -860,5 +879,10 @@ a {
   cursor: not-allowed;
   -webkit-transform: none;
   transform: none;
+}
+
+/* --- IMPORT ALL PARTIALS --- */
+.modal-title {
+  letter-spacing: 0.1rem;
 }
 /*# sourceMappingURL=style.min.css.map */

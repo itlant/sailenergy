@@ -37,5 +37,22 @@
 
 .card-title {
   font-size: 1.15rem;
+  line-height: 1.5;
 }
 
+.team-carousel {
+  .instructor-card {
+    min-height: 400px;
+
+    .card-body {
+      min-height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-text {
+      flex: 1;
+    }
+  }
+}

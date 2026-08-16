@@ -7,7 +7,7 @@
     <section class="py-5 bg-light">
       <div class="container py-3">
         <h1 class="display-5 fw-bold mb-4 text-center">
-          Все <span class="text-teal">курсы</span>
+          Все <span class="text-teal">регаты</span>
         </h1>
 
         <?php if (have_posts()) : ?>
@@ -30,7 +30,7 @@
           </div>
           <?php sailenergy_pagination(); ?>
         <?php else : ?>
-          <p class="text-center text-muted">Курсы будут добавлены в ближайшее время.</p>
+          <p class="text-center text-muted">Регаты будут добавлены в ближайшее время.</p>
         <?php endif; ?>
       </div>
     </section>

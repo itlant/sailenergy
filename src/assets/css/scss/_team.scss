@@ -1,15 +1,16 @@
 @use "mixins" as *;
 
-/* --- OWL CAROUSEL CUSTOMIZATION --- */
 .team-carousel {
-  /* --- MOBILE STYLES --- */
+  .owl-item {
+    padding-bottom: 1.5rem;
+  }
+
   @include respond-down(lg) {
     .owl-item {
-      padding-bottom: 1.5rem;
+      padding-bottom: 1rem;
     }
   }
 
-  /* Стилизация кнопок влево/вправо */
   .owl-nav {
     margin-top: 20px !important;
     display: flex;
@@ -36,7 +37,6 @@
     }
   }
 
-  /* Стилизация точек (пагинация) */
   .owl-dots {
     margin-top: 15px;
     display: flex;

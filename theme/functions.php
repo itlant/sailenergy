@@ -75,7 +75,8 @@ function sailenergy_scripts()
   wp_enqueue_style('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css', array(), null);
   wp_enqueue_style('owl-theme', 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css', array(), null);
   wp_enqueue_style('owl-carousel', 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css', array(), null);
-  wp_enqueue_style('sailenergy-style', get_template_directory_uri() . '/assets/css/style.min.css', array(), $version);
+  wp_enqueue_style('sailenergy-style', get_template_directory_uri() . '/assets/css/style.min.css', array(), null);
+  wp_enqueue_style('sailenergy-custom-style', get_template_directory_uri() . '/css/custom.css', array(), null);
 
   // Скрипты
   wp_enqueue_script('aos', 'https://unpkg.com/aos@2.3.1/dist/aos.js', array(), null, true);
@@ -99,7 +100,7 @@ add_action('wp_enqueue_scripts', 'sailenergy_scripts');
 function sailenergy_widgets_init()
 {
   register_sidebar(array(
-    'name'          => __('Сайдбар', 'sailenergy'),
+    'name'          => __('Сайдбар для записей', 'sailenergy'),
     'id'            => 'sidebar-1',
     'description'   => __('Добавьте виджеты в сайдбар.', 'sailenergy'),
     'before_widget' => '<section id="%1$s" class="widget %2$s">',
@@ -180,10 +181,40 @@ function sailenergy_breadcrumbs()
   echo '<li class="breadcrumb-item"><a href="' . home_url() . '"><i class="fas fa-home"></i></a></li>';
 
   if (is_single()) {
-    $categories = get_the_category();
-    if ($categories) {
-      echo '<li class="breadcrumb-item"><a href="' . get_category_link($categories[0]->term_id) . '">' . $categories[0]->name . '</a></li>';
+    $post_type = get_post_type();
+
+    // Для обычных постов
+    if ($post_type === 'post') {
+      $categories = get_the_category();
+      if ($categories) {
+        echo '<li class="breadcrumb-item"><a href="' . get_category_link($categories[0]->term_id) . '">' . $categories[0]->name . '</a></li>';
+      }
     }
+    // Для кастомных типов записей
+    else {
+      // Получаем архивную ссылку для CPT
+      $post_type_obj = get_post_type_object($post_type);
+      if ($post_type_obj && $post_type_obj->has_archive) {
+        $archive_link = get_post_type_archive_link($post_type);
+        $archive_label = $post_type_obj->labels->name;
+        if ($archive_link) {
+          echo '<li class="breadcrumb-item"><a href="' . esc_url($archive_link) . '">' . esc_html($archive_label) . '</a></li>';
+        }
+      }
+
+      // Проверяем таксономии для CPT
+      $taxonomies = get_object_taxonomies($post_type, 'objects');
+      foreach ($taxonomies as $taxonomy) {
+        if ($taxonomy->hierarchical) {
+          $terms = get_the_terms(get_the_ID(), $taxonomy->name);
+          if ($terms && !is_wp_error($terms)) {
+            echo '<li class="breadcrumb-item"><a href="' . get_term_link($terms[0]) . '">' . $terms[0]->name . '</a></li>';
+            break;
+          }
+        }
+      }
+    }
+
     echo '<li class="breadcrumb-item active" aria-current="page">' . get_the_title() . '</li>';
   } elseif (is_page()) {
     $parent_id = wp_get_post_parent_id(get_the_ID());
@@ -201,6 +232,10 @@ function sailenergy_breadcrumbs()
     echo '<li class="breadcrumb-item active" aria-current="page">' . post_type_archive_title('', false) . '</li>';
   } elseif (is_tax()) {
     echo '<li class="breadcrumb-item active" aria-current="page">' . single_term_title('', false) . '</li>';
+  }
+  // Для архивов таксономий
+  elseif (is_archive()) {
+    echo '<li class="breadcrumb-item active" aria-current="page">' . get_the_archive_title() . '</li>';
   }
 
   echo '</ol>';
@@ -246,17 +281,6 @@ function sailenergy_pagination()
 require_once get_template_directory() . '/inc/class-wp-bootstrap-navwalker.php';
 
 // ============================================
-// РЕГИСТРАЦИЯ МЕНЮ С ПОДДЕРЖКОЙ WALKER
-// ============================================
-
-add_action('after_setup_theme', function () {
-  register_nav_menus(array(
-    'primary' => __('Главное меню', 'sailenergy'),
-    'footer'  => __('Меню в подвале', 'sailenergy'),
-  ));
-});
-
-// ============================================
 // 6. ДОБАВЛЯЕМ КЛАССЫ ДЛЯ МЕНЮ
 // ============================================
 
@@ -275,3 +299,64 @@ add_filter('nav_menu_css_class', function ($classes, $item, $args, $depth) {
   }
   return $classes;
 }, 10, 4);
+
+// ============================================
+// 7. ПОДСТАНОВКА НАЗВАНИЯ ТЕКУЩЕГО КУРСА В ПОЛЕ CF7
+// ============================================
+
+function sailenergy_fill_current_course()
+{
+  if (is_singular('course') && function_exists('wpcf7')) {
+    $current_course_id = get_the_ID();
+    $current_course_title = get_the_title();
+?>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        function fillCourseField() {
+          var courseField = document.querySelector('#modalCourse');
+          var courseHidden = document.querySelector('[name="course-id"]');
+
+          if (courseField) {
+            courseField.value = '<?php echo esc_js($current_course_title); ?>';
+          }
+
+          if (courseHidden) {
+            courseHidden.value = '<?php echo esc_js($current_course_id); ?>';
+          }
+        }
+
+        fillCourseField();
+
+        var modal = document.getElementById('callbackModal');
+        if (modal) {
+          modal.addEventListener('shown.bs.modal', function() {
+            setTimeout(fillCourseField, 100);
+          });
+        }
+      });
+    </script>
+  <?php
+  }
+}
+add_action('wp_footer', 'sailenergy_fill_current_course');
+
+// ============================================
+// 8. РЕДИРЕКТ ПОСЛЕ УСПЕШНОЙ ОТПРАВКИ CF7 (ПРОСТОЙ)
+// ============================================
+
+function sailenergy_cf7_success_redirect_js()
+{
+  if (function_exists('wpcf7')) {
+    ?>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('wpcf7mailsent', function(event) {
+          // Просто перенаправляем на страницу успеха
+          window.location.href = '<?php echo home_url('/success/'); ?>';
+        });
+      });
+    </script>
+    <?php
+  }
+}
+add_action('wp_footer', 'sailenergy_cf7_success_redirect_js', 999);

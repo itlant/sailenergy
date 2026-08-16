@@ -29,3 +29,8 @@ $breakpoints: (
     @media (max-width: $breakpoint) { @content; }
   }
 }
+
+// --- LETTER SPACING ---
+@mixin letter-spacing($spacing: .1rem) {
+  letter-spacing: $spacing;
+}

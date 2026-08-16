@@ -180,6 +180,11 @@ acf_add_local_field_group(array(
         'master' => 'Профи (Yachtmaster)',
       ),
       'default_value' => 'start',
+      'wrapper' => array(
+        'width' => '25',
+        'class' => '',
+        'id' => '',
+      ),
     ),
     array(
       'key' => 'field_course_duration',
@@ -187,6 +192,11 @@ acf_add_local_field_group(array(
       'name' => 'course_duration',
       'type' => 'text',
       'placeholder' => '14 дней',
+      'wrapper' => array(
+        'width' => '25',
+        'class' => '',
+        'id' => '',
+      ),
     ),
     array(
       'key' => 'field_course_price',
@@ -194,6 +204,11 @@ acf_add_local_field_group(array(
       'name' => 'course_price',
       'type' => 'text',
       'placeholder' => 'от 150 000 ₽',
+      'wrapper' => array(
+        'width' => '25',
+        'class' => '',
+        'id' => '',
+      ),
     ),
     array(
       'key' => 'field_course_icon',
@@ -202,13 +217,35 @@ acf_add_local_field_group(array(
       'type' => 'text',
       'placeholder' => 'fas fa-anchor',
       'default_value' => 'fas fa-anchor',
+      'wrapper' => array(
+        'width' => '25',
+        'class' => '',
+        'id' => '',
+      ),
     ),
     array(
       'key' => 'field_course_syllabus',
       'label' => 'Программа курса',
       'name' => 'course_syllabus',
       'type' => 'wysiwyg',
-      'toolbar' => 'basic',
+      'toolbar' => 'full',
+      'wrapper' => array(
+        'width' => '100',
+        'class' => '',
+        'id' => '',
+      ),
+    ),
+    array(
+      'key' => 'field_course_summary',
+      'label' => 'Итог курса (краткое описание)',
+      'name' => 'course_summary',
+      'type' => 'textarea',
+      'rows' => 3,
+      'wrapper' => array(
+        'width' => '100',
+        'class' => '',
+        'id' => '',
+      ),
     ),
   ),
   'location' => array(
@@ -219,6 +256,9 @@ acf_add_local_field_group(array(
         'value' => 'course',
       ),
     ),
+  ),
+  'hide_on_screen' => array(
+    'the_content',
   ),
 ));
 
@@ -310,12 +350,57 @@ acf_add_local_field_group(array(
   'key' => 'group_club_page',
   'title' => 'Данные страницы "О клубе"',
   'fields' => array(
+    // --- Hero блок ---
     array(
       'key' => 'field_club_hero_image',
       'label' => 'Изображение в hero-блоке',
       'name' => 'club_hero_image',
       'type' => 'image',
       'return_format' => 'url',
+      'preview_size' => 'medium',
+      'wrapper' => array(
+        'width' => '50',
+        'class' => '',
+        'id' => '',
+      ),
+    ),
+    array(
+      'key' => 'field_club_hero_title',
+      'label' => 'Заголовок hero-блока',
+      'name' => 'club_hero_title',
+      'type' => 'text',
+      'default_value' => 'О клубе SAIL ENERGY',
+      'wrapper' => array(
+        'width' => '50',
+        'class' => '',
+        'id' => '',
+      ),
+    ),
+    array(
+      'key' => 'field_club_hero_text',
+      'label' => 'Текст hero-блока (краткое описание)',
+      'name' => 'club_hero_text',
+      'type' => 'text',
+      'default_value' => 'Мы — сообщество профессионалов и любителей, объединенных любовью к морю и ветру.',
+      'wrapper' => array(
+        'width' => '100',
+        'class' => '',
+        'id' => '',
+      ),
+    ),
+
+    // --- Статистика ---
+    array(
+      'key' => 'field_club_stats_title',
+      'label' => 'Заголовок блока статистики',
+      'name' => 'club_stats_title',
+      'type' => 'text',
+      'default_value' => 'Наши достижения',
+      'wrapper' => array(
+        'width' => '100',
+        'class' => '',
+        'id' => '',
+      ),
     ),
     array(
       'key' => 'field_club_experience',
@@ -323,6 +408,23 @@ acf_add_local_field_group(array(
       'name' => 'club_experience',
       'type' => 'number',
       'default_value' => 25,
+      'wrapper' => array(
+        'width' => '50',
+        'class' => '',
+        'id' => '',
+      ),
+    ),
+    array(
+      'key' => 'field_club_experience_label',
+      'label' => 'Подпись "Лет опыта"',
+      'name' => 'club_experience_label',
+      'type' => 'text',
+      'default_value' => 'Лет опыта',
+      'wrapper' => array(
+        'width' => '50',
+        'class' => '',
+        'id' => '',
+      ),
     ),
     array(
       'key' => 'field_club_graduates',
@@ -330,6 +432,23 @@ acf_add_local_field_group(array(
       'name' => 'club_graduates',
       'type' => 'number',
       'default_value' => 100,
+      'wrapper' => array(
+        'width' => '50',
+        'class' => '',
+        'id' => '',
+      ),
+    ),
+    array(
+      'key' => 'field_club_graduates_label',
+      'label' => 'Подпись "Выпускников"',
+      'name' => 'club_graduates_label',
+      'type' => 'text',
+      'default_value' => 'Выпускников',
+      'wrapper' => array(
+        'width' => '50',
+        'class' => '',
+        'id' => '',
+      ),
     ),
     array(
       'key' => 'field_club_regattas_count',
@@ -337,12 +456,51 @@ acf_add_local_field_group(array(
       'name' => 'club_regattas_count',
       'type' => 'number',
       'default_value' => 50,
+      'wrapper' => array(
+        'width' => '50',
+        'class' => '',
+        'id' => '',
+      ),
+    ),
+    array(
+      'key' => 'field_club_regattas_label',
+      'label' => 'Подпись "Проведенных регат"',
+      'name' => 'club_regattas_label',
+      'type' => 'text',
+      'default_value' => 'Проведенных регат',
+      'wrapper' => array(
+        'width' => '50',
+        'class' => '',
+        'id' => '',
+      ),
+    ),
+
+    // --- Полное описание ---
+    array(
+      'key' => 'field_club_description_title',
+      'label' => 'Заголовок полного описания',
+      'name' => 'club_description_title',
+      'type' => 'text',
+      'default_value' => 'О клубе',
+      'wrapper' => array(
+        'width' => '100',
+        'class' => '',
+        'id' => '',
+      ),
     ),
     array(
       'key' => 'field_club_description',
       'label' => 'Полное описание клуба',
       'name' => 'club_description',
       'type' => 'wysiwyg',
+      'toolbar' => 'full',
+      'media_upload' => 1,
+      'wrapper' => array(
+        'width' => '100',
+        'class' => '',
+        'id' => '',
+      ),
+      'instructions' => 'Это полное описание клуба, которое будет показано ниже статистики.',
     ),
   ),
   'location' => array(
@@ -353,6 +511,9 @@ acf_add_local_field_group(array(
         'value' => 'templates/template-club.php',
       ),
     ),
+  ),
+  'hide_on_screen' => array(
+    'the_content',
   ),
 ));
 
